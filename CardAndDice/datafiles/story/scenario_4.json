@@ -1,0 +1,104 @@
+{
+	"dialog_1" : {
+		"str_name" : "유즈",
+		"str_department" : "호감고닉",
+		"str_dialog" : "미... 미안, 사실 그런건 여기 없어.",
+		"is_solo" : 1,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Yuzu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_2" : {
+		"str_name" : "유즈",
+		"str_department" : "호감고닉",
+		"str_dialog" : "그냥 유즈를 보여주고 싶어서...",
+		"is_solo" : 1,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Yuzu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_3" : {
+		"str_name" : "유즈",
+		"str_department" : "호감고닉",
+		"str_dialog" : "응? 별로 화나지 않았다구?",
+		"is_solo" : 1,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Yuzu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_4" : {
+		"str_name" : "유즈",
+		"str_department" : "호감고닉",
+		"str_dialog" : "역시 다들 유즈를 좋아하는게 분명해-!",
+		"is_solo" : 1,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Yuzu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_5" : {
+		"str_name" : "아리스",
+		"str_department" : "깡통",
+		"str_dialog" : "뭐합니까 유즈",
+		"is_solo" : 0,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 1,
+		"write_speed" : 3,
+		"background_music" : "Unwelcome_School"
+	},
+	"dialog_6" : {
+		"str_name" : "유즈",
+		"str_department" : "호감고닉",
+		"str_dialog" : "아... 아리스!?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_7" : {
+		"str_name" : "아리스",
+		"str_department" : "깡통",
+		"str_dialog" : "또 밀레니엄 갤러리에서 이상한 글 쓰고있는겁니까?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 1,
+		"write_speed" : 3
+	},
+	"dialog_8" : {
+		"str_name" : "아리스",
+		"str_department" : "깡통",
+		"str_dialog" : "마따끄...",
+		"is_solo" : 0,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 1,
+		"write_speed" : 3
+	},
+	"dialog_9" : {
+		"str_name" : "유즈",
+		"str_department" : "호감고닉",
+		"str_dialog" : "아리스! 노트북 돌려줘!!",
+		"is_solo" : 0,
+		"char_sprite" : "Yuzu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_10" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "The End",
+		"is_solo" : 2,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 3,
+		"background_music" : "stop"
+	},
+}

@@ -1,0 +1,83 @@
+{
+	"dialog_1" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "json 읽기를 테스트 하는 겁니다!!!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_2" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "연속적인 다이얼로그!!!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_3" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "모모이! 잘 나오고 있습니까??",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_4" : {
+		"str_name" : "악덕 고용주 모모이",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "잘 나오고 있어 아리스!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_5" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "끄앙! 아리스가 둘이 되어버린겁니다!!!",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_6" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "오른쪽 아리스가 말하기!!",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 1,
+		"write_speed" : 3
+	},
+	"dialog_7" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "왼쪽 아리스가 말하기!!",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_8" : {
+		"str_name" : "테스트 머쉰 아리수",
+		"str_department" : "게임개발부 테스트실",
+		"str_dialog" : "테스트 종료!! 테스트 종료!!!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+				  
+}

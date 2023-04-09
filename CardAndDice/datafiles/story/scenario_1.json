@@ -1,0 +1,1040 @@
+{
+	"dialog_1" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(어느때와 같은, 평화로운 오후의 게임개발부.)",
+		"is_solo" : 2,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_2" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "으앗! 방금 발소리 들린거 같은데? 여기 사람 있는거 아니야?",
+		"is_solo" : 1,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 2,
+		"background_music" : "Pixel_Time"
+	},
+	"dialog_3" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "그야, 이렇게 좁은데에 12명이나 살아있으면 당연히 있겠지.",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_4" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "으으... 막금구에 이렇게 몰릴줄 알았으면 아까 탈출킷 먹었을때 그냥 탈출해버릴껄!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_5" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "그럼 일단 소란 내지말고 가만히 있어보자.",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_6" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(똑똑)",
+		"is_solo" : 2,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 15
+	},
+	"dialog_7" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "모모이! 미도리! 밖에 누군가 온겁니다!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_8" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "이...이익!! 이걸 우리한테 달려온다고!!!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_9" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "아니 그러니까 여기 있는 티 내지 말자고 했잖아!!!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},	
+	"dialog_10" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(똑똑똑똑똑똑똑똑똑똑똑똑똑똑똑똑똑똑)",
+		"is_solo" : 2,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_11" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "미..미안! 아리스. 우리 대신에 문좀 열어줄래?",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},		
+	"dialog_12" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "아리스는 족고수라 부탁하지 않아도 이미 열었습니다!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},	
+	"dialog_13" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "...",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 3,
+		"background_music" : "stop"
+	},		
+	"dialog_14" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "히...히익...!!",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},	
+	"dialog_15" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "...",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_16" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "...",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 3
+	},	
+	"dialog_17" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "...야, 너희들... 학교생활 참 재밌게한다. 그지?",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 4
+	},
+	"dialog_18" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "1학년들만 모여있는 동아리라서 잘 모르는 거냐? 응? #뭐, 이건 일단 넘어가고.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_19" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "그래서... 이번 부장 회의에 불참한 사유는?",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_20" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "(아 맞다! 유즈 대신에 내가 가기로 했지!)",
+		"is_solo" : 1,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_21" : {
+		"str_name" : "유즈",
+		"str_department" : "게임개발부",
+		"str_dialog" : "(모모이... 또 안갔구나...)",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Yuzu",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_22" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "(언니 또 안갔구나...)",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_23" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "(또 안간겁니까, 모모이?)",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_24" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "아...! 그.. 게.. 저!.. 그.!!",
+		"is_solo" : 1,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_25" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "하아...",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 4
+	},
+	"dialog_26" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "너희들 말이야... 아무리 그래도.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 4
+	},
+	"dialog_27" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "너희 부가 특이한거지, 보통 동아리 부장은 2학년, 3학년 선배들이 맡는다?",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_28" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "너희들 기다린다고 세미나 회의실에서 선배들이 몇분씩이나 대기하고 있어야겠어?",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_29" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "대답",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_30" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "죄.. 죄송합니다아...",
+		"is_solo" : 1,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_31" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "우리 세미나 후배가 직접 온다는거, 내가 대신 온거야.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_32" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "후배가 좀 말랑말랑한 성격이라 너희들을 좀 봐주는거 같아서 말이지. ",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_33" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "다음부터는 진짜 혼낸다? ",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_34" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "대답",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_35" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "예..옛!!!!!",
+		"is_solo" : 1,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 3
+	},
+	"dialog_36" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "좋아! 아주 기합차군! 그럼 혼내는건 여기까지 하고.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_37" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "전파사항, 너희 곧 폐부",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 8
+	},
+	"dialog_38" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "네에에에에에???!?!!!",
+		"is_solo" : 0,
+		"char_sprite" : "Midori",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_39" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "안그래도 오늘 부장 회의에서 나온 이야기야.",
+		"is_solo" : 0,
+		"char_sprite" : "Midori",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_40" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(몇분전, 세미나 대회의실)",
+		"is_solo" : 2,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 3,
+		"scene_change" : "Seminar"
+	},
+	"dialog_41" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "네에, 그럼 예산 배부는 C&C에서 더 받아 가는걸로 마무리 짓고.",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2,
+		"background_music" : "Lovely_Picnic"
+	},
+	"dialog_42" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "다음으로는, 하아... 성과 미달의 동아리 존속 여부 토의가 있네요.",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_43" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "토의라고 해도 정작 본인들이 오지를 않았는데... 이걸 그냥 폐부 시켜 버릴수도 없고...",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_44" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "오, 폐부인가.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_45" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "그럼 거기 깡통은 우리가 찜",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_46" : {
+		"str_name" : "우타하",
+		"str_department" : "엔지니어부",
+		"str_dialog" : "음, 저번에 보니 손놀림이 예사롭지 않던데, 그럼 우리는 유즈를...",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_47" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "선배님들? 아직 확정 난 사항은 아닌데요...",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_48" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "(진짜 폐부되면 쌍둥이는 세미나로...)",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_49" : {
+		"str_name" : "우타하",
+		"str_department" : "엔지니어부",
+		"str_dialog" : "하하, 물론 우리끼리 하는 농담이지.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_50" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "...?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_51" : {
+		"str_name" : "우타하",
+		"str_department" : "엔지니어부",
+		"str_dialog" : "?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_52" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "그...",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_53" : {
+		"str_name" : "우타하",
+		"str_department" : "엔지니어부",
+		"str_dialog" : "우리 아직 황륜대제 중이야.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_54" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "아, 네...",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Utaha",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_55" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "큼큼... 아무튼! 게임개발부의 실적은 확실히 문제가 있어요.",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_56" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "아무리 특별상을 한번 수상 했다고 해도 저번 분기 실적, 이번 분기는 폐부 당해도 이상하지 않을 수준.",
+		"is_solo" : 1,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Yuuka",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_57" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "그런데 지금 실적을 내기엔 너무 늦지 않았나?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_58" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "내가 알기론 이번 분기 실적 발표는 전부 끝났을 텐데.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_59" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "아뇨, 아직 남아있는게 하나 있어요.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_60" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(유우카가 포스터를 한장 내려놓는다.)",
+		"is_solo" : 2,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_61" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "밀레니엄 제 12회 게임잼?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_62" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "우리 학교에 이런것도 있었나?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_63" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "네, 저도 구석에 있던 파일철에 꽂혀있던 걸 보고 알았어요.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_64" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "히마리 선배에게 물어보니 2년전에 마지막으로 개최되고 최근에는 열리지 않았다고 하더라구요.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_65" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "확실히... 이런걸 본 기억이 있긴하네.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_66" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "히마리 선배가 리오 회장에게 무언가 언질을 줬는지, 이번 게임잼 주제는 [고전] 이라던데요.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_67" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "[그것이 아방가르드 하니까...]라는 영문 모를 말만 남기고.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_68" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "마침 걔네들이 다루는 것도 고전게임이니까, 완전히 유리한 상황인거죠.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_69" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "그렇지, 밀레니엄은 취미로 나오는 게임도 대부분 3D거나 VR이니까.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_70" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "학교가 떠먹여주는데도 참, 얘네들은 생각이 있는건지 없는건지.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_71" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "이 건에 대해서는 제가 직접 가서 전파하도록 할게요. 이만 부장 회의를 마칩니다.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_72" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "아, 그거 포스터, 나한테 줘봐. 내가 전해줄게.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_73" : {
+		"str_name" : "유우카",
+		"str_department" : "세미나",
+		"str_dialog" : "네?",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_74" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "재밌어 보이는걸.",
+		"is_solo" : 0,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_75" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(그렇게 현재)",
+		"is_solo" : 2,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2,
+		"scene_change" : "Game_Development",
+		"background_music" : "stop"
+	},
+	"dialog_76" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "그렇게 된거야.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_77" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "너희 부가 존속될수 있도록 학교가 나서서 도와주는거니까.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_78" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "일주일 뒤 까지 지금까지 작업한 게임중에 적당히 하나 골라서 내라고.",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_79" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "명색이 게임개발부인데, Git에 작업물 몇개는 있을거 아니야?",
+		"is_solo" : 1,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_80" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "넨네네ㅔㄴ네ㅔ 물론이죠!!",
+		"is_solo" : 0,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_81" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "...? 뭔가 믿음이 가지 않는 대답인데...",
+		"is_solo" : 0,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_82" : {
+		"str_name" : "네루",
+		"str_department" : "Cleaning & Clearing",
+		"str_dialog" : "아무튼, 난 이만간다. 여기 폐부되면 너네 깡통은 우리꺼라는걸 기억하고.",
+		"is_solo" : 0,
+		"char_sprite" : "Neru",
+		"char_sprite2" : "Momoi",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_83" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "안녕히 가다. 입니다!",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_84" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(문이 닫힌다.)",
+		"is_solo" : 2,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_85" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "방금 그거 플레그 아닙니까? 아리스, 완전 망했습니다!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1,
+		"background_music" : "Unwelcome_School"
+	},
+	"dialog_86" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "유즈! 제발 케비넷에 있는동안 Github에 열심히 잔디심었다고 아리스에게 말해주십시오!!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_87" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "유즈! 유즈! 아까 속마음 다이얼로그 뜬거 봤습니다! 있는거 알고있습니다! 대답해주십시오!!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_88" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "사실... 아트인 나랑 시나리오인 언니가 놀아서 프로그래머인 유즈 혼자서 뭘 하기엔...",
+		"is_solo" : 0,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},
+	"dialog_89" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "갈!!!!!!",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_90" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "말도 안되는겁니다! 아리스는 이대로 끌려가는겁니까?",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_91" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "아리스는 이제 악의소굴로 들어가면서 [악이여 각오해라!] 같은 대사를 할수 없게 되는겁니까?",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_92" : {
+		"str_name" : "아리스",
+		"str_department" : "게임개발부",
+		"str_dialog" : "와!!!!!!!!!!! C&C 아시는구나!!! 꼬마 메이드씨 정.말.강.합.니.다.",
+		"is_solo" : 1,
+		"char_sprite" : "Arisu",
+		"char_sprite2" : "Arisu",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_93" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "언니... 큰일났어... 아리스 정신이 완전히 나갔나봐.",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},
+	"dialog_94" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "...내가 폐부?...내가 폐부?...내가 폐부?...내가 폐부?...내가 폐부?...내가 폐부?",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_95" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "언니!!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},
+	"dialog_96" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "핫?!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_97" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "하지만 불가능해! 일주일안에 게임을 하나 만들라고? 완전히 아타리판 E.T 같은거나 나올껄!",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 1
+	},
+	"dialog_98" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "괜찮아, 아직 희망은 있어. 주제가 [고전] 이잖아? 아마 다른 팀들은 그냥 주제를 무시했을꺼야.",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},
+	"dialog_99" : {
+		"str_name" : "미도리",
+		"str_department" : "게임개발부",
+		"str_dialog" : "우리 부 말고는 다들 3D나 VR 같은거만 만드는걸...",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 1,
+		"write_speed" : 1
+	},
+	"dialog_100" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "아무리 그래도.... 어라?",
+		"is_solo" : 0,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 1,
+		"background_music" : "stop"
+	},
+	"dialog_101" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "(바닥에 널부러진 카드와 주사위를 본다.)",
+		"is_solo" : 2,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+	"dialog_102" : {
+		"str_name" : "모모이",
+		"str_department" : "게임개발부",
+		"str_dialog" : "잠깐... 좋은 생각이 떠오른거 같아!!",
+		"is_solo" : 1,
+		"char_sprite" : "Momoi",
+		"char_sprite2" : "Midori",
+		"left_spr_black" : 0,
+		"write_speed" : 2
+	},
+	"dialog_103" : {
+		"str_name" : "",
+		"str_department" : "",
+		"str_dialog" : "To Be Continue",
+		"is_solo" : 2,
+		"char_sprite" : "Yuuka",
+		"char_sprite2" : "Neru",
+		"left_spr_black" : 1,
+		"write_speed" : 2
+	},
+}
