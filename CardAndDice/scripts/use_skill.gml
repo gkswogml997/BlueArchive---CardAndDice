@@ -679,7 +679,7 @@ if skill_number = 1519
     //정의실현
     for (var i = 0; i < number_of_enemy; i++)
     {
-        var target = search_skill_location_target(i,!onwer_id.is_enemy)
+        var target = search_skill_location_target(i,!owner_id.is_enemy)
         attack_calculation(owner_id,target,1,12,false)
     }
 }
