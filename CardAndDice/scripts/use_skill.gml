@@ -210,7 +210,7 @@ if skill_number = 29
     {
         var target = ds_stack_pop(multi_target_stack)
         var value = roll_the_dice(20,owner_id);
-        target.be_attacked_damage += owner_id.enegy_charge * value
+        attack_calculation(owner_id,global.skill_target,owner_id.enegy_charge * value,1,true)
     }
 }
 if skill_number = 30

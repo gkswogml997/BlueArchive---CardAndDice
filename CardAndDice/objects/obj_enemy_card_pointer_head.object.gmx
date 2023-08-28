@@ -67,13 +67,16 @@ for(var i = 0; i &lt; 15; i++)
             <kind>1</kind>
             <string>var move_duration = 120;
 
-if instance_exists(owner_id) and instance_exists(target_id)
+if !is_undefined(owner_id) and !is_undefined(target_id)
 {
-    ox = owner_id.x
-    oy = owner_id.y
-    
-    tx = target_id.x
-    ty = target_id.y
+    if instance_exists(owner_id) and instance_exists(target_id)
+    {
+        ox = owner_id.x
+        oy = owner_id.y
+        
+        tx = target_id.x
+        ty = target_id.y
+    }
 }
 
 if move
