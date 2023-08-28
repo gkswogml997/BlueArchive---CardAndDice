@@ -2,15 +2,15 @@
 <sprite>
   <type>0</type>
   <xorig>106</xorig>
-  <yorigin>120</yorigin>
+  <yorigin>63</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>16</bbox_left>
-  <bbox_right>181</bbox_right>
-  <bbox_top>36</bbox_top>
-  <bbox_bottom>177</bbox_bottom>
+  <bbox_left>0</bbox_left>
+  <bbox_right>212</bbox_right>
+  <bbox_top>0</bbox_top>
+  <bbox_bottom>126</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,10 +18,11 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>213</width>
-  <height>240</height>
+  <height>127</height>
   <frames>
     <frame index="0">images\spr_stun_effect_0.png</frame>
     <frame index="1">images\spr_stun_effect_1.png</frame>
     <frame index="2">images\spr_stun_effect_2.png</frame>
+    <frame index="3">images\spr_stun_effect_3.png</frame>
   </frames>
 </sprite>

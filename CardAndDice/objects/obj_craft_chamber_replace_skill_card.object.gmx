@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>original_skill_id = ct_argument[0]
+            <string>if instance_exists(obj_CRAFT_CHAMBER_MANAGER) {ds_list_add(obj_CRAFT_CHAMBER_MANAGER.craft_parts_list,id)}
+
+original_card_id = ct_argument[0]
+original_skill_id = ct_argument[1]
+original_skill_slot_place = ct_argument[2]
 
 //초기화
 skill_number = original_skill_id.skill_number
@@ -62,10 +66,8 @@ if is_passive_skill {skill_icon_background = spr_skill_icon_background_passive}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if UI_disable()
-{
-    obj_craft_chamber_replace_skill_manager.select_slot = original_skill_id
-}
+            <string>if is_undefined(obj_craft_chamber_replace_manager.select_slot)
+{obj_craft_chamber_replace_manager.select_slot = id}
 </string>
           </argument>
         </arguments>
@@ -88,16 +90,32 @@ if is_passive_skill {skill_icon_background = spr_skill_icon_background_passive}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_large_skill_card,0,x,y)
-draw_sprite(skill_icon_background,0,x+16,y+16)
-draw_sprite_ext(skill_icon_spr,0,x+16,y+16,0.26,0.26,0,c_white,image_alpha)
+            <string>depth = -1002
+var xx = x - sprite_width/2 + sprite_get_width(spr_skill_icon_background)/2 + 12
+draw_self()
+draw_sprite(skill_icon_background,0,xx,y)
+draw_sprite_ext(skill_icon_spr,0,xx,y,0.26,0.26,0,c_white,image_alpha)
 draw_set_font(ft_gyeonggi_sz15_Italic_Light)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_set_color(c_black)
-draw_text(x+16+92,y+16,skill_name)
-draw_text_ext(x+100,y+80,skill_description,24,200)
-mask_index = spr_mask_200x145
+draw_text(x,y,skill_name)
+
+if mouse_enter()
+{
+    depth = -1021
+    var xx = mouse_x
+    var yy = mouse_y
+    draw_sprite(spr_large_skill_card,0,xx,yy)
+    draw_sprite(skill_icon_background,0,xx+16,yy+16)
+    draw_sprite_ext(skill_icon_spr,0,xx+16,yy+16,0.26,0.26,0,c_white,image_alpha)
+    draw_set_font(ft_gyeonggi_sz15_Italic_Light)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    draw_set_color(c_black)
+    draw_text(xx+16+92,yy+16,skill_name)
+    draw_text_ext(xx+100,yy+80,skill_description,24,200)
+}
 </string>
           </argument>
         </arguments>

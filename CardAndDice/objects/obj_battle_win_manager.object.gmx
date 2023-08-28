@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>if instance_number(obj_battle_win_manager) &gt; 1 {instance_destroy()}
 
+if instance_exists(obj_log_button) {instance_destroy(obj_log_button)}
+
 //아군 덱의 죽은 카드들 제거
 var p_list = obj_GAME_SYSTEM_MANAGER.player_list
 for (var i = 0; i &lt; ds_list_size(p_list); i++)
@@ -49,6 +51,34 @@ if !timeline_running
 }
 
 sequence_end = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//쓰래기통을 재활용 합니다.
+while(!ds_stack_empty(global.instance_recycle_bin))
+{
+    var ins = ds_stack_pop(global.instance_recycle_bin)
+    if instance_exists(ins) {instance_destroy(ins)}
+}
 </string>
           </argument>
         </arguments>

@@ -5,16 +5,23 @@
 		"skill_icon" : "rest",
 		"skill_description" : "차례를 한번 건너 뛴다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"1" : {
 		"skill_number" : 1,
 		"skill_name" : "기본 공격",
 		"skill_icon" : "skill_1001",
-		"skill_description" : "[필중] (공격력)D6로 1회 공격한다.",
+		"skill_description" : "[필중] (공격력)D6로 1회 공격하고 내 도발을 3 상승시킨다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "must_hit"
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2" : {
 		"skill_number" : 2,
@@ -31,7 +38,9 @@
 		"skill_icon" : "rest",
 		"skill_description" : "내 (방어력)을 (공격력)D6 증가시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"4" : {
 		"skill_number" : 4,
@@ -49,6 +58,8 @@
 		"skill_description" : "나에게 [보호막]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0,
 		"extra_description" : "barrier"
 	},
 	"6" : {
@@ -115,7 +126,9 @@
 		"skill_icon" : "skill_2002",
 		"skill_description" : "내 숙련도를 (달인)으로 고정한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"14" : {
 		"skill_number" : 14,
@@ -140,28 +153,36 @@
 		"skill_description" : "적 전체에 1 데미지를 주고 [화상]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
 		"extra_description" : "fire"
 	},
 	"17" : {
 		"skill_number" : 17,
 		"skill_name" : "항상 노력해",
 		"skill_icon" : "skill_2002",
-		"skill_description" : "대상의 (신속)을 D12 증가시킨다.",
+		"skill_description" : "대상의 (신속)을 D6 증가시킨다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1
 	},
 	"18" : {
 		"skill_number" : 18,
 		"skill_name" : "머리 후려치기",
-		"skill_icon" : "skill_2002",
+		"skill_icon" : "skill_1001",
 		"skill_description" : "[치명타] 대상에게 D12로 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"extra_description" : "critical",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"19" : {
 		"skill_number" : 19,
 		"skill_name" : "코토리의 퍼니박스",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_5001",
 		"skill_description" : "[소환] 코토리의 퍼니박스를 꺼냅니다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
@@ -170,7 +191,7 @@
 	"20" : {
 		"skill_number" : 20,
 		"skill_name" : "몰아치기",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2002",
 		"skill_description" : "[패시브]전체 아군의 (공격력)을 1 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -179,7 +200,7 @@
 	"21" : {
 		"skill_number" : 21,
 		"skill_name" : "택티컬 서포팅",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2002",
 		"skill_description" : "[패시브]전체 아군의 (방어력)을 D6 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -188,19 +209,96 @@
 	"22" : {
 		"skill_number" : 22,
 		"skill_name" : "선생님의 지휘",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2002",
 		"skill_description" : "[패시브]전체 아군의 (숙련도)를 (달인)으로 고정한다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
 		"extra_description" : "passive"
 	},
-	
+	"23" : {
+		"skill_number" : 23,
+		"skill_name" : "신속지원",
+		"skill_icon" : "rest",
+		"skill_description" : "내 (신속)을 1 상승시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
+	"24" : {
+		"skill_number" : 24,
+		"skill_name" : "은엄폐",
+		"skill_icon" : "rest",
+		"skill_description" : "내 (도발)을 3 감소시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
+	"25" : {
+		"skill_number" : 25,
+		"skill_name" : "전열 가다듬기",
+		"skill_icon" : "rest",
+		"skill_description" : "내 (도발)을 3 상승시키고 (방어력)을 5 상승시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
+	"26" : {
+		"skill_number" : 26,
+		"skill_name" : "닌자의 몸놀림",
+		"skill_icon" : "skill_5004",
+		"skill_description" : "[패시브] 나에게 회피를 1 부여한다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "dodge"
+	},
+	"27" : {
+		"skill_number" : 27,
+		"skill_name" : "핫산",
+		"skill_icon" : "skill_2012",
+		"skill_description" : "대상에게 걸린 모든 디버프 효과를 D20 만큼 제거한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
+	},
+	"28" : {
+		"skill_number" : 28,
+		"skill_name" : "축전지",
+		"skill_icon" : "skill_3011",
+		"skill_description" : "[충전] 에너지 충전을 2 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0,
+		"extra_description" : "enegy_charge"
+	},
+	"29" : {
+		"skill_number" : 29,
+		"skill_name" : "전력 방출",
+		"skill_icon" : "skill_3011",
+		"skill_description" : "내 에너지 충전을 모두 소모하여 적 전체에 (충전량)D20의 피해를 줍니다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"extra_description" : "enegy_charge"
+	},
+	"30" : {
+		"skill_number" : 30,
+		"skill_name" : "겁주기",
+		"skill_icon" : "skill_2009",
+		"skill_description" : "대상에게 [공포]를 부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "fear"
+	},
 	
 	"100" : {
 		"skill_number" : 100,
 		"skill_name" : "소환물 패널티",
 		"skill_icon" : "skill_1002",
-		"skill_description" : "[패시브] 이 카드는 소환물 입니다. (취약)을 1 얻는다.",
+		"skill_description" : "[패시브] 이 카드는 소환물 입니다. (방어력)을 10 감소시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
 		"extra_description" : "passive"
@@ -211,7 +309,12 @@
 		"skill_icon" : "skill_1001",
 		"skill_description" : "대상에게 (공격력)D6로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"102" : {
 		"skill_number" : 102,
@@ -219,7 +322,11 @@
 		"skill_icon" : "skill_1004",
 		"skill_description" : "내 기준 -1번째 자리 대상의 (취약)을 2 감소시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,0,0],
+		"is_base_on_me_skill" : 1,
+		"is_enemy_target" : 0
+		
 	},
 	"103" : {
 		"skill_number" : 103,
@@ -227,7 +334,10 @@
 		"skill_icon" : "skill_1004",
 		"skill_description" : "양쪽에 있는 대상의 (취약)을 1 감소시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_base_on_me_skill" : 1,
+		"is_enemy_target" : 0
 	},
 	"104" : {
 		"skill_number" : 104,
@@ -235,7 +345,12 @@
 		"skill_icon" : "skill_2007",
 		"skill_description" : "(공격력)D12로 선택한 대상을 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"105" : {
 		"skill_number" : 105,
@@ -261,7 +376,14 @@
 		"skill_icon" : "skill_7003",
 		"skill_description" : "전체 적에게 (공격력)D6로 3회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 3
 	},
 	"108" : {
 		"skill_number" : 108,
@@ -269,7 +391,9 @@
 		"skill_icon" : "skill_1004",
 		"skill_description" : "전체 아군의 (방어력)을 6 상승시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 0
 	},
 	"109" : {
 		"skill_number" : 109,
@@ -277,7 +401,35 @@
 		"skill_icon" : "skill_1004",
 		"skill_description" : "전체 적의 (방어력)을 3 감소시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1
+	},
+	"110" : {
+		"skill_number" : 110,
+		"skill_name" : "음?식",
+		"skill_icon" : "skill_2013",
+		"skill_description" : "내 (도발)을 D20 상승시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
+	"111" : {
+		"skill_number" : 111,
+		"skill_name" : "백열안광",
+		"skill_icon" : "skill_111",
+		"skill_description" : "대상에게 (공격력)D20만큼 (방어력)을 감소시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
+	},
+	"112" : {
+		"skill_number" : 112,
+		"skill_name" : "미니언 흡수",
+		"skill_icon" : "skill_112",
+		"skill_description" : "대상의 (취약)을 제거하고 그만큼 (취약)을 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
 	},
 	
 	
@@ -304,7 +456,7 @@
 		"skill_number" : 1003,
 		"skill_name" : "걸리적거리잖아!",
 		"skill_icon" : "skill_1003",
-		"skill_description" : "[패시브] (신속)을 10 상승시킨다.",
+		"skill_description" : "[패시브] (신속)을 2 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
 		"extra_description" : "passive"
@@ -315,7 +467,9 @@
 		"skill_icon" : "skill_1004",
 		"skill_description" : "0번,2번,4번 자리 대상의 (방어력)을 D6 상승시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,0,1,0,1],
+		"is_enemy_target" : 0
 	},
 	"1005" : {
 		"skill_number" : 1005,
@@ -323,7 +477,14 @@
 		"skill_icon" : "skill_1005",
 		"skill_description" : "2D6로 적 전체에게 각각 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 2,
+		"attack_count": 2
 	},
 	"2001" : {
 		"skill_number" : 2001,
@@ -331,7 +492,13 @@
 		"skill_icon" : "skill_2001",
 		"skill_description" : "(공격력)D6로 선택한 대상과 그 양옆을 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,1,1,1,0],
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2002" : {
 		"skill_number" : 2002,
@@ -354,9 +521,15 @@
 		"skill_number" : 2004,
 		"skill_name" : "종막: 이스보셋",
 		"skill_icon" : "skill_2004",
-		"skill_description" : "D6로 선택한 대상과 그 양옆을 3회 공격한다.",
+		"skill_description" : "(공격력)D6로 선택한 대상과 그 양옆을 3회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,1,1,1,0],
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 3
 	},
 	"2005" : {
 		"skill_number" : 2005,
@@ -365,7 +538,12 @@
 		"skill_description" : "[치명타] 대상에게 (공격력)D20로 1회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "critical"
+		"extra_description" : "critical",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2006" : {
 		"skill_number" : 2006,
@@ -385,6 +563,75 @@
 		"is_targeting_skill" : 0,
 		"extra_description" : "summon"
 	},
+	"2008" : {
+		"skill_number" : 2008,
+		"skill_name" : "작열의 세레나데",
+		"skill_icon" : "skill_2008",
+		"skill_description" : "0,2,4번 자리에 (공격력)D6, 1,3번자리에 (공격력)D12로 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"2009" : {
+		"skill_number" : 2009,
+		"skill_name" : "패닉 브링거",
+		"skill_icon" : "skill_2009",
+		"skill_description" : "대상에게 [공포]를 부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "fear"
+	},
+	"2010" : {
+		"skill_number" : 2010,
+		"skill_name" : "펌프 패닝",
+		"skill_icon" : "skill_2010",
+		"skill_description" : "대상과 그 양옆에 3 데미지로 3회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,1,1,1,0],
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 3,
+		"attack_count": 3
+	},
+	"2011" : {
+		"skill_number" : 2011,
+		"skill_name" : "일망타진",
+		"skill_icon" : "skill_2011",
+		"skill_description" : "[치명타] 대상에게 3D20로 3회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "critical",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 3,
+		"attack_count": 3
+	},
+	"2012" : {
+		"skill_number" : 2012,
+		"skill_name" : "전술 치료 시행",
+		"skill_icon" : "skill_2012",
+		"skill_description" : "대상에게 걸린 (방어력) 디버프를 10 만큼 제거한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
+	},
+	"2013" : {
+		"skill_number" : 2013,
+		"skill_name" : "주리의 요리 시간!",
+		"skill_icon" : "skill_2013",
+		"skill_description" : "[소환] (도발) 50의 팬쨩을 소환한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"extra_description" : "summon"
+	},
 	"3001" : {
 		"skill_number" : 3001,
 		"skill_name" : "Q.E.D",
@@ -392,6 +639,8 @@
 		"skill_description" : "[보호막]을 얻고, 도발을 10 상승시킨다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0,
 		"extra_description" : "barrier"
 	},
 	"3002" : {
@@ -400,7 +649,14 @@
 		"skill_icon" : "skill_3002",
 		"skill_description" : "3D6로 적 전체에게 각각 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 3,
+		"attack_count": 1
 	},
 	"3003" : {
 		"skill_number" : 3003,
@@ -408,7 +664,12 @@
 		"skill_icon" : "skill_3003",
 		"skill_description" : "1의 데미지로 선택한 대상에게 9회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 9
 	},
 	"3004" : {
 		"skill_number" : 3004,
@@ -417,7 +678,12 @@
 		"skill_description" : "[기절] 대상에게 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "stun"
+		"extra_description" : "stun",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"3005" : {
 		"skill_number" : 3005,
@@ -433,24 +699,115 @@
 		"skill_icon" : "skill_3005",
 		"skill_description" : "대상과 그 +1번 자리의 대상을 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,0,1,1,0],
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"3007" : {
 		"skill_number" : 3007,
 		"skill_name" : "천둥이 등장",
 		"skill_icon" : "skill_3007",
-		"skill_description" : "[소환] 방어력 30의 천둥이를 소환한다.",
+		"skill_description" : "[소환] 방어력 80의 천둥이를 소환한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
 		"extra_description" : "summon"
+	},
+	"3008" : {
+		"skill_number" : 3008,
+		"skill_name" : "갈게!",
+		"skill_icon" : "skill_3008",
+		"skill_description" : "대상의 자리로 이동 한 뒤 내 (신속)을 1 상승시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
+	},
+	"3009" : {
+		"skill_number" : 3009,
+		"skill_name" : "대상, 삭제",
+		"skill_icon" : "skill_3009",
+		"skill_description" : "대상에게 3(공격력)D12로 1회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 3,
+		"attack_count": 1
+	},
+	"3010" : {
+		"skill_number" : 3010,
+		"skill_name" : "우아하게, 제거합니다.",
+		"skill_icon" : "skill_3010",
+		"skill_description" : "대상에게 (취약)을 2 부여하고 1의 데미지로 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"3011" : {
+		"skill_number" : 3011,
+		"skill_name" : "밸런스 붕괴",
+		"skill_icon" : "skill_3011",
+		"skill_description" : "[충전] 대상에게 2*(공격력)D6의 데미지로 공격 후, 에너지충전을 1 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "enegy_charge",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 2,
+		"attack_count": 1
+	},
+	"3012" : {
+		"skill_number" : 3012,
+		"skill_name" : "창작의 고통",
+		"skill_icon" : "skill_3012",
+		"skill_description" : "1,2,3번 자리의 대상에게 (공격력)의 데미지로 4회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,1,1,0],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"3013" : {
+		"skill_number" : 3013,
+		"skill_name" : "드로잉 아트",
+		"skill_icon" : "skill_3013",
+		"skill_description" : "[강자우선] (공격력)D6으로 5회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 1,
+		"extra_description" : "strong_man_first",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 5
 	},
 	"4001" : {
 		"skill_number" : 4001,
 		"skill_name" : "Kyrie Eleison",
 		"skill_icon" : "skill_4001",
-		"skill_description" : "선택한 대상에게 (공격력)D12*(대상의 취약)으로 공격한다.",
+		"skill_description" : "[방패 부수기] 선택한 대상에게 (공격력)D12으로 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"extra_description" : "shield_break",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"4002" : {
 		"skill_number" : 4002,
@@ -476,7 +833,12 @@
 		"skill_description" : "대상에게 (공격력)D12로 공격한다. 처치시 [엑스트라턴]을 1회 부여받는다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "extra_turn"
+		"extra_description" : "extra_turn",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"4005" : {
 		"skill_number" : 4005,
@@ -493,7 +855,12 @@
 		"skill_icon" : "skill_4006",
 		"skill_description" : "대상에게 1의 데미지로 5회 공격한 후 취약을 1 부여한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 5
 	},
 	"4007" : {
 		"skill_number" : 4007,
@@ -504,13 +871,80 @@
 		"is_targeting_skill" : 0,
 		"extra_description" : "stun"
 	},
+	"4008" : {
+		"skill_number" : 4008,
+		"skill_name" : "도와줘요, 페로로 님!",
+		"skill_icon" : "skill_4008",
+		"skill_description" : "[소환] 공격력 2의 페로로질라를 소환한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"extra_description" : "summon"
+	},
+	"4009" : {
+		"skill_number" : 4009,
+		"skill_name" : "누, 누가 당황할 줄 알고?",
+		"skill_icon" : "skill_4009",
+		"skill_description" : "[동전 던지기] 선택한 대상과 그 양옆의 대상을 [기절] 시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,1,1,1,0],
+		"extra_description" : "coin_flip"
+	},
+	"4010" : {
+		"skill_number" : 4010,
+		"skill_name" : "아머 피어싱샷",
+		"skill_icon" : "skill_4010",
+		"skill_description" : "[방패부수기] 대상에게 2D20로 1회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "shield_break",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 2,
+		"attack_count": 1
+	},
+	"4011" : {
+		"skill_number" : 4011,
+		"skill_name" : "정의의 일격",
+		"skill_icon" : "skill_4011",
+		"skill_description" : "[동전 던지기] 대상에게 (공격력)*[(앞면)D20,(뒷면)D12]로 1회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "coin_flip",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"4012" : {
+		"skill_number" : 4012,
+		"skill_name" : "성스러운 수류탄",
+		"skill_icon" : "skill_4012",
+		"skill_description" : "[아군에게사용] 취약을 1제거한다. [적에게사용] 취약을 1부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
+	},
+	"4013" : {
+		"skill_number" : 4013,
+		"skill_name" : "비장의 수단",
+		"skill_icon" : "skill_4013",
+		"skill_description" : "나에게 걸린 스텟 감소 효과를 제거하고 보호막을 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
 	"5001" : {
 		"skill_number" : 5001,
 		"skill_name" : "전술방패 전개",
 		"skill_icon" : "skill_5001",
 		"skill_description" : "내 도발을 (공격력)D6 만큼 상승시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"5002" : {
 		"skill_number" : 5002,
@@ -528,7 +962,12 @@
 		"skill_description" : "[꽃점] 대상에게 (공격력)D6로 4회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "flower_divination"
+		"extra_description" : "flower_divination",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 4
 	},
 	"5004" : {
 		"skill_number" : 5004,
@@ -545,7 +984,77 @@
 		"skill_description" : "[화상] 대상에게 (공격력)D6로 1회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "fire"
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"5006" : {
+		"skill_number" : 5006,
+		"skill_name" : "연사 모드!",
+		"skill_icon" : "skill_5006",
+		"skill_description" : "(공격력)을 1 얻고, (신속)을 1 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
+	"5007" : {
+		"skill_number" : 5007,
+		"skill_name" : "따끈따끈 꽃구경이에요.",
+		"skill_icon" : "skill_5007",
+		"skill_description" : "나와 내 양옆의 (신속)을 1 상승시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,1,1,0],
+		"is_base_on_me_skill" : 1,
+		"is_enemy_target" : 0
+	},
+	"5008" : {
+		"skill_number" : 5008,
+		"skill_name" : "신호탄, 발사!",
+		"skill_icon" : "skill_5008",
+		"skill_description" : "[동전던지기] 아군 전체에 [보호막]을 부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 0,
+		"extra_description" : "coin_flip"
+	},
+	"5009" : {
+		"skill_number" : 5009,
+		"skill_name" : "미치루 인법첩이라구!",
+		"skill_icon" : "skill_5009",
+		"skill_description" : "대상에게 (공격력)D20로 1회 공격하고 [화상]을 부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"5010" : {
+		"skill_number" : 5010,
+		"skill_name" : "츠, 츠쿠요 인법첩…이에요!",
+		"skill_icon" : "skill_5008",
+		"skill_description" : "나무로 변신하고, [보호막]을 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"extra_description" : "barrier",
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
+	},
+	"5011" : {
+		"skill_number" : 5011,
+		"skill_name" : "팬으로서의 몸가짐",
+		"skill_icon" : "skill_5008",
+		"skill_description" : "[대상 카드의 이름이 '치세'일 경우] (공격력) 6 부여 [적에게 사용] (공격력)을 D6 감소시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1
 	},
 	"6001" : {
 		"skill_number" : 6001,
@@ -560,9 +1069,17 @@
 		"skill_number" : 6002,
 		"skill_name" : "나쁜 아이는 어디있나요?",
 		"skill_icon" : "skill_6002",
-		"skill_description" : "(공격력)이 가장 높은 적에게 (공격력)D12로 공격한다. 그후 대상의 (공격력)이 1 감소한다.",
+		"skill_description" : "[강자우선] (공격력)D12로 공격한다. 그후 대상의 (공격력)이 1 감소한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 1,
+		"extra_description" : "strong_man_first",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"6003" : {
 		"skill_number" : 6003,
@@ -571,16 +1088,24 @@
 		"skill_description" : "적 전체에게 [화상]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
 		"extra_description" : "fire"
 	},
 	"7001" : {
 		"skill_number" : 7001,
 		"skill_name" : "시구레 특제 보틀 그레네이드",
 		"skill_icon" : "skill_7001",
-		"skill_description" : "대상과 그 +1자리 대상에 (공격력)D6로 공격한 후 [화상]을 부여한다.",
+		"skill_description" : "대상과 그 -1자리 대상에 (공격력)D6로 공격한 후 [화상]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "fire"
+		"extra_skill_target" : [0,1,1,0,0],
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"7002" : {
 		"skill_number" : 7002,
@@ -623,7 +1148,12 @@
 		"skill_description" : "[꽃점] 대상에게 (공격력)D12로 2회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "flower_divination"
+		"extra_description" : "flower_divination",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"8002" : {
 		"skill_number" : 8002,
@@ -632,7 +1162,12 @@
 		"skill_description" : "[기절] 대상에게 D12로 2회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "stun"
+		"extra_description" : "stun",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"8003" : {
 		"skill_number" : 8003,
@@ -650,7 +1185,14 @@
 		"skill_description" : "0번 2번 4번 자리에 D12로 2회 공격후 [화상]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
-		"extra_description" : "fire"
+		"nontarget_skill_target" : [1,0,1,0,1],
+		"is_enemy_target" : 1,
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"9002" : {
 		"skill_number" : 9002,
@@ -664,19 +1206,33 @@
 		"skill_number" : 9003,
 		"skill_name" : "섬광 드론 전개",
 		"skill_icon" : "skill_9003",
-		"skill_description" : "나와 같은 자리에 있는 적에게 (공격력)D20의 피해를 주고 [기절] 시킨다.",
+		"skill_description" : "[동치] 적에게 (공격력)D20의 피해를 주고 [기절] 시킨다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
-		"extra_description" : "stun"
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 1,
+		"extra_description" : "equivalence",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"9004" : {
 		"skill_number" : 9004,
 		"skill_name" : "지원사격 개시!",
 		"skill_icon" : "skill_9004",
-		"skill_description" : "나와 같은 자리에 있는 적에게 (공격력)D6의 피해를 3회 주고 [기절] 시킵니다.",
+		"skill_description" : "[동치] 적에게 (공격력)D6의 피해를 3회 주고 [기절] 시킵니다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
-		"extra_description" : "stun"
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 1,
+		"extra_description" : "equivalence",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 3
 	},
 	"10001" : {
 		"skill_number" : 10001,
@@ -685,7 +1241,12 @@
 		"skill_description" : "[치명타] 대상에게 (공격력)D20으로 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "critical"
+		"extra_description" : "critical",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"10002" : {
 		"skill_number" : 10002,
@@ -694,15 +1255,26 @@
 		"skill_description" : "1번, 3번 자리에 D20으로 1회 공격후 [화상]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
-		"extra_description" : "fire"
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_enemy_target" : 1,
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"10003" : {
 		"skill_number" : 10003,
 		"skill_name" : "이것도 나의 힘……?",
 		"skill_icon" : "skill_10003",
-		"skill_description" : "내 양옆의 (취약)을 1 제거하고 (도발)을 (공격력)D12 상승시킨다.",
+		"skill_description" : "내 양옆에 [회피]를 1 부여한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_base_on_me_skill" : 1,
+		"is_enemy_target" : 0,
+		"extra_description" : "dodge"
 	},
 	"10004" : {
 		"skill_number" : 10004,
@@ -710,7 +1282,8 @@
 		"skill_icon" : "skill_10004",
 		"skill_description" : "대상과 그 양옆의 (방어력)을 D12 감소 시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,1,1,1,0]
 	},
 	
 	
@@ -725,55 +1298,75 @@
 		"skill_description" : "[필중] (공격력)D6로 1회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "must_hit"
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1502" : {
 		"skill_number" : 1502,
 		"skill_name" : "선도부 진압",
-		"skill_icon" : "skill_1001",
-		"skill_description" : "[패시브] 내 양옆을 (공격력)D6로 1회 공격한다.",
+		"skill_icon" : "skill_3005",
+		"skill_description" : "[패시브] 내 양옆의 (방어력)을 3 감소시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_base_on_me_skill" : 1,
+		"is_enemy_target" : 0,
 		"extra_description" : "passive"
 	},
 	"1503" : {
 		"skill_number" : 1503,
-		"skill_name" : "게헨나 회장의 지휘",
+		"skill_name" : "학생회장의 지휘",
 		"skill_icon" : "skill_1001",
 		"skill_description" : "[필중] (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "must_hit"
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1504" : {
 		"skill_number" : 1504,
 		"skill_name" : "만마전 진압",
-		"skill_icon" : "skill_1001",
-		"skill_description" : "[패시브] 내 양옆을 (공격력)D6로 1회 공격한다.",
+		"skill_icon" : "skill_3005",
+		"skill_description" : "[패시브] 내 양옆의 (방어력)을 3 감소시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_base_on_me_skill" : 1,
+		"is_enemy_target" : 0,
 		"extra_description" : "passive"
 	},
 	"1505" : {
 		"skill_number" : 1505,
 		"skill_name" : "선도부장의 지휘",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3005",
 		"skill_description" : "내 방어력을 5 상승시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"1506" : {
 		"skill_number" : 1506,
 		"skill_name" : "진리는 나의 빛",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3005",
 		"skill_description" : "내 신속을 (공격력)*2 상승시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"1507" : {
 		"skill_number" : 1507,
 		"skill_name" : "엔지니어부 발명품",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3007",
 		"skill_description" : "[소환] 엔지니어부의 발명품을 소환합니다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
@@ -785,7 +1378,12 @@
 		"skill_icon" : "skill_1001",
 		"skill_description" : "(공격력)D6로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"1509" : {
 		"skill_number" : 1509,
@@ -793,29 +1391,46 @@
 		"skill_icon" : "skill_1001",
 		"skill_description" : "적 전체에게 D6로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"1510" : {
 		"skill_number" : 1510,
 		"skill_name" : "헬멧을 썼어야지",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3003",
 		"skill_description" : "대상에게 (공격력)D6로 공격 후 [기절]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "stun"
+		"extra_description" : "stun",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1511" : {
 		"skill_number" : 1511,
 		"skill_name" : "머리깨기",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3003",
 		"skill_description" : "대상에게 (공격력)D20로 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1512" : {
 		"skill_number" : 1512,
 		"skill_name" : "첨벙첨벙 헬멧단",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_4002",
 		"skill_description" : "[패시브] 첨벙첨벙 헬멧단을 [소환] 합니다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -824,7 +1439,7 @@
 	"1513" : {
 		"skill_number" : 1513,
 		"skill_name" : "일단 진정하시고",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_5001",
 		"skill_description" : "대상의 (도발)을 (공격력)D6 감소시킨다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1
@@ -832,16 +1447,21 @@
 	"1514" : {
 		"skill_number" : 1514,
 		"skill_name" : "무력진압",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3002",
 		"skill_description" : "[필중] 대상에게 10의 데미지로 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1,
-		"extra_description" : "must_hit"
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 10,
+		"attack_count": 1
 	},
 	"1515" : {
 		"skill_number" : 1515,
 		"skill_name" : "끝없는 군세",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_5001",
 		"skill_description" : "[패시브] 나의 (방어력)을 2D6 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -850,7 +1470,7 @@
 	"1516" : {
 		"skill_number" : 1516,
 		"skill_name" : "신비...",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_4004",
 		"skill_description" : "대상에게 취약을 1 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 1
@@ -861,15 +1481,24 @@
 		"skill_icon" : "skill_1001",
 		"skill_description" : "적 전체에게 (공격력)D6로 3회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 3
 	},
 	"1518" : {
 		"skill_number" : 1518,
 		"skill_name" : "비명",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_4004",
 		"skill_description" : "적 전체의 (방어력)을 (공격력)D6 만큼 감소시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1
 	},
 	"1519" : {
 		"skill_number" : 1519,
@@ -878,32 +1507,55 @@
 		"skill_description" : "[필중] 적 전체에 D12로 1회 공격한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
-		"extra_description" : "must_hit"
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1520" : {
 		"skill_number" : 1520,
 		"skill_name" : "자비",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_1004",
 		"skill_description" : "0번,1번,2번 자리의 아군의 (취약)을 1 감소시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,0,0],
+		"is_enemy_target" : 0
 	},
 	"1521" : {
 		"skill_number" : 1521,
 		"skill_name" : "불장난",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_5005",
 		"skill_description" : "0번,2번,4번 적에게 (공격력)D6로 공격하고 [화상]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
-		"extra_description" : "fire"
+		"nontarget_skill_target" : [1,0,1,0,1],
+		"is_enemy_target" : 1,
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1522" : {
 		"skill_number" : 1522,
 		"skill_name" : "로켓장난",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3002",
 		"skill_description" : "1번,3번적에게 (공격력)D12로 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"1523" : {
 		"skill_number" : 1523,
@@ -911,28 +1563,45 @@
 		"skill_icon" : "skill_1001",
 		"skill_description" : "적전체에게 (공격력)D12로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"1524" : {
 		"skill_number" : 1524,
 		"skill_name" : "기계적 조준",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3003",
 		"skill_description" : "대상에게 (공격력)D12로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"1525" : {
 		"skill_number" : 1525,
 		"skill_name" : "기계적 점사",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3003",
 		"skill_description" : "대상에게 (공격력)D12로 3회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 3
 	},
 	"1526" : {
 		"skill_number" : 1526,
 		"skill_name" : "스패셜리스트",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_1004",
 		"skill_description" : "[패시브] 내 (취약)을 1 감소시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -941,68 +1610,326 @@
 	"1527" : {
 		"skill_number" : 1527,
 		"skill_name" : "전술 지휘",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3005",
 		"skill_description" : "[패시브]전체 아군의 (공격력)을 1 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 0,
 		"extra_description" : "passive"
 	},
 	"1528" : {
 		"skill_number" : 1528,
 		"skill_name" : "전술 판단",
-		"skill_icon" : "skill_1001",
-		"skill_description" : "[패시브]전체 아군의 (방어력)을 D12 상승시킨다.",
+		"skill_icon" : "skill_3005",
+		"skill_description" : "[패시브]전체 아군의 (방어력)을 D6 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 0,
 		"extra_description" : "passive"
 	},
 	"1529" : {
 		"skill_number" : 1529,
 		"skill_name" : "장군의 위엄",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3005",
 		"skill_description" : "[패시브]전체 아군의 (숙련도)를 (달인)으로 고정한다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 0,
 		"extra_description" : "passive"
 	},
 	"1530" : {
 		"skill_number" : 1530,
 		"skill_name" : "역장",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_3001",
 		"skill_description" : "나에게 [보호막]을 부여한다.",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0,
 		"extra_description" : "barrier"
 	},
-	
+	"1531" : {
+		"skill_number" : 1531,
+		"skill_name" : "소확행의 확장주의적 행보",
+		"skill_icon" : "skill_1001",
+		"skill_description" : "적 전체에 3D6로 3회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 3,
+		"attack_count": 3
+	},
+	"1532" : {
+		"skill_number" : 1532,
+		"skill_name" : "소소한 행복",
+		"skill_icon" : "skill_5004",
+		"skill_description" : "내 양옆에 [회피]를 1회 부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_enemy_target" : 0,
+		"is_base_on_me_skill" : 1,
+		"extra_description" : "dodge"
+	},
+	"1533" : {
+		"skill_number" : 1533,
+		"skill_name" : "행복 회로",
+		"skill_icon" : "skill_4005",
+		"skill_description" : "[패시브] [에너지충전]을 1 얻는다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "enegy_charge"
+	},
+	"1534" : {
+		"skill_number" : 1534,
+		"skill_name" : "전도",
+		"skill_icon" : "skill_1001",
+		"skill_description" : "[필중] 1의 데미지로 1회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"1535" : {
+		"skill_number" : 1535,
+		"skill_name" : "주사위의 신",
+		"skill_icon" : "skill_4005",
+		"skill_description" : "[패시브] 스텟을 각각 D6 만큼 얻거나 잃습니다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "passive"
+	},
+	"1536" : {
+		"skill_number" : 1536,
+		"skill_name" : "어둠의 듀얼",
+		"skill_icon" : "skill_1001",
+		"skill_description" : "[동전던지기] (공격력)D20의 데미지로 1회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "coin_flip",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"1537" : {
+		"skill_number" : 1537,
+		"skill_name" : "튀기면 신발도 맛있습니다",
+		"skill_icon" : "skill_5005",
+		"skill_description" : "[패시브][동치] 대상에게 [화상]을 부여한다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "equivalence"
+	},
+	"1538" : {
+		"skill_number" : 1538,
+		"skill_name" : "뜨거운 맛",
+		"skill_icon" : "skill_5005",
+		"skill_description" : "대상과 그 양옆을 D6의 데미지로 3회 공격 후 [화상]을 부여한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_skill_target" : [0,1,1,1,0],
+		"extra_description" : "fire",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 3
+	},
+	"1539" : {
+		"skill_number" : 1539,
+		"skill_name" : "느와르",
+		"skill_icon" : "skill_5004",
+		"skill_description" : "[회피]를 2 얻는다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0,
+		"extra_description" : "dodge"
+	},
+	"1540" : {
+		"skill_number" : 1540,
+		"skill_name" : "검은색 탄환",
+		"skill_icon" : "skill_1001",
+		"skill_description" : "[필중] (공격력)D12로 1회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+	"1541" : {
+		"skill_number" : 1541,
+		"skill_name" : "지맥 탐사",
+		"skill_icon" : "skill_5005",
+		"skill_description" : "[패시브][동전던지기] (공격력)을 1 상승시킨다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "coin_flip"
+	},
+	"1542" : {
+		"skill_number" : 1542,
+		"skill_name" : "시끄러운 공사소리",
+		"skill_icon" : "skill_5005",
+		"skill_description" : "[패시브] 적 전체의 (방어력)을 3 감소시킨다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"extra_description" : "passive"
+	},
+	"1543" : {
+		"skill_number" : 1543,
+		"skill_name" : "지반 폭파",
+		"skill_icon" : "skill_5005",
+		"skill_description" : "적 전체에 6*(공격력)의 데미지로 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 6,
+		"attack_count": 1
+	},
+	"1544" : {
+		"skill_number" : 1544,
+		"skill_name" : "이것저것 보상하라!",
+		"skill_icon" : "skill_5001",
+		"skill_description" : "[패시브] 가장 (도발)이 낮은 대상의 (도발)을 D6 상승시킨다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "passive"
+	},
+	"1545" : {
+		"skill_number" : 1545,
+		"skill_name" : "용역부 기습시위",
+		"skill_icon" : "skill_1002",
+		"skill_description" : "[필중] 대상에게 6의 데미지로 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 1,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 6,
+		"attack_count": 1
+	},
+	"1546" : {
+		"skill_number" : 1546,
+		"skill_name" : "혐성",
+		"skill_icon" : "skill_2003",
+		"skill_description" : "[패시브] 내 (신속)을 1 증가시킨다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0,
+		"extra_description" : "passive"
+	},
+	"1547" : {
+		"skill_number" : 1547,
+		"skill_name" : "트리니티 고유문화",
+		"skill_icon" : "skill_5001",
+		"skill_description" : "[필중] 대상에게 2D6의 데미지를 준 뒤 (도발)을 6 감소시킨다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "must_hit",
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 2,
+		"attack_count": 1
+	},
+	"1548" : {
+		"skill_number" : 1548,
+		"skill_name" : "트리니티식 환영인사",
+		"skill_icon" : "skill_5002",
+		"skill_description" : "적 전체에 (공격력)D6로 2회 공격한다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
+	},
+	"1549" : {
+		"skill_number" : 1549,
+		"skill_name" : "지나가던 사람",
+		"skill_icon" : "skill_1001",
+		"skill_description" : "대상에게 (공격력)D6의 데미지를 준다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 6,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
+	},
+
 	"2501" : {
 		"skill_number" : 2501,
 		"skill_name" : "외접",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2501",
 		"skill_description" : "0번,4번 자리에 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,0,0,0,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2502" : {
 		"skill_number" : 2502,
 		"skill_name" : "내접",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2501",
 		"skill_description" : "1번,2번,3번 자리에 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,1,1,0],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2503" : {
 		"skill_number" : 2503,
 		"skill_name" : "한점에서 만남",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2501",
 		"skill_description" : "(공격력)D12로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"2504" : {
 		"skill_number" : 2504,
 		"skill_name" : "굴러오는 공",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2504",
 		"skill_description" : "[패시브] 내 (공격력)을 1 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -1011,15 +1938,17 @@
 	"2505" : {
 		"skill_number" : 2505,
 		"skill_name" : "공굴러가유~",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2504",
 		"skill_description" : "모든 적에게 (공격력)만큼 취약 부여",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1
 	},
 	"2506" : {
 		"skill_number" : 2506,
 		"skill_name" : "슬럼피아의 공포",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2506",
 		"skill_description" : "[패시브] 가장 (도발)이 낮은 적의 (도발)을 D12 상승시킨다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -1028,47 +1957,75 @@
 	"2507" : {
 		"skill_number" : 2507,
 		"skill_name" : "조랑말 돌진이다-!!!",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2507",
 		"skill_description" : "1번,3번 자리에 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,1,0,1,0],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2508" : {
 		"skill_number" : 2508,
 		"skill_name" : "범퍼카 돌진이다-!!!",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2507",
 		"skill_description" : "0번,2번,4번 자리에 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,0,1,0,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2509" : {
 		"skill_number" : 2509,
 		"skill_name" : "아칠루트의 빛",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2508",
 		"skill_description" : "(공격력)D20로 2회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 2
 	},
 	"2510" : {
 		"skill_number" : 2510,
 		"skill_name" : "공의의 불꽃",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2509",
 		"skill_description" : "적전체에 (공격력)D12로 1회 공격한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 12,
+		"use_attack_power_skill" : 1,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	"2511" : {
 		"skill_number" : 2511,
 		"skill_name" : "정화의 폭풍",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2510",
 		"skill_description" : "적전체에게 (취약)을 D6 부여한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1
 	},
 	"2512" : {
 		"skill_number" : 2512,
 		"skill_name" : "왕좌로 부르는 소리 있도다",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2511",
 		"skill_description" : "[패시브][소환] 기계병사를 소환한다.",
 		"passive_skill" : 1,
 		"is_targeting_skill" : 0,
@@ -1077,18 +2034,22 @@
 	"2513" : {
 		"skill_number" : 2513,
 		"skill_name" : "지고의 권능을 목도하라",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2512",
 		"skill_description" : "적전체에게 (취약)을 3 부여한다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [1,1,1,1,1],
+		"is_enemy_target" : 1
 	},
 	"2514" : {
 		"skill_number" : 2514,
 		"skill_name" : "껍질닫기",
-		"skill_icon" : "skill_1001",
+		"skill_icon" : "skill_2513",
 		"skill_description" : "내 (취약)을 2 제거하고 방어력을 50 상승시킨다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 0
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0
 	},
 	"2515" : {
 		"skill_number" : 2515,
@@ -1096,7 +2057,12 @@
 		"skill_icon" : "skill_1001",
 		"skill_description" : "대상에게 (취약)을 2 부여하고 D20으로 공격한다. 그후 나에게 9999데미지를 준다.",
 		"passive_skill" : 0,
-		"is_targeting_skill" : 1
+		"is_targeting_skill" : 1,
+		"is_attack_skill" : 1,
+		"dice" : 20,
+		"use_attack_power_skill" : 0,
+		"attack_constant" : 1,
+		"attack_count": 1
 	},
 	
 	
@@ -1145,6 +2111,59 @@
 		"skill_description" : "[테스트] 적 전체에 9999 데미지",
 		"passive_skill" : 0,
 		"is_targeting_skill" : 0,
+		"extra_description" : "test"
+	},
+	"505" : {
+		"skill_number" : 505,
+		"skill_name" : "카드가 다 떨어졌어!",
+		"skill_icon" : "rest",
+		"skill_description" : "덱에 학생이 아무도 없어서 선생님이 직접 전투에 나섰습니다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0
+	},
+	"506" : {
+		"skill_number" : 506,
+		"skill_name" : "얼음여왕의 매혹적인 향기",
+		"skill_icon" : "skill_undefined",
+		"skill_description" : "[테스트] 대상에게 9999데미지",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
+		"extra_description" : "test"
+	},
+	"507" : {
+		"skill_number" : 507,
+		"skill_name" : "편애",
+		"skill_icon" : "skill_1004",
+		"skill_description" : "세상에서 제일 예쁜 우리 네루에게 (공격력)을 1 올려줍니다.",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 0,
+		"nontarget_skill_target" : [0,0,0,0,0],
+		"is_enemy_target" : 0,
+		"extra_description" : "neru"
+	},
+	"508" : {
+		"skill_number" : 508,
+		"skill_name" : "게혐",
+		"skill_icon" : "skill_1001",
+		"skill_description" : "[패시브] 대상이 게헨나 소속일 경우 공격시에 12의 추가 데미지를 준다.",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0
+	},
+	"509" : {
+		"skill_number" : 509,
+		"skill_name" : "현룡문",
+		"skill_icon" : "skill_5005",
+		"skill_description" : "나는 산해경의 현룡문을 사랑해~",
+		"passive_skill" : 1,
+		"is_targeting_skill" : 0
+	},
+	"510" : {
+		"skill_number" : 510,
+		"skill_name" : "무지개빛 총공격이다~!",
+		"skill_icon" : "skill_undefined",
+		"skill_description" : "[테스트] 공격 이팩트 테스팅",
+		"passive_skill" : 0,
+		"is_targeting_skill" : 1,
 		"extra_description" : "test"
 	}
 }

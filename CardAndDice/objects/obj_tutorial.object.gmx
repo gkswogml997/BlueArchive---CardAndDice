@@ -29,29 +29,57 @@
 left_button = instance_create_v(x,y,obj_tutorial_content_button,id,spr_tutorial_content_button_L,"left")
 right_button = instance_create_v(x,y,obj_tutorial_content_button,id,spr_tutorial_content_button_R,"right")
 
-esc_button.x = x+286
-esc_button.y = y-190
+esc_button.x = x+429
+esc_button.y = y-285
 
-left_button.x = x - 330
-right_button.x = x + 330
+left_button.x = x - 495
+right_button.x = x + 495
 
 content = 0
 click_return = ""
 
-content_text[0] = "플레이어를 선택하여 다음 노드로 진행 할 수 있습니다. #해당 노드에 도착했을때 입장할지 결정 할 수있으며, #전투 노드는 스킵할수 없습니다."
-content_text[1] = "노드를 한칸 전진할때 마다 진행도가 상승하며, 일정 진행도 #마다 노드 수 감소, 적 강화가 일어납니다."
-content_text[2] = "카페에서는 모집에서 선택받지 못한 학생이나 #전투중 사망한 학생을 다시 불러올 수 있습니다. #카페에서는 최대 5명의 학생까지 대기 할 수 있습니다."
-content_text[3] = "모집에서는 120 청휘석을 사용하여 3명의 학생중 한명의 학생을 선택해 #부를수 있습니다. 선택받지 못한 2명은 카페로 가서 대기하게 됩니다."
-content_text[4] = "크래프트 챔버에서는 기동석을 사용해 스킬을 제조 할 수 있습니다."
-content_text[5] = "상점에서는 장비 구매하여 학생에게 장착 해줄 수 있습니다."
-content_text[6] = "편성에서는 학생들의 포지션, 스킬, 장비를 임의로 다시 정해 줄 수 #있습니다."
-content_text[7] = "전투가 시작될때, 학생들은 신속이 높을 수록 먼저 턴을 가집니다."
-content_text[8] = "적은 피아에 관계 없이, 도발이 가장 높은 대상을 공격 합니다."
-content_text[9] = "학생들에게는 HP가 없습니다. 받은 데미지가 자신의 방어력 보다 #높을떄 쓰러집니다."
-content_text[10] = "3번 공격 당할때 마다 학생들은 '취약'을 얻습니다.# '취약' 스택 하나당 방어력을 1/2 잃습니다."
-content_text[11] = "학생들은 숙련도에 따라 [필중] 효과가 아닌 스킬을# 사용할때 시전에 실패할 확률이 있습니다."
-content_text[12] = "6면체 주사위를 던졌을때 그 값이 빈번이실패함(2), 가끔실패함(3) # 무난함(4), 능숙함(5), 달인(6) 보다 높다면 시전에 실패하게됩니다."
-content_text[13] = "자신의 턴이 왔을떄 스킬 카드를 선택하여 공격 할 수 있습니다. # 스킬을 사용 할 수 있는경우, 반드시 사용해야 자신의 턴이 끝납니다."
+tutorial_sheet()
+
+sprite_list = ds_list_create()
+content_list = ds_list_create()
+
+for(var i = 0; i &lt;= ds_map_size(tutorial_sheet_map)+1; i++)
+{
+    var target_map = ds_map_find_value(tutorial_sheet_map,string(i))
+    if !is_undefined(target_map)
+    {
+        var spr = sprite_add(working_directory+"tutorial\tutorial_image_"+ds_map_find_value(target_map,"tutorial_image")+".png",0,false,false,375,225)
+        ds_list_add(sprite_list,spr)
+        ds_list_add(content_list,ds_map_find_value(target_map,"content_text"))
+    }
+}
+
+ds_map_destroy(tutorial_sheet_map)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+ds_list_destroy(sprite_list)
+ds_list_destroy(content_list)
 </string>
           </argument>
         </arguments>
@@ -74,17 +102,19 @@ content_text[13] = "자신의 턴이 왔을떄 스킬 카드를 선택하여 공
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>content = clamp(content,0,sprite_get_number(spr_tutorial_content)-1)
+            <string>content = clamp(content,0,ds_list_size(sprite_list)-1)
+
 draw_sprite_ext(spr_1pixel,0,0,0,room_width,room_height,0,c_black,0.5)
 draw_self()
-draw_sprite_ext(spr_tutorial_content,content,x,y-25,0.9,0.9,0,c_white,1)
+if sprite_exists(sprite_list[|content]) {draw_sprite_ext(sprite_list[|content],0,x,y-36,0.9,0.9,0,c_white,1)}
+
 
 var out_color = make_colour_hsv(146,89,105)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_set_colour(c_white)
 draw_set_font(ft_gyeonggi_sz16_Bold)
-draw_text_outline(x,y+160,content_text[content],4,out_color,16)
+draw_text_outline_ext(x,y+255,content_list[|content],4,out_color,16,32,750)
 
 
 if click_return = "esc"

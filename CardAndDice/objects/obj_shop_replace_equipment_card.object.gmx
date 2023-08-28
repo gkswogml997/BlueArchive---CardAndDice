@@ -3,7 +3,7 @@
   <spriteName>spr_equipment_slot_ui</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1004</depth>
+  <depth>-1002</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,46 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//부속물 표시
-if instance_exists(obj_SHOP_MANAGER) {ds_list_add(obj_SHOP_MANAGER.shop_parts_list,id)}
+            <string>if instance_exists(obj_SHOP_MANAGER) {ds_list_add(obj_SHOP_MANAGER.shop_parts_list,id)}
+
+original_card_id = ct_argument[0]
+original_equipment_id = ct_argument[1]
+original_equipment_slot_place = ct_argument[2]
+
 
 //초기화
-equipment_number = -1
-equipment_name = "unidentified equipment"
-equipment_icon_spr = spr_equipment_icon_error;
-equipment_description = "this equipment is unidentifined"
-equipment_attack_power = 0
-equipment_defence_power = 0
-equipment_rapid_power = 0
-equipment_taunt_power = 0
-equipment_skill_level = 0
-
-equipment_number = ct_argument[0]
-
-//장비정보 읽어오기
-var equipment_data = search_equipment(equipment_number)
-if !is_undefined(equipment_data)
-{
-    equipment_name = ds_map_find_value(equipment_data,"equipment_name")
-    equipment_icon_spr = asset_get_index(ds_map_find_value(equipment_data,"equipment_icon"))
-    equipment_description = ds_map_find_value(equipment_data,"equipment_description")
-    equipment_attack_power = ds_map_find_value(equipment_data,"equipment_attack_power")
-    equipment_defence_power = ds_map_find_value(equipment_data,"equipment_defence_power")
-    equipment_rapid_power = ds_map_find_value(equipment_data,"equipment_rapid_power")
-    equipment_taunt_power = ds_map_find_value(equipment_data,"equipment_taunt_power")
-    equipment_skill_level = ds_map_find_value(equipment_data,"equipment_skill_level")
-}
-
-//객체의 주인
-owner_id = ct_argument[1];
-position = ct_argument[2];
+equipment_number = original_equipment_id.equipment_number
+equipment_name = original_equipment_id.equipment_name
+equipment_icon_spr = original_equipment_id.equipment_icon_spr
+equipment_description = original_equipment_id.equipment_description
+equipment_attack_power = original_equipment_id.equipment_attack_power
+equipment_defence_power = original_equipment_id.equipment_defence_power
+equipment_rapid_power = original_equipment_id.equipment_rapid_power
+equipment_taunt_power = original_equipment_id.equipment_taunt_power
+equipment_skill_level = original_equipment_id.equipment_skill_level
 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="7">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,7 +65,8 @@ position = ct_argument[2];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if UI_disable() {owner_id.select_slot = id}
+            <string>if is_undefined(obj_shop_replace_manager.select_slot) 
+{obj_shop_replace_manager.select_slot = id}
 </string>
           </argument>
         </arguments>
@@ -104,17 +89,9 @@ position = ct_argument[2];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = view_xview+view_wview/2 + 300*(position-1)
-y = view_yview+view_hview/2 + 150
-
-image_xscale = 1.45
-image_yscale = 1.45
-
-if mouse_enter() 
+            <string>if mouse_enter()
 {
-    draw_self()
-
-    draw_sprite_ext(equipment_icon_spr,0,x,y,0.5,0.5,image_angle,c_white,image_alpha)
+    draw_sprite_ext(equipment_icon_spr,0,x,y,0.3,0.3,image_angle,c_white,image_alpha)
     draw_sprite(spr_equipment_stat_ui,0,x,y-32)
     
     draw_set_font(ft_gyeonggi_sz15_Italic_Light)
@@ -142,12 +119,10 @@ if mouse_enter()
     draw_text_ext(x,y-262,equipment_description,20,320)
     draw_text(x,y-112,funcition_str)
     
-    depth = -1006
 }else
 {
-    depth = -1005
-    draw_self() 
-    draw_sprite_ext(equipment_icon_spr,0,x,y,0.5,0.5,image_angle,c_white,image_alpha)
+    draw_sprite(spr_replace_equipment_slot,0,x,y)
+    draw_sprite_ext(equipment_icon_spr,0,x,y,0.3,0.3,image_angle,c_white,image_alpha)
 }
 </string>
           </argument>

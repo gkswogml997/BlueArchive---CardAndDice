@@ -28,8 +28,16 @@
             <string>owner_id = ct_argument[0]
 target_id = ct_argument[1]
 
+ox = owner_id.x
+oy = owner_id.y
+
+tx = target_id.x
+ty = target_id.y
+
 move = true
 time = 0
+
+if owner_id = target_id {sprite_index = spr_card_pointer_self_cast}
 
 for(var i = 0; i &lt; 15; i++)
 {
@@ -57,15 +65,24 @@ for(var i = 0; i &lt; 15; i++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var move_duration = 180;
+            <string>var move_duration = 120;
+
+if instance_exists(owner_id) and instance_exists(target_id)
+{
+    ox = owner_id.x
+    oy = owner_id.y
+    
+    tx = target_id.x
+    ty = target_id.y
+}
 
 if move
 {
     time += 1
             
     var easings = EaseInOutQuint(time, 0, time/move_duration,move_duration)
-    var presentx = lerp(owner_id.x,target_id.x,easings)
-    var presenty = lerp(owner_id.y,target_id.y,easings)
+    var presentx = lerp(ox,tx,easings)
+    var presenty = lerp(oy,ty,easings)
     
     x = presentx //현재 x 위치 갱신
     y = presenty // 현재 y위치 갱신
@@ -73,7 +90,9 @@ if move
     if time &gt; move_duration {time =0; move = false} // 완료시간이 넘어가면 초기화
 }
 
-image_angle = point_direction(x,y,owner_id.x,owner_id.y)+90
+if sprite_index != spr_card_pointer_self_cast
+{image_angle = point_direction(x,y,ox,oy)+90}
+else {image_angle = 0}
 
 depth = -1004
 

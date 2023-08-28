@@ -50,12 +50,14 @@ my_location = ct_argument[2]
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var len = point_distance(head_id.x,head_id.y,owner_id.x,owner_id.y)/15*my_location
-var dir = point_direction(head_id.x,head_id.y,owner_id.x,owner_id.y)+180
-x = owner_id.x+lengthdir_x(len,dir)
-y = owner_id.y+lengthdir_y(len,dir)
-
-image_angle = dir+90
+            <string>if instance_exists(owner_id) and instance_exists(head_id)
+{
+    var len = point_distance(head_id.x,head_id.y,owner_id.x,owner_id.y)/15*my_location
+    var dir = point_direction(head_id.x,head_id.y,owner_id.x,owner_id.y)+180
+    x = owner_id.x+lengthdir_x(len,dir)
+    y = owner_id.y+lengthdir_y(len,dir)
+    image_angle = dir+90
+}
 
 depth = -1004
 

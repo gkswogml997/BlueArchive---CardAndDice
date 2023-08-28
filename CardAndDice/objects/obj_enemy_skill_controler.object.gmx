@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_system_invisible_object_sprite</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>-1004</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -65,10 +65,39 @@ if owner_id.skill_list[|select_skill].is_targeting_skill
     }
     target_id = max_taunt_instance
     ds_list_destroy(target_list)
-    pointer = instance_create_v(0,0,obj_enemy_card_pointer_head,owner_id,target_id)
+    pointer = instance_create_v(0,0,obj_card_pointer_head,owner_id,owner_id.skill_list[|select_skill])
+    pointer.player_control = false
+    pointer.target_card = target_id
 }
 
+//논타켓 스킬일 경우 다른 방식으로 포인터를 보여줌
+nontarget_skill_handler = instance_create_v(x,y,obj_nontarget_skill_handler,owner_id,owner_id.skill_list[|select_skill])
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if !is_undefined(pointer) {instance_destroy(pointer)}
+if !is_undefined(nontarget_skill_handler) {instance_destroy(nontarget_skill_handler)}
+if instance_exists(obj_card_pointer_body) {instance_destroy(obj_card_pointer_body)}
 </string>
           </argument>
         </arguments>
@@ -91,19 +120,16 @@ if owner_id.skill_list[|select_skill].is_targeting_skill
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !owner_id.is_dead and global.turn_instance = owner_id
+            <string>if !is_undefined(global.turn_instance) 
 {
-    instance_create_v(x,y,obj_skill_handler,
-                                    owner_id,
-                                    owner_id.skill_list[|select_skill].skill_number,
-                                    owner_id.skill_list[|select_skill].skill_name,
-                                    owner_id.skill_list[|select_skill].is_targeting_skill,
-                                    owner_id.skill_list[|select_skill].is_passive_skill,
-                                    owner_id.skill_list[|select_skill].extra_description)
+    if instance_exists(global.turn_instance)
+    {
+        if !owner_id.is_dead and global.turn_instance = owner_id
+        {
+            instance_create_v(x,y,obj_skill_handler,owner_id,owner_id.skill_list[|select_skill])
+        }
+    }
 }
-
-if !is_undefined(pointer) {instance_destroy(pointer)}
-if instance_exists(obj_card_pointer_body) {instance_destroy(obj_card_pointer_body)}
 instance_destroy()
 </string>
           </argument>
@@ -129,12 +155,40 @@ instance_destroy()
             <kind>1</kind>
             <string>if !is_undefined(target_id)
 {
-    if owner_id.is_dead or target_id.is_dead
+    if !instance_exists(target_id){instance_destroy()}
+    else
     {
-        if !is_undefined(pointer) {instance_destroy(pointer)}
-        if instance_exists(obj_card_pointer_body) {instance_destroy(obj_card_pointer_body)}
-        instance_destroy()
+        if owner_id.is_dead or target_id.is_dead
+        {
+            instance_destroy()
+        }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if !is_undefined(target_id)
+{
+    kill_rate_of_skill(target_id.x,target_id.y,owner_id,owner_id.skill_list[|select_skill],target_id)
 }
 </string>
           </argument>

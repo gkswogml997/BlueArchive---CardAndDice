@@ -32,12 +32,21 @@ if instance_exists(obj_SHOP_MANAGER) {ds_list_add(obj_SHOP_MANAGER.shop_parts_li
 target_item = ct_argument[0]
 
 //플레이어 카드 리스트 보여주기
-target_list = obj_GAME_SYSTEM_MANAGER.player_list
-for(var i = 0; i &lt; ds_list_size(target_list); i++)
+var size_of_character = ds_list_size(obj_GAME_SYSTEM_MANAGER.player_list)
+var card_width = sprite_get_width(spr_mini_card)
+var card_height = sprite_get_height(spr_mini_card)
+var card_list_width = card_width*size_of_character
+var xx = room_width/2+card_list_width/2-card_width/2
+var yy = room_height*3/5
+var target_list = obj_GAME_SYSTEM_MANAGER.player_list
+for(var i = 0; i &lt; size_of_character; i++)
 {
-    if !is_undefined(ds_list_find_value(target_list,i))
+    if !is_undefined(target_list[|i])
     {
-        instance_create_v(0,0,obj_shop_replace_card,target_list[|i])
+        instance_create_v(xx-card_width*i,yy,obj_shop_replace_character_card,target_list[|i])
+    }else
+    {
+        instance_create(xx-card_width*i,yy,obj_shop_empty_character_slot)
     }
 }
 
@@ -68,7 +77,9 @@ notice_box_return = ""
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy(obj_shop_replace_card)
+            <string>if instance_exists(obj_shop_empty_character_slot) {instance_destroy(obj_shop_empty_character_slot)}
+instance_destroy(obj_shop_replace_character_card)
+instance_destroy(obj_shop_replace_equipment_card)
 </string>
           </argument>
         </arguments>
@@ -96,19 +107,23 @@ notice_box_return = ""
     //선택
     if notice_box_return = ""
     {
-        make_notice_box((string(select_slot.card_position)+"번자리의 "+select_slot.hangul_name+"에게 장비를 건네줄까요?"),id)
+        make_notice_box(select_slot.original_card_id.hangul_name+"의 "
+                        +select_slot.equipment_name+"와 "
+                        +target_item.equipment_name+"를 교환할까요?",id)
     }
     
     if notice_box_return = "확인"
     {
-        instance_create_v(0,0,obj_shop_replace_equipment_manager,target_item,select_slot)
+        target_item.owner_id = select_slot.original_card_id
+        var temp = select_slot.original_card_id.equipment_slot[select_slot.original_equipment_slot_place];
+        select_slot.original_card_id.equipment_slot[select_slot.original_equipment_slot_place] = target_item
+        instance_destroy(temp)
         instance_destroy()
     }
     if notice_box_return = "취소"
     {
         select_slot = undefined
         notice_box_return = ""
-        instance_destroy()
     }
 
 }
@@ -144,7 +159,7 @@ draw_set_color(c_white)
 
 var xx = view_xview+view_wview/2
 var yy = view_yview+view_hview/2
-draw_text(xx,yy,"어느 학생에게 장비를 건네줄까요?")
+draw_text(xx,yy,"어느 장비와 교환할지 선택해주세요.")
 </string>
           </argument>
         </arguments>

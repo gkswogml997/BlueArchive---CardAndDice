@@ -50,7 +50,8 @@ click_return = ct_argument[2]
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>owner_id.click_return = click_return
+            <string>audio_play_sound(sd_button,1001,false)
+owner_id.click_return = click_return
 </string>
           </argument>
         </arguments>

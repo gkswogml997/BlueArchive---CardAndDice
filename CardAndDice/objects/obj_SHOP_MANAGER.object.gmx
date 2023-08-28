@@ -3,7 +3,7 @@
   <spriteName>spr_system_invisible_object_sprite</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>0</depth>
+  <depth>-1001</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -33,10 +33,14 @@ global.amount_of_shop_enter += 1
 
 instance_create(x,y,obj_shop_bg)
 instance_create(x,y,obj_tool_bar)
-for(var i = -1; i &lt; 2; i++)
+instance_create(x,y,obj_shop_reroll_button)
+instance_create(x,y,obj_shop_craftstone_sell_button)
+for(var i = -2; i &lt;= 2; i++)
 {
     instance_create_v(x,y,obj_shop_slot,i)
 }
+
+
 
 board_deactivate()
 </string>
@@ -87,15 +91,17 @@ instance_list_destroy(shop_parts_list)
           <argument>
             <kind>1</kind>
             <string>if !instance_exists(obj_shop_slot)
-and !instance_exists(obj_shop_replace_card)
 and !instance_exists(obj_shop_replace_manager)
 and !instance_exists(obj_shop_replace_equipment_card)
-and !instance_exists(obj_shop_replace_equipment_manager)
+and !instance_exists(obj_shop_replace_character_card)
 {
-    for(var i = -1; i &lt; 2; i++)
+    for(var i = -2; i &lt;= 2; i++)
     {
         instance_create_v(x,y,obj_shop_slot,i)
     }
+    instance_create(x,y,obj_shop_reroll_button)
+    instance_create(x,y,obj_shop_craftstone_sell_button)
+
 }
 </string>
           </argument>

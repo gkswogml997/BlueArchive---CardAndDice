@@ -259,7 +259,6 @@ if mini_mode
         mini_mode = true
         instance_destroy(obj_UI_button)
         instance_destroy(obj_cafe_character_card)
-        instance_destroy(obj_tool_bar)
         instance_create_v(0,0,obj_cafe_replace_manager,original_card_id)
         button_return = ""
     }

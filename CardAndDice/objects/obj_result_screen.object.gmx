@@ -42,8 +42,8 @@ for(var i = 0; i &lt; ds_list_size(p_list); i++)
 }
 
 //보상
-gain_bluestone = choose(90,110,120,140)
-gain_craftstone = choose(1,2,3)
+gain_bluestone = choose(180,220,240,280)
+gain_craftstone = choose(2,3,4)
 
 //싸이클
 image_yscale = 0.2

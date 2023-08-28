@@ -32,7 +32,26 @@ skill_icon_spr = spr_icon_skill_undefined;
 skill_description = "this skill is not activate"
 is_passive_skill = false
 is_targeting_skill = false
+
+//패시브 스킬 설계를 병신같이 한 탓에 누더기로 붙여놓은 변수
+//늘 보면서 반성하고 성찰하는 시간을 갖도록 합시다.
+original_skill_card = id
+multi_target_stack = ds_stack_create()
+
+//추가 효과가 있는 스킬용 변수
 extra_description = "undefined"
+extra_skill_target = undefined
+
+//논타켓 스킬용 변수
+nontarget_skill_target = undefined
+is_base_on_me_skill = false
+is_enemy_target = undefined
+
+//공격 스킬용 변수
+is_attack_skill = false
+use_attack_power_skill = false
+dice = 1
+attack_count = 1
 
 skill_number = ct_argument[0]
 
@@ -50,6 +69,37 @@ if !is_undefined(skill_data)
     {
         extra_description = ds_map_find_value(skill_data,"extra_description")
     }
+    if !is_undefined(ds_map_find_value(skill_data,"extra_skill_target"))
+    {
+        extra_skill_target = ds_map_find_value(skill_data,"extra_skill_target")
+    }
+    if !is_undefined(ds_map_find_value(skill_data,"nontarget_skill_target"))
+    {
+        nontarget_skill_target = ds_map_find_value(skill_data,"nontarget_skill_target")
+        is_enemy_target = ds_map_find_value(skill_data,"is_enemy_target")
+    }
+    if !is_undefined(ds_map_find_value(skill_data,"is_base_on_me_skill"))
+    {
+        is_base_on_me_skill = ds_map_find_value(skill_data,"is_base_on_me_skill")
+    }
+    if !is_undefined(ds_map_find_value(skill_data,"is_attack_skill"))
+    {
+        is_attack_skill = ds_map_find_value(skill_data,"is_attack_skill")
+        use_attack_power_skill = ds_map_find_value(skill_data,"use_attack_power_skill")
+        dice = ds_map_find_value(skill_data,"dice")
+        attack_constant = ds_map_find_value(skill_data,"attack_constant")
+        attack_count = ds_map_find_value(skill_data,"attack_count")
+    }
+}
+//스킬 키워드 정보 읽기
+keyword_name = undefined
+keyword_description = undefined
+
+var keyword = search_extra_description(extra_description)
+if !is_undefined(keyword)
+{
+    keyword_name = ds_map_find_value(keyword,"keyword_name")
+    keyword_description = ds_map_find_value(keyword,"keyword_description")
 }
 
 //객체의 주인
@@ -87,7 +137,7 @@ if is_passive_skill {skill_icon_background = spr_skill_icon_background_passive}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !is_undefined(skill_slot) {instance_destroy(skill_slot)}
+            <string>ds_stack_destroy(multi_target_stack)
 </string>
           </argument>
         </arguments>
@@ -120,10 +170,7 @@ if is_passive_skill {skill_icon_background = spr_skill_icon_background_passive}
     {   
         send_log(owner_id.hangul_name+"의 패시브 "+skill_name+" 발동", true)
         use_skill()
-        //말풍선
-        var speech_bubble_place = sprite_get_height(spr_mini_card)/2 + 64
-        if owner_id.is_enemy {speech_bubble_place *= -1}
-        instance_create_v(owner_id.x,owner_id.y-speech_bubble_place,obj_skill_speech_bubble,skill_name)
+        ds_queue_enqueue(owner_id.skill_speech_bubble_buffer,skill_name)
         passive_trigger = false
         instance_deactivate_object(id)
     }
@@ -169,13 +216,7 @@ else
 {
     if !owner_id.is_enemy and !is_passive_skill and global.turn_instance = owner_id
     {
-        instance_create_v(x,y,obj_skill_handler,
-                                owner_id,
-                                skill_number,
-                                skill_name,
-                                is_targeting_skill,
-                                is_passive_skill,
-                                extra_description)
+        instance_create_v(x,y,obj_skill_handler,owner_id,id)
     }
 }
 </string>
@@ -204,16 +245,31 @@ else
 depth = owner_id.depth-1
 if mini_mode
 {   
-    if global.game_phase = phase.battle {if owner_id.is_dead {depth = 1}}
     var xx = x - sprite_width/2 + sprite_get_width(spr_skill_icon_background)/2 + 12
-    draw_self()
-    draw_sprite(skill_icon_background,0,xx,y)
-    draw_sprite_ext(skill_icon_spr,0,xx,y,0.26,0.26,0,c_white,image_alpha)
-    draw_set_font(ft_gyeonggi_sz15_Italic_Light)
-    draw_set_halign(fa_center)
-    draw_set_valign(fa_middle)
-    draw_set_color(c_black)
-    draw_text(x,y,skill_name)
+    if global.game_phase = phase.battle
+    {
+        if !owner_id.is_dead 
+        {
+            draw_self()
+            draw_sprite(skill_icon_background,0,xx,y)
+            draw_sprite_ext(skill_icon_spr,0,xx,y,0.26,0.26,0,c_white,image_alpha)
+            draw_set_font(ft_gyeonggi_sz15_Italic_Light)
+            draw_set_halign(fa_center)
+            draw_set_valign(fa_middle)
+            draw_set_color(c_black)
+            draw_text(x,y,skill_name)
+        }
+    }else
+    {
+        draw_self()
+        draw_sprite(skill_icon_background,0,xx,y)
+        draw_sprite_ext(skill_icon_spr,0,xx,y,0.26,0.26,0,c_white,image_alpha)
+        draw_set_font(ft_gyeonggi_sz15_Italic_Light)
+        draw_set_halign(fa_center)
+        draw_set_valign(fa_middle)
+        draw_set_color(c_black)
+        draw_text(x,y,skill_name)
+    }
     mask_index = spr_mask_noone
 }else
 {
@@ -234,6 +290,47 @@ if mini_mode
     draw_text_ext(x+100,y+80,skill_description,24,200)
     mask_index = spr_mask_200x145
     
+    //예상 공격력
+    if is_attack_skill and global.game_phase = phase.battle
+    {
+        if mouse_enter()
+        {
+            var xx = x + sprite_width + sprite_get_width(spr_damage_predictive_ui)/2
+            var yy = y + sprite_get_height(spr_damage_predictive_ui)/2
+            draw_set_font(ft_gyeonggi_sz16_Bold)
+            draw_set_halign(fa_center)
+            draw_set_valign(fa_middle)
+            draw_set_color(c_white)
+            draw_sprite(spr_damage_predictive_ui,0,xx,yy)
+            
+            var owner_attack_power = owner_id.attack_power + owner_id.additional_attack_power + owner_id.volatility_attack_power
+            var min_damage = owner_attack_power * attack_constant
+            var max_damage = owner_attack_power * dice * attack_constant
+            if !use_attack_power_skill
+            {
+                min_damage = attack_constant
+                max_damage = dice * attack_constant
+            }
+            
+            var str = "";
+            if extra_description = "critical"
+            {
+                min_damage *= 2
+                max_damage *= 2
+                str += "[치명타 적용됨]#"
+            }
+            if owner_id.energy_charge &gt; 0
+            {
+                str += "[에너지 충전] +"+string(owner_id.energy_charge*6)+"#"
+            }
+            
+            str +="데미지 범위#"+string(min_damage)+" ~ "+string(max_damage)+"#"+string(attack_count)+"회"
+            
+            draw_text_outline(xx,yy,str,2,c_black,16)
+        }
+    }
+    
+    //엑스트라 효과 텍스트
     if extra_description != "undefined" and global.game_phase = phase.battle
     {
         var xx = x-sprite_get_width(spr_card)
@@ -245,91 +342,12 @@ if mini_mode
         
         var xx2 = xx - 125
         var yy2 = yy + 24
-        var yy3 = yy + 80
-        if extra_description = "must_hit"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"필중")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"숙련도에 관계없이 무조건 명중합니다.",24,250)
-        }
-        if extra_description = "passive"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"패시브")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"페이즈가 시작 될 때마다 시전됩니다. 직접 사용 할 수 없습니다.",24,250)
-        }
-        if extra_description = "critical"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"치명타")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"최종 데미지가 2배로 계산되어 들어갑니다.",24,250)
-        }
-        if extra_description = "extra_turn"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"엑스트라 턴")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"신속과 관계없이 마지막에 추가 턴을 받습니다.",24,250)
-        }
-        if extra_description = "stun"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"기절")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"대상의 이번 페이즈의 턴을 스킵합니다.",24,250)
-        }
-        if extra_description = "summon"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"소환")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"빈 슬롯에 소환물 카드를 놓습니다. 빈 자리가 없으면 소환되지 않습니다.",24,250)
-        }
-        if extra_description = "stamp"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"칭찬도장")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"칭찬도장이 이미 찍혀있으면 스킬 효과가 두배가 됩니다.",24,250)
-        }
-        if extra_description = "opening"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"오프닝")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"전투가 시작할때 1회 발동합니다.",24,250)
-        }
-        if extra_description = "barrier"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"보호막")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"취약 히트카운트가 3에서 5로 증가합니다. 취약을 얻으면 제거됩니다.",24,250)
-        }
-        if extra_description = "flower_divination"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"꽃점")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"대상의 턴이 시작될때 지속중에 준 피해를 합하여 입힙니다.",24,250)
-        }
-        if extra_description = "fire"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"화상")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"화상에 걸린 대상은 턴을 시작할때 D6의 데미지를 받습니다.",24,250)
-        }
-        if extra_description = "test"
-        {
-            draw_set_color(c_white)
-            draw_text(xx2,yy2,"테스트")
-            draw_set_color(c_black)
-            draw_text_ext(xx2,yy3,"테스트용 스킬입니다.",24,250)
-        }
+        var yy3 = yy + 85
+        draw_set_color(c_white)
+        draw_text(xx2,yy2,keyword_name)
+        draw_set_color(c_black)
+        draw_text_ext(xx2,yy3,keyword_description,24,250)
+        
     }
     
 }

@@ -133,6 +133,12 @@ for(var xx = 0; xx &lt; grid_width; xx++)
 //플레이어 말 생성
 instance_create(0,0,obj_player_piece)
 
+//카오스모드 버튼 생성
+if global.chaos_mode 
+{
+    instance_create(0,0,obj_chaos_mode_menu_bar)
+}
+
 board_inventory = ds_list_create()
 </string>
           </argument>
@@ -232,18 +238,27 @@ board_inventory = ds_list_create()
     draw_set_valign(fa_middle)
     draw_set_colour(c_black)
     
-    draw_sprite(spr_strategic1,0,0,80)
+    if global.chaos_mode {draw_sprite(spr_strategic1,1,0,80)}
+    else {draw_sprite(spr_strategic1,0,0,80)}
     draw_sprite(spr_strategic2,0,0,120)
     draw_text(0,170,"진행도:"+string(global.passing_node))
-    switch global.progress
+    if global.chaos_mode 
     {
-        case 0: {draw_text(0,200,"상점에서 2T 이하 장비가 등장합니다.");break;}
-        case 1: {draw_text(0,200,"상점에서 3T 장비가 등장합니다.");break;}
-        case 2: {draw_text(0,200,"상점에서 4T 장비가 등장합니다.");break;}
-        default: 
+        draw_text(0,200,"적이 무작위 조합과 무작위 스텟을 가집니다.");
+        draw_text(0,230,"제조에서 모든 스킬카드가 등장합니다.");
+    }
+    else
+    {
+        switch global.progress
         {
-            draw_text(0,200,"다음 전투에서 총력전 보스가 등장합니다.")
-            break;
+            case 0: {draw_text(0,200,"상점에서 2T 이하 장비가 등장합니다.");break;}
+            case 1: {draw_text(0,200,"상점에서 3T 장비가 등장합니다.");break;}
+            case 2: {draw_text(0,200,"상점에서 4T 장비가 등장합니다.");break;}
+            default: 
+            {
+                draw_text(0,200,"다음 전투에서 총력전 보스가 등장합니다.")
+                break;
+            }
         }
     }
 }

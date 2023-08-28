@@ -1,12 +1,11 @@
-var ins = argument0
+///stun_hit(owner,ins)
 
-//턴매니져에 있는 자기 정보 삭제
+var owner = argument0
+var ins = argument1
 
 if !instance_exists(obj_battle_turn_manager) {return undefined}
 if is_undefined(ins) {return undefined}
 else if ins.is_dead {return undefined}
 
 ins.is_stun = true
-send_log(ins.hangul_name+"가 기절 했습니다.")
-instance_create(ins.x,ins.y,obj_stun_effect)
-
+send_log(ins.hangul_name+"가 기절 했습니다.",true)

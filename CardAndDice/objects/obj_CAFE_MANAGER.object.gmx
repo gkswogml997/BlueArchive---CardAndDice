@@ -34,7 +34,7 @@ global.game_phase = phase.cafe
 
 board_deactivate()
 
-audio_play_sound(global.bgm_cafe,1000,true)
+audio_play_sound(global.bgm_cafe,1000,true);
 
 for(var i = 0; i &lt; ds_list_size(obj_GAME_SYSTEM_MANAGER.cafe_card_list); i++)
 {
@@ -64,7 +64,6 @@ for(var i = 0; i &lt; ds_list_size(obj_GAME_SYSTEM_MANAGER.cafe_card_list); i++)
           <argument>
             <kind>1</kind>
             <string>board_activate()
-audio_stop_sound(global.bgm_cafe)
 instance_list_destroy(cafe_parts_list)
 </string>
           </argument>

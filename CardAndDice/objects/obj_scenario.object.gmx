@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>global.scenario_dialog_sequence = 1
 
+//스킵버튼
+instance_create(room_width - 100, 50, obj_story_skip_button) 
+
 //bgm 부르기
 bgm = audio_play_sound(sd_button,1001,false);
 bgm_map = ds_map_create()
@@ -58,7 +61,7 @@ scenario1_dialog = ds_map_create()
 //파일
 var scenario_number = ct_argument[0]
 
-var json_file = file_text_open_read(working_directory+"\story\scenario_"+scenario_number+".json")
+var json_file = file_text_open_read(working_directory+"story\scenario_"+scenario_number+".json")
 var data = ""
 
 //json 읽기
@@ -93,6 +96,8 @@ scenario1_dialog = json_decode(data);
           <argument>
             <kind>1</kind>
             <string>instance_create(x,y,obj_story_manager)
+
+if instance_exists(obj_story_skip_button) {instance_destroy(obj_story_skip_button)}
 
 ds_map_destroy(scenario1_dialog)
 ds_map_destroy(bgm_map)

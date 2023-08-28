@@ -27,6 +27,11 @@
             <kind>1</kind>
             <string>if instance_exists(obj_FORMATION_MANAGER) {ds_list_add(obj_FORMATION_MANAGER.formation_parts_list,id)}
 
+//카페로 보내버리는 슬롯
+var xx = sprite_get_width(spr_formation_go_cafe_slot)/2
+var yy = room_height - sprite_get_height(spr_formation_go_cafe_slot)/2
+instance_create_v(xx,yy,obj_formation_go_cafe_slot,id,undefined)
+
 //슬롯 만들기
 size_of_character = ds_list_size(obj_GAME_SYSTEM_MANAGER.player_list)
 

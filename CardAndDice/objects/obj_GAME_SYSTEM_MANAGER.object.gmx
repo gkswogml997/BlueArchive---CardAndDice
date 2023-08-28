@@ -28,8 +28,6 @@
             <string>//60frame
 room_speed = 60
 
-
-
 //랜더마이즈
 randomize();
 
@@ -39,6 +37,9 @@ global.minimun_resolution_width = 1280
 global.minimun_resolution_height = 720
 global.board_width = 6400
 global.board_height = 3600
+
+//카드는 재활용 통에 들어갔다가 전투가 끝나면 한번에 삭제됩니다.
+global.instance_recycle_bin = ds_stack_create()
 
 //전투
 temporay_target = instance_create(0,0,obj_undefined_skill_target)
@@ -98,6 +99,7 @@ make_gacha_table()
 
 //스킬 데이터베이스 생성
 skill_database()
+skill_extra_description_sheet()
 
 //케릭터 시트 생성
 character_sheet()
@@ -114,21 +116,18 @@ repeat(global.e_list_max) {ds_list_add(enemy_list,undefined)}
 player_list = ds_list_create()
 repeat(global.p_list_max) {ds_list_add(player_list,undefined)}
 cafe_card_list = ds_list_create()
-add_player_card()
-add_player_card()
-add_player_card()
+repeat(3)add_player_card()
 
 
 //인벤토리 생성
+
 skill_inventory = ds_list_create()
 equipment_inventory = ds_list_create()
 
 
 //로그 리스트 생성
 global.game_log_list = ds_list_create()
-
-//보드게임판 생성
-instance_create(0,0,obj_BOARD_MANAGER)
+global.quick_log_buffer = ds_queue_create()
 
 //페이즈
 enum phase
@@ -142,11 +141,136 @@ enum phase
     recruit = 6
 }
 
-global.game_phase = phase.board
+//보드게임판 생성
+if global.lab_mode
+{
+    instance_create(0,0,obj_LAB_MANAGER)
+}else
+{
+    global.game_phase = phase.board
+    instance_create(0,0,obj_BOARD_MANAGER)
+}
 
-//UI 생성
+//실험실 변수
+json_reread = false
 
 
+
+//사운드
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_map_destroy(gacha_table)
+ds_map_destroy(skill_info_map)
+ds_map_destroy(skill_extra_description_sheet_map)
+ds_map_destroy(equipment_info_map)
+ds_map_destroy(character_sheet_map)
+ds_stack_destroy(global.instance_recycle_bin)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if json_reread
+{
+    ds_map_destroy(gacha_table)
+    ds_map_destroy(skill_info_map)
+    ds_map_destroy(skill_extra_description_sheet_map)
+    ds_map_destroy(equipment_info_map)
+    ds_map_destroy(character_sheet_map)
+    //가챠 테이블 생성
+    make_gacha_table()
+    //스킬 데이터베이스 생성
+    skill_database()
+    skill_extra_description_sheet()
+    //케릭터 시트 생성
+    character_sheet()
+    //장비 데이터베이스 생성
+    equipment_database()
+    
+    send_log("json 파일을 다시 읽었습니다.",true)
+    json_reread = false
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*var str = get_string("개발자콘솔","");
+
+if str = "학생"
+{
+    var str2 = get_integer("몇번 학생을 모집합니까?",0);
+    add_player_card(str2)
+}
+if str = "청휘석"
+{
+    var str2 = get_integer("얼마나 얻습니까?",120);
+    global.blue_stone += str2
+}
+if str = "기동석"
+{
+    var str2 = get_integer("얼마나 얻습니까?",1);
+    global.craft_stone += str2
+}
+if str = "메인 화면"
+{
+    room_goto(rm_lobby)
+}*/
 </string>
           </argument>
         </arguments>

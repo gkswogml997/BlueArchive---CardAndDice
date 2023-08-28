@@ -27,87 +27,53 @@
             <kind>1</kind>
             <string>loading_progress = "초기화중..."
 
+//카오스 모드 변수
+global.chaos_mode = false
+//실험실 변수
+global.lab_mode = false
+
 //싸운드 불러오기
-global.bgm_craftchamber = audio_create_stream(working_directory+"\bgm\bgm_craftchamber.ogg")
-global.bgm_shop = audio_create_stream(working_directory+"\bgm\bgm_shop.ogg")
-global.bgm_cafe = audio_create_stream(working_directory+"\bgm\bgm_cafe.ogg")
-global.bgm_formation = audio_create_stream(working_directory+"\bgm\bgm_formation.ogg")
-global.bgm_board = audio_create_stream(working_directory+"\bgm\bgm_main_board.ogg")
-global.bgm_recruit = audio_create_stream(working_directory+"\bgm\bgm_recruit.ogg")
-global.bgm_victory = audio_create_stream(working_directory+"\bgm\bgm_victory.ogg")
-global.bgm_defeat = audio_create_stream(working_directory+"\bgm\bgm_defeat.ogg")
-global.bgm_lobby = audio_create_stream(working_directory+"\bgm\bgm_lobby.ogg")
-global.bgm_story = audio_create_stream(working_directory+"\bgm\bgm_story.ogg")
+global.bgm_craftchamber = audio_create_stream(working_directory+"bgm\bgm_craftchamber.ogg")
+global.bgm_shop = audio_create_stream(working_directory+"bgm\bgm_shop.ogg")
+global.bgm_cafe = audio_create_stream(working_directory+"bgm\bgm_cafe.ogg")
+global.bgm_formation = audio_create_stream(working_directory+"bgm\bgm_formation.ogg")
+global.bgm_board = audio_create_stream(working_directory+"bgm\bgm_main_board.ogg")
+global.bgm_recruit = audio_create_stream(working_directory+"bgm\bgm_recruit.ogg")
+global.bgm_victory = audio_create_stream(working_directory+"bgm\bgm_victory.ogg")
+global.bgm_defeat = audio_create_stream(working_directory+"bgm\bgm_defeat.ogg")
+global.bgm_lobby = audio_create_stream(working_directory+"bgm\bgm_lobby.ogg")
+global.bgm_story = audio_create_stream(working_directory+"bgm\bgm_story.ogg")
 
-global.battle_bgm = ds_list_create()
-for(var i = 1; i &lt;= 5; i++)
-{ 
-    ds_list_add(global.battle_bgm,audio_create_stream(working_directory+"\bgm\map_bgm\bgm_map_"+string(i)+".ogg"))
-}
+//맵 배경과 싸운드 불러오기
+global.battle_background = ds_map_create()
+global.battle_bgm = ds_map_create()
 
-global.boss_bgm = ds_list_create()
-ds_list_add(global.boss_bgm,audio_create_stream(working_directory+"\bgm\map_bgm\boss\bgm_sirokuro.ogg"))
-ds_list_add(global.boss_bgm,audio_create_stream(working_directory+"\bgm\map_bgm\boss\bgm_binah.ogg"))
-ds_list_add(global.boss_bgm,audio_create_stream(working_directory+"\bgm\map_bgm\boss\bgm_chesed.ogg"))
+map_background_sheet()
+map_name_list = ds_map_find_value(background_sheet_map,"map_name")
 
-//배경 sprite 불러오기
-global.battle_background = ds_list_create()
-
-for(var i = 1; i &lt;= 5; i++)
-{ 
-    var spr = sprite_add(working_directory+"\High_Capacity_Sprite\map_background\map_background_"+string(i)+".png",0,false,false,0,0)
-    sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
-    ds_list_add(global.battle_background,spr)
-}
-
-global.boss_background = ds_list_create()
-ds_list_add(global.boss_background,sprite_add(working_directory+"\High_Capacity_Sprite\map_background\boss\map_background_sirokuro.png",0,false,false,0,0))
-ds_list_add(global.boss_background,sprite_add(working_directory+"\High_Capacity_Sprite\map_background\boss\map_background_binah.png",0,false,false,0,0))
-ds_list_add(global.boss_background,sprite_add(working_directory+"\High_Capacity_Sprite\map_background\boss\map_background_chesed.png",0,false,false,0,0))
-
-for(var i = 0; i &lt; ds_list_size(global.boss_background); i++)
+for(var i = 0; i &lt; ds_list_size(map_name_list); i++)
 {
-    var spr = global.boss_background[|i]   
+    var name = map_name_list[|i]
+    ds_map_add(global.battle_bgm,name,audio_create_stream(working_directory+"bgm\map_bgm\bgm_map_"+name+".ogg"))
+    var spr = sprite_add(working_directory+"High_Capacity_Sprite\map_background\map_background_"+name+".png",0,false,false,0,0)
     sprite_set_offset(spr,sprite_get_width(spr)/2,sprite_get_height(spr)/2)
+    ds_map_add(global.battle_background,name,spr)
 }
 
 //로딩화면 불러오기 
 //외부파일 불러오기
-global.loading_spr = sprite_add(working_directory+"\High_Capacity_Sprite\title\spr_loading1_strip22.png",22,false,false,0,0)
+global.loading_spr = sprite_add(working_directory+"High_Capacity_Sprite\title\spr_loading1_strip22.png",22,false,false,0,0)
 
 strip[0] = 0; strip[1] = 0; strip[2] = 50; strip[3] = 72; strip[4] = 67; strip[5] = 34;
 strip[6] = 66; strip[7] = 52; strip[8] = 54; strip[9] = 78; strip[10] = 35; strip[11] = 24;
 
 for(var i = 2; i &lt;= 11; i++)
 {
-    var file_directory = working_directory+"\High_Capacity_Sprite\title\spr_loading"+string(i)+"_strip"+string(strip[i])+".png"
+    var file_directory = working_directory+"High_Capacity_Sprite\title\spr_loading"+string(i)+"_strip"+string(strip[i])+".png"
     var temp_spr = sprite_add(file_directory,strip[i],false,false,0,0)
     sprite_merge(global.loading_spr,temp_spr)
     sprite_delete(temp_spr)
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_text(room_width/2,room_height/2,loading_progress)
 </string>
           </argument>
         </arguments>

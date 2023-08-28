@@ -31,6 +31,8 @@ attack_target = ct_argument[2];
 constant = ct_argument[3]
 dice_eyes = ct_argument[4]
 is_truedamage = ct_argument[5]
+
+is_critical = false
 </string>
           </argument>
         </arguments>
@@ -57,7 +59,7 @@ is_truedamage = ct_argument[5]
 {
     if is_undefined(attack_target) {instance_destroy()} 
     else if attack_target.is_dead {instance_destroy()}
-    attack_calculation(attack_executor,attack_target,constant,dice_eyes,is_truedamage)
+    attack_calculation(attack_executor,attack_target,constant,dice_eyes,is_truedamage,is_critical)
     life--
 }else
 {

@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>if instance_number(obj_battle_defeat_manager) &gt; 1 {instance_destroy()}
 
+if instance_exists(obj_log_button) {instance_destroy(obj_log_button)}
+
 //아군 덱의 죽은 카드들 제거
 var p_list = obj_GAME_SYSTEM_MANAGER.player_list
 for (var i = 0; i &lt; ds_list_size(p_list); i++)

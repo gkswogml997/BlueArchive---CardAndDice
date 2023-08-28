@@ -25,10 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>turn_queue = ds_queue_create()
+            <string>global.turn_instance = undefined
+turn_queue = ds_queue_create()
 
 //순서 UI용 리스트
 spr_list = ds_list_create()
+myturn_outline = instance_create(room_width/2,room_height/2,obj_portrait_outline_myturn)
+highest_outline = instance_create(room_width/2,room_height/2,obj_portrait_outline_highest_taunt)
 
 //리스트 병합
 all_list = make_list_of_all_cards()
@@ -59,6 +62,7 @@ for(var i = 0; i &lt; all_list_size; i++)
     ds_list_delete(all_list,ds_list_find_index(all_list,min_rapid_instance))
 }
 ds_list_destroy(all_list)
+
 
 //패시브 스킬 발동
 passive_list = make_list_of_all_cards()
@@ -102,7 +106,11 @@ send_log("새로운 페이즈 시작",true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_queue_destroy(turn_queue)
+            <string>send_log("페이즈의 종료")
+
+instance_destroy(myturn_outline)
+instance_destroy(highest_outline)
+ds_queue_destroy(turn_queue)
 ds_list_destroy(spr_list)
 </string>
           </argument>
@@ -126,9 +134,13 @@ ds_list_destroy(spr_list)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//턴 종료시
-if global.turn_instance != undefined
+            <string>//큐에 죽은 카드가 들어있어 오염되는 문제 방지
+if global.turn_instance != undefined and !instance_exists(global.turn_instance) {global.turn_instance = undefined}
+
+//턴 종료시
+if global.turn_instance != undefined 
 {
+
     if global.turn_instance.is_dead and !ds_queue_empty(turn_queue)
     {
         if !ds_queue_empty(turn_queue)
@@ -147,22 +159,26 @@ if global.turn_instance = undefined and !ds_queue_empty(turn_queue)
 //턴종료시 다음 차례가 없을때
 if global.turn_instance = undefined and ds_queue_empty(turn_queue)
 {
-    if !ds_list_empty(obj_GAME_SYSTEM_MANAGER.enemy_list)
+    if !slot_empty(obj_GAME_SYSTEM_MANAGER.enemy_list,5) and !slot_empty(obj_GAME_SYSTEM_MANAGER.player_list,5)
     {
         instance_create(0,0,obj_battle_turn_manager)
     }
     instance_destroy()
 }
+
+
 //적이 모두 죽었을때
 if slot_empty(obj_GAME_SYSTEM_MANAGER.enemy_list,5)
 {
-    instance_create(0,0,obj_battle_win_manager)
+    if !global.lab_mode {instance_create(0,0,obj_battle_win_manager)}
+    send_log("아군의 승리로 페이즈 종료", true)
     instance_destroy()
 }
 //아군이 모두 죽었을떄
 if slot_empty(obj_GAME_SYSTEM_MANAGER.player_list,5)
 {
-    instance_create(0,0,obj_battle_defeat_manager)
+    if !global.lab_mode {instance_create(0,0,obj_battle_defeat_manager)}
+    send_log("적의 승리로 페이즈 종료", true)
     instance_destroy()
 }
 
@@ -189,11 +205,14 @@ if slot_empty(obj_GAME_SYSTEM_MANAGER.player_list,5)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_turn_table_bar,0,view_xview+35,view_yview+view_hview/2)
+            <string>
+
+draw_sprite(spr_turn_table_bar,0,view_xview+35,view_yview+view_hview/2)
 draw_sprite(spr_turn_table_arrow,0,view_xview+90,view_yview+view_hview/2+45)
 
 var sc = 0.25
 
+//순서 보여주기
 for(var i = 0; i &lt; ds_list_size(spr_list); i++)
 {
     draw_sprite_ext(spr_list[|i].card_portrait,0,

@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>//애니메이션, UI
-
 instance_create(x,y,obj_battle_enter_end)
 instance_create(x,y,obj_log_button)
 
@@ -39,7 +38,7 @@ for (var i = 0; i &lt; ds_list_size(e_list); i++)
 
 //적 덱에 카드 삽입
 read_enemy_combination()
-//add_enemy_card()
+
 
 board_deactivate()
 global.game_phase = phase.battle
@@ -48,6 +47,7 @@ var p_list = obj_GAME_SYSTEM_MANAGER.player_list
 
 //로그 초기화
 ds_list_clear(global.game_log_list)
+ds_queue_clear(global.quick_log_buffer)
 send_log("전투 시작!",true)
 
 for(var i = 0; i &lt; global.p_list_max; i++)
@@ -68,6 +68,14 @@ for(var i = 0; i &lt; global.p_list_max; i++)
         p_list[|i].number_of_hits = 0
         p_list[|i].stack_of_weakness = 0
         p_list[|i].weakness_def = 0
+        //디버프 초기화
+        p_list[|i].flower_divination = false
+        p_list[|i].fire_debuff = false
+        p_list[|i].good_stamp = false
+        p_list[|i].is_stun = false
+        p_list[|i].energy_charge = 0
+        p_list[|i].dodge_chance = 0
+        p_list[|i].is_fear = false
     }
     
     

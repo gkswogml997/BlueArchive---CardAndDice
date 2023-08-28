@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_mask_noone</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -26,7 +26,24 @@
           <argument>
             <kind>1</kind>
             <string>owner_id = ct_argument[0]
+original_skill_card = ct_argument[1]
 
+move = true
+time = 0
+
+player_control = true
+info_view = false
+collision_check = false
+target_card = undefined
+target_card_list = ds_list_create()
+
+skill_target = undefined
+if !is_undefined(original_skill_card.extra_skill_target)
+{
+    skill_target = original_skill_card.extra_skill_target
+}
+
+//선 생성
 for(var i = 0; i &lt; 15; i++)
 {
     instance_create_v(x,y,obj_card_pointer_body,owner_id,id,i)
@@ -36,7 +53,7 @@ for(var i = 0; i &lt; 15; i++)
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="4" ename="obj_character_card">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -53,14 +70,199 @@ for(var i = 0; i &lt; 15; i++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = mouse_x
-y = mouse_y
+            <string>if !other.is_dead and player_control {target_card = other.id}
+if other.id = target_card {info_view = true}
+                
+var target_list = undefined
+if !is_undefined(target_card)
+{
+    if target_card.is_enemy {target_list = obj_GAME_SYSTEM_MANAGER.enemy_list}
+    else {target_list = obj_GAME_SYSTEM_MANAGER.player_list}
+}
 
-image_angle = point_direction(x,y,owner_id.x,owner_id.y)+90
+if !is_undefined(target_list) and !is_undefined(skill_target)
+{
+    for(var i = 0; i &lt; ds_list_size(skill_target); i++)
+    {
+        if skill_target[|i] = 1
+        {
+            var middle = ds_list_find_index(target_list,target_card)
+            var target_id = ds_list_find_value(target_list,middle-(2-i))
+            if !is_undefined(target_id)
+            {
+                if !target_id.is_dead
+                {
+                    if is_undefined(ds_list_find_value(target_card_list,target_id)) {ds_list_add(target_card_list,target_id)} 
+                }
+            }
+        }
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string> sprite_index = spr_card_pointer_head
+if owner_id = target_card {sprite_index = spr_card_pointer_self_cast}
+draw_self()
+
+if player_control
+{
+    x = mouse_x
+    y = mouse_y
+}else
+{
+    var move_duration = 120;
+    if move
+    {
+        time += 1
+                
+        var easings = EaseInOutQuint(time, 0, time/move_duration,move_duration)
+        var presentx = lerp(owner_id.x,target_card.x,easings)
+        var presenty = lerp(owner_id.y,target_card.y,easings)
+        
+        x = presentx //현재 x 위치 갱신
+        y = presenty // 현재 y위치 갱신
+        
+        if time &gt; move_duration {time =0; move = false} // 완료시간이 넘어가면 초기화
+    }
+}
+
+
+
+if sprite_index != spr_card_pointer_self_cast
+{image_angle = point_direction(x,y,owner_id.x,owner_id.y)+90}
+else {image_angle = 0}
 
 depth = -1004
 
 image_alpha = 0.7
+
+if info_view
+{
+    var xx = target_card.x
+    var yy = target_card.y + sprite_get_height(spr_mini_card)
+    if !target_card.is_enemy {yy = target_card.y - sprite_get_height(spr_mini_card)}
+    draw_set_font(ft_gyeonggi_sz16_Bold)
+    draw_set_color(c_white)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    //엑스트라 타겟팅 보여주기
+    if !ds_list_empty(target_card_list)
+    {
+        for(var i = 0; i &lt; ds_list_size(target_card_list); i++)
+        {
+            var xxx = target_card_list[|i].x
+            var yyy = target_card_list[|i].y
+            var angle = point_direction(x,y,xxx,yyy)-90
+            var range = point_distance(x,y,xxx,yyy)
+            var body_width = range/sprite_get_height(spr_card_pointer_body)
+            if target_card_list[|i] != target_card
+            {
+                draw_sprite_ext(spr_card_pointer_head,0,xxx,yyy,image_xscale,image_yscale,angle,c_white,image_alpha)
+                draw_sprite_ext(spr_card_pointer_body,0,(xxx+x)/2,(yyy+y)/2,1,body_width,angle,c_white,image_alpha)
+            }
+            kill_rate_of_skill(xxx,yyy,owner_id,original_skill_card,target_card_list[|i])
+        }
+    }else
+    {
+        kill_rate_of_skill(target_card.x,target_card.y,owner_id,original_skill_card,target_card)
+        //공격시에 처치 확률 상세 보여주기 
+        /*if original_skill_card.is_attack_skill
+        {
+            if !target_card.is_dead
+            {
+                draw_sprite(spr_mini_card,0,xx,yy)
+                var owner_attack_power = owner_id.attack_power + owner_id.additional_attack_power + owner_id.volatility_attack_power
+                var target_defence_power = target_card.defence_power + target_card.additional_defence_power + target_card.volatility_defence_power + target_card.weakness_def
+                var min_damage = owner_attack_power *original_skill_card.attack_constant
+                var max_damage = owner_attack_power*original_skill_card.dice *original_skill_card.attack_constant
+                if original_skill_card.extra_description = "critical"
+                {
+                    min_damage *= 2
+                    max_damage *= 2
+                }
+                var kill_rate = 0
+                if (max_damage &gt; target_defence_power)
+                {
+                    kill_rate = (max_damage - target_defence_power)/(max_damage - min_damage) * 100
+                    if kill_rate &gt; 100 {kill_rate = 100}
+                }
+                draw_set_color(c_aqua)
+                draw_set_halign(fa_left)
+                draw_set_valign(fa_top)
+                draw_text_outline(xx - sprite_get_width(spr_mini_card)/2+10,yy - sprite_get_height(spr_mini_card)/2+10,target_card.hangul_name,2,c_black,16)
+                
+                if !target_card.is_enemy
+                {
+                    draw_set_color(c_lime)
+                    draw_set_halign(fa_right)
+                    draw_text_outline(xx + sprite_get_width(spr_mini_card)/2-10,yy - sprite_get_height(spr_mini_card)/2+10,"아군",2,c_black,16)
+                }else
+                {
+                    draw_set_color(c_red)
+                    draw_set_halign(fa_right)
+                    draw_text_outline(xx + sprite_get_width(spr_mini_card)/2-10,yy - sprite_get_height(spr_mini_card)/2+10,"적",2,c_black,16)
+                }
+               
+                
+                draw_set_color(c_orange)
+                draw_set_halign(fa_center)
+                draw_set_valign(fa_middle)
+                var str = "#데미지 범위#"+string(min_damage)+" ~ "+string(max_damage);
+                str += "#공격 횟수#"+string(original_skill_card.attack_count)+" 회"
+                if original_skill_card.extra_description = "critical"
+                {
+                    str += "#[치명타]#"
+                }
+                if owner_id.energy_charge &gt; 0
+                {
+                    str += "#[에너지 충전] +"+string(owner_id.energy_charge*6)+"#"
+                }
+                draw_text_outline(xx,yy,str,2,c_black,16)
+                
+                draw_set_font(ft_gyeonggi_sz20_Bold)
+                draw_set_halign(fa_center)
+                draw_set_valign(fa_bottom)
+                if kill_rate = 100
+                {
+                    draw_set_color(c_green)
+                    draw_text_outline(xx,yy + sprite_get_height(spr_mini_card)/2-15,"확정 처치",2,c_black,16)
+                }else if kill_rate = 0
+                {
+                    draw_set_color(c_red)
+                    draw_text_outline(xx,yy + sprite_get_height(spr_mini_card)/2-15,"처치 불가",2,c_black,16)
+                }else
+                {
+                    draw_set_color(c_yellow)
+                    draw_text_outline(xx,yy + sprite_get_height(spr_mini_card)/2-15,"처치 확률: "+string(kill_rate)+"%",2,c_black,16)
+                }
+            }
+        }*/
+    }
+}
+
+ds_list_clear(target_card_list)
+info_view = false
 </string>
           </argument>
         </arguments>

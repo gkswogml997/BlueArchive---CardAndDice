@@ -1,26 +1,4 @@
-var number_of_node = 7
-
-global.passing_node += 1
-obj_camera.camera_zoom_in = true
-
-switch global.passing_node
-{
-    case 6:
-        global.progress = 1
-        instance_create(x,y,obj_progress_UI)
-        break;
-    case 11:
-        global.progress = 2
-        instance_create(x,y,obj_progress_UI)
-        break;
-    case 16:
-        global.progress = 3
-        instance_create(x,y,obj_progress_UI)
-        break;
-}
-
-
-if instance_number(obj_board_graph_vertex) > 2
+if instance_number(obj_board_graph_vertex) > 1
 {
     //이전노드 찾기
     var present_node = obj_player_piece.on_vertex
@@ -62,23 +40,55 @@ if instance_number(obj_board_graph_vertex) > 2
     obj_player_piece.y = room_height/2
 }
 
-//새 버택스 제작
-switch global.progress
+if !global.chaos_mode
 {
-    case 0:
-        break;
-    case 1:
-        number_of_node = 5
-        break;
-    case 2:
-        number_of_node = 3
-        break;
-    default:
-        number_of_node = 1
-}
-
-for (var i = 0; i < number_of_node; i++)
-{
-    var target = instance_create(obj_player_piece.x-(150*(number_of_node div 2))+(150*i),obj_player_piece.y-300,obj_board_graph_vertex)
+    //진행도 구간 설정
+    var number_of_node = 7
+    
+    global.passing_node += 1
+    obj_camera.camera_zoom_in = true
+    
+    switch global.passing_node
+    {
+        case 11:
+            global.progress = 1
+            instance_create(x,y,obj_progress_UI)
+            break;
+        case 18:
+            global.progress = 2
+            instance_create(x,y,obj_progress_UI)
+            break;
+        case 23:
+            global.progress = 3
+            instance_create(x,y,obj_progress_UI)
+            break;
+    }
+    
+    //새 버택스 제작
+    switch global.progress
+    {
+        case 0:
+            break;
+        case 1:
+            number_of_node = 5
+            break;
+        case 2:
+            number_of_node = 3
+            break;
+        default:
+            number_of_node = 1
+    }
+    
+    for (var i = 0; i < number_of_node; i++)
+    {
+        var target = instance_create(obj_player_piece.x-(150*(number_of_node div 2))+(150*i),obj_player_piece.y-300,obj_board_graph_vertex)
+        instance_create_v(x,y,obj_board_graph_edge,obj_player_piece.on_vertex,target)
+    }
+}else{
+    //카오스 모드
+    global.passing_node += 1
+    obj_camera.camera_zoom_in = true
+    var target = instance_create(obj_player_piece.x+choose(150,0,-150),obj_player_piece.y-300,obj_board_graph_vertex);
+    target.type = platform_type.Battle;
     instance_create_v(x,y,obj_board_graph_edge,obj_player_piece.on_vertex,target)
 }

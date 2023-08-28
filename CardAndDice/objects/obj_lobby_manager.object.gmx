@@ -30,11 +30,15 @@ lobby_bgm = audio_play_sound(global.bgm_lobby,1000,true)
 
 button_on = false
 
-spr_back = sprite_add(working_directory+"\High_Capacity_Sprite\title\game_lobby.jpg",0,false,false,0,0)
+spr_back = sprite_add(working_directory+"High_Capacity_Sprite\title\game_lobby.jpg",0,false,false,0,0)
+sprite_index = spr_back
+
 instance_create(200+640+270    +1000,280,obj_story_button)
 instance_create(200+640        +1000,280,obj_start_mission_button)
 instance_create(200+640-80     +1000,280+140+60,obj_tutorial_button)
-instance_create(200+640-80+190 +1000,280+140+60,obj_developer_credit_button)
+instance_create(200+640-100    +1000,280+140+60+110,obj_developer_credit_button)
+instance_create(200+640-80+180 +1000,280+140+60+60,obj_start_chaos_mode_button)
+instance_create(200+640-80+360 +1000,280+140+60+60,obj_pvp_mode_button)
 </string>
           </argument>
         </arguments>
@@ -60,7 +64,7 @@ instance_create(200+640-80+190 +1000,280+140+60,obj_developer_credit_button)
             <string>var sw = sprite_get_width(spr_back)
 var sh = sprite_get_height(spr_back)
 
-draw_sprite_ext(spr_back,0,0,0,1280/sw,720/sh,0,c_white,1)
+draw_sprite_ext(sprite_index,0,0,0,1280/sw,720/sh,0,c_white,1)
 </string>
           </argument>
         </arguments>

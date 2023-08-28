@@ -4,9 +4,9 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_mask_200x250</maskName>
+  <maskName>spr_mini_card</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -93,11 +93,19 @@ if !is_undefined(character_data)
     school_data = ds_map_find_value(character_data,"school_data")
 }
 
+
+//데미지 피격 큐
+damage_queue_delay_max = 20
+damage_queue_delay = 0
+damage_queue = ds_queue_create()
+
 //상태 판별용
 be_attacked_damage = 0
 kill_reward_recipient = undefined
 flower_divination = false
 flower_divination_damage = 0
+energy_charge = 0
+dodge_chance = 0
 fire_debuff = false
 good_stamp = false
 
@@ -105,10 +113,21 @@ mini_mode = true
 is_enemy = ct_argument[1]
 is_summon = false
 is_stun = false
+is_fear = false
 
 is_dead = false
 reason_for_entering_the_cafe = "학생 모집에서 선택 받지 못함"
 shake = 0
+
+//카오스 모드 일 경우 적이 랜덤 스텟 
+if global.chaos_mode and is_enemy
+{
+    attack_power = irandom_range(3,9)
+    defence_power = irandom_range(50,100)
+    rapid_power = irandom_range(1,9)
+    taunt_power = irandom_range(0,0)
+    skill_level = irandom_range(1,4)
+}
 
 //카페에서 기다린 시간
 cafe_wating_time = 0
@@ -130,6 +149,10 @@ for(var i = 0; i &lt; 3; i++)
     }
 }
 
+//스킬 말풍선 버퍼
+skill_speech_bubble_buffer = ds_queue_create()
+show_speech_bubble = undefined
+
 
 //스프라이트 관련
 mini_mode_width = sprite_get_width(spr_mini_card)
@@ -145,7 +168,12 @@ for(var i = 0; i &lt; equipment_slot_max; i++) {equipment_slot[i] = undefined}
 //적 카드가 아닌경우 기본 랜덤 장비 착용 후 등장
 if !is_enemy and !is_summon
 {
-    for (var i = 0; i &lt; equipment_slot_max; i++) {equipment_slot[i] = equipment_create(undefined,id)}
+    var gacha_list = ds_map_find_value(obj_GAME_SYSTEM_MANAGER.gacha_table,"equipment_1T");
+    for (var i = 0; i &lt; equipment_slot_max; i++) 
+    {
+        var rand_num = gacha_list[| irandom(ds_list_size(gacha_list)-1)];
+        equipment_slot[i] = instance_create_v(x,y,obj_equipment_card,rand_num,id)
+    }
 }
 
 load_item_funcition(id)
@@ -171,7 +199,30 @@ load_item_funcition(id)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_list_destroy(debuff_icon_list)
+            <string>//연결된 스킬 객체 삭제
+for(var i = 0; i &lt; ds_list_size(skill_list); i++) 
+{
+    if !is_undefined(skill_list[|i]){
+        if instance_exists(skill_list[|i]){
+            instance_destroy(skill_list[|i])
+        }
+    }
+}
+//연결된 장비 객체 삭제
+for(var i = 0; i &lt; equipment_slot_max; i++) 
+{
+    if !is_undefined(equipment_slot[i]){
+        if instance_exists(equipment_slot[i]){
+            instance_destroy(equipment_slot[i])
+        }
+    }
+}
+
+//구조체 해제
+instance_destroy(equipment_simply_button)
+ds_queue_destroy(skill_speech_bubble_buffer)
+ds_queue_destroy(damage_queue)
+ds_list_destroy(debuff_icon_list)
 ds_list_destroy(skill_list)
 </string>
           </argument>
@@ -189,13 +240,16 @@ ds_list_destroy(skill_list)
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_character_card</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//스킬 카드 리스트와 스킬 슬롯의 내용을 동일하게
+            <string>//장비 스텟 갱신 
+load_item_funcition(id)
+
+//스킬 카드 리스트와 스킬 슬롯의 내용을 동일하게
 for(var i = 0; i &lt; 3; i++)
 {
     if !is_undefined(ds_list_find_value(skill_list,i))
@@ -208,6 +262,34 @@ for(var i = 0; i &lt; 3; i++)
 for(var i = 0; i &lt; ds_list_size(skill_list); i++)
 {
     if skill_list[|i].passive_trigger {instance_activate_object(skill_list[|i])}
+}
+
+//스킬 말풍선 큐
+if !ds_queue_empty(skill_speech_bubble_buffer)
+{
+    if is_undefined(show_speech_bubble)
+    {
+        var value = ds_queue_dequeue(skill_speech_bubble_buffer)
+        var yy = sprite_get_height(spr_mini_card)/2
+        if !is_enemy {yy = view_hview - sprite_get_height(spr_mini_card)/2}
+        show_speech_bubble = instance_create_v(x,yy,obj_skill_speech_bubble,value)
+    }else
+    {
+        if !instance_exists(show_speech_bubble) {show_speech_bubble = undefined}
+    }
+}
+
+//데미지 큐
+if !ds_queue_empty(damage_queue)
+{
+    if damage_queue_delay &lt; damage_queue_delay_max {damage_queue_delay++}
+    else
+    {
+        var value = ds_queue_dequeue(damage_queue)
+        instance_create_v(x,y,obj_damage_write,value)
+        shake += 5
+        damage_queue_delay = 0
+    }
 }
 
 //전투 페이즈시 플레이어 카드
@@ -261,11 +343,13 @@ if global.game_phase = phase.battle
     
     stack_of_weakness = max(stack_of_weakness,0)
     //취약 처리부
-    if stack_of_weakness &gt; 0 {weakness_def = -1*round((defence_power+additional_defence_power)-((defence_power+additional_defence_power)/power(2,(stack_of_weakness))))}
+    if stack_of_weakness &gt; 0 {weakness_def = -1*round((defence_power+additional_defence_power + volatility_defence_power)-((defence_power+additional_defence_power + volatility_defence_power)/power(2,(stack_of_weakness))))}
     else {weakness_def = 0}
     //데미지 처리부
     if be_attacked_damage &gt; 0
     {
+        if dodge_chance &gt; 0 {be_attacked_damage = 0; dodge_chance--; instance_create(x,y,obj_dodge_effect)}
+        ds_queue_enqueue(damage_queue,be_attacked_damage)
         if be_attacked_damage &gt; defence_power + additional_defence_power + volatility_defence_power + weakness_def
         {
             
@@ -282,8 +366,10 @@ if global.game_phase = phase.battle
             {
                 if number_of_hits &gt;= max_hits_for_weakness_on_barrier
                 {
+                    effect_instance_create(x,y,spr_debuff_icon_weakness,"normal")
                     send_log(hangul_name+"은(는) '취약'을 얻었다.",true)
                     send_log(hangul_name+"의 베리어가 부숴졌다.",true)
+                    card_stat_change(id,"도발",-6)
                     stack_of_weakness++
                     barrier = false
                     number_of_hits = 0
@@ -293,15 +379,15 @@ if global.game_phase = phase.battle
             {
                 if number_of_hits &gt;= max_hits_for_weakness
                 {
-                    instance_create(x,y,obj_shield_break_effect)
+                    effect_instance_create(x,y,spr_debuff_icon_weakness,"normal")
                     send_log(hangul_name+"은(는) '취약'을 얻었다.",true)
+                    card_stat_change(id,"도발",-6)
                     stack_of_weakness++
                     number_of_hits = 0
                 }
             }
             shake += 10
         }
-        instance_create(x,y,obj_gun_hit_effect)
         flower_divination_damage += be_attacked_damage
         be_attacked_damage = 0
     }
@@ -310,6 +396,12 @@ if global.game_phase = phase.battle
     //내턴일때
     if global.turn_instance = id
     {
+        //페이즈 관리자가 없을때
+        if !instance_exists(obj_battle_turn_manager)
+        {
+            global.turn_instance = undefined;
+        }
+        
         //죽었으면 
         if is_dead 
         {
@@ -326,11 +418,25 @@ if global.game_phase = phase.battle
             turn_end()
             is_stun = false
         }
+        
+        //공포시
+        if is_fear
+        {
+            turn_end()
+            if roll_the_dice(6,id) = 1
+            {
+                send_log(hangul_name+"은 여전히 공포에 질려있다...",true)  
+            }else
+            {
+                send_log(hangul_name+"은 공포에서 벗어났다!",true)  
+                is_fear = false
+            }
+        }
     
         //화상
         if fire_debuff
         {
-            var value = roll_the_dice(6,id);
+            var value = roll_the_dice(20,id);
             be_attacked_damage += value
             send_log(hangul_name+"은 화상으로 "+string(value)+"데미지를 얻었다.",true)   
             fire_debuff = false
@@ -347,13 +453,16 @@ if global.game_phase = phase.battle
         }
         
         //스킬중에 턴을 넘길수 있는 스킬이 없으면 바로 턴넘김
-        var chance = 0
-        for(var i = 0; i &lt; 3; i++)
+        if !is_dead
         {
-            if is_undefined(skill_list[|i]) {chance++; continue;}
-            if skill_list[|i].is_passive_skill {chance++; continue;}
-        }
-        if chance = 3 {turn_end()}
+            var chance = 0
+            for(var i = 0; i &lt; 3; i++)
+            {
+                if is_undefined(skill_list[|i]) {chance++; continue;}
+                if skill_list[|i].is_passive_skill {chance++; continue;}
+            }
+            if chance = 3 {turn_end()}
+        }else {turn_end()}
     }
     
     //흔들기
@@ -426,6 +535,8 @@ if global.game_phase = phase.battle
         {
             if mini_mode {obj_character_card.mini_mode = true}
             mini_mode = !mini_mode
+            for(var i = 0; i &lt; ds_list_size(skill_list); i++)
+            {instance_activate_object(skill_list[|i])}
         }
     }
 }
@@ -456,18 +567,69 @@ if sprite_force_scroll &gt; 30 {sprite_force_scroll = 0}
 
 if !mini_mode
 {
-    draw_set_halign(fa_center)
-    draw_set_valign(fa_middle)
+    
     
     depth = -1020
     //카드
     draw_self()
     draw_sprite_ext(card_portrait,0,x-sprite_width/2+90,y-sprite_height/2+115,0.35,0.35,0,c_white,image_alpha)
     draw_sprite_ext(spr_portrait_outline,0,x-sprite_width/2+90,y-sprite_height/2+1150,0.35,0.35,0,c_white,image_alpha)
-    
+    //엑스트라 스킬 슬롯
+    for(var i = 0; i &lt; 3; i++)
+    {
+        var xx = x-sprite_get_width(spr_card)/2
+        var yy = y-sprite_get_height(spr_card)/2 + sprite_get_height(spr_skill_extra_description_slot)*i
+        draw_sprite(spr_skill_extra_description_slot,0,xx,yy)
+    }
+    //카드 상세 
+    if true //xx에 스코프 거는 용도
+    {
+        var xx = x-sprite_get_width(spr_card)/2
+        var yy = y-sprite_get_height(spr_card)/2 + sprite_get_height(spr_skill_extra_description_slot)*3
+        draw_sprite(spr_card_description,0,xx,yy)
+        draw_set_font(ft_gyeonggi_sz14_Bold)
+        draw_set_halign(fa_left)
+        draw_set_valign(fa_top)
+        var xx2 = xx - sprite_get_width(spr_card_description) + 10
+        var yy2 = yy + 10
+        var str = "임시 스텟 변화#";
+        var str2 = "버프  "
+        if volatility_attack_power &gt; 0 {str2 += ("공격: " + string(volatility_attack_power))}
+        if volatility_defence_power &gt; 0 {str2 += (" 방어: " + string(volatility_defence_power))}
+        if volatility_rapid_power &gt; 0 {str2 += (" 신속: " + string(volatility_rapid_power))}
+        if volatility_taunt_power &gt; 0 {str2 += (" 도발: " + string(volatility_taunt_power))}
+        var str3 = "디버프  "
+        if volatility_attack_power &lt; 0 {str3 += ("공격: " + string(volatility_attack_power))}
+        if volatility_defence_power &lt; 0 {str3 += (" 방어: " + string(volatility_defence_power))}
+        if volatility_rapid_power &lt; 0 {str3 += (" 신속: " + string(volatility_rapid_power))}
+        if volatility_taunt_power &lt; 0 {str3 += (" 도발: " + string(volatility_taunt_power))}
+        draw_set_color(c_white)
+        draw_text_outline(xx2,yy2,str,2,c_black,16)
+        draw_set_color(c_red)
+        draw_text_ext(xx2,yy2+30,str2,25,sprite_get_width(spr_card_description))
+        draw_set_color(c_blue)
+        draw_text_ext(xx2,yy2+60,str3,25,sprite_get_width(spr_card_description))
+        
+        draw_sprite(spr_card_description2,0,xx+sprite_get_width(spr_card),yy)
+        var xx3 = xx + sprite_get_width(spr_card) + 10
+        var str4 = "적용 중인 효과#"
+        if is_summon {str4 += "소환물 "}
+        if is_stun {str4 += "기절 "}
+        if is_fear {str4 += "공포 "}
+        if good_stamp {str4 += "칭찬도장 "}
+        if fire_debuff {str4 += "화상 "}
+        if barrier {str4 += "보호막 "}
+        if dodge_chance {str4 += "회피 "+string(dodge_chance)+"회"}
+        if flower_divination {str4 += "꽃점 #누적: "+string(flower_divination_damage)}
+        draw_set_color(c_green)
+        draw_text_ext(xx3,yy2,str4,30,sprite_get_width(spr_card_description2))
+        
+    }
     
     //이름
     draw_set_color(c_black)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
     draw_set_font(ft_eng_name_font)
     draw_text_ext_colour(x-sprite_width/2+155+155,y-sprite_height/2+130,name,25,300,c_black,c_black,c_black,c_black,image_alpha/2)
     draw_set_font(ft_name_font)
@@ -497,10 +659,10 @@ if !mini_mode
     draw_set_font(ft_Ingame_font)
     draw_set_color(c_white)
     draw_sprite(spr_card_stat,0,x,y+sprite_height/4)
-    draw_text(x-75,y+sprite_height/4-16,"공격력:"+string(attack_power)+"+("+string(additional_attack_power + volatility_attack_power)+")")
-    draw_text(x-75,y+sprite_height/4+16,"방어력:"+string(defence_power)+"+("+string(additional_defence_power + volatility_defence_power + weakness_def)+")")
-    draw_text(x+75,y+sprite_height/4-16,"신속:"+string(rapid_power)+"+("+string(additional_rapid_power + volatility_rapid_power)+")")
-    draw_text(x+75,y+sprite_height/4+16,"도발:"+string(taunt_power)+"+("+string(additional_taunt_power + volatility_taunt_power)+")")
+    draw_text(x-75,y+sprite_height/4-16,"공격력:"+string(attack_power))
+    draw_text(x-75,y+sprite_height/4+16,"방어력:"+string(defence_power))
+    draw_text(x+75,y+sprite_height/4-16,"신속:"+string(rapid_power))
+    draw_text(x+75,y+sprite_height/4+16,"도발:"+string(taunt_power))
     
     var final_skill_level = max(skill_level,additional_skill_level)
     if volatility_skill_level != -1 {final_skill_level = volatility_skill_level}
@@ -536,14 +698,42 @@ if !mini_mode
 }else
 {
     depth = -1000
+    //카드 그리기
     draw_sprite(spr_mini_card,0,x,y)
     draw_sprite(card_portrait,0,x,y)
     draw_sprite(spr_portrait_outline,0,x,y)
+    
+    //취약까지 남은 수
+    if number_of_hits &gt; 0
+    {
+        for(var i = 0; i &lt; number_of_hits; i++)
+        {
+            var xx = x - sprite_get_width(spr_mini_card)/2 + 48 + i*5
+            var yy = y - sprite_get_height(spr_mini_card)/2 + 24 + i*10
+            if is_enemy
+            {
+                xx = x + sprite_get_width(spr_mini_card)/2 - 48 - i*5
+                yy = y + sprite_get_height(spr_mini_card)/2 - 24 - i*10
+            }
+            draw_sprite(spr_week_hit_count_effect,0,xx,yy)
+        }    
+    }
+    
+    //특수 상태 이펙트
+    if is_summon {draw_sprite(spr_portrait_outline_summon,0,x,y)}
     if is_stun {draw_sprite(spr_stun_effect,sprite_force_scroll/5,x,y)}
+    if is_fear {draw_sprite(spr_fear_effect,0,x,y)}
     if good_stamp {draw_sprite(spr_good_stamp,0,x,y)}
-    if fire_debuff {draw_sprite(spr_fire_debuff,0,x,y)}
+    if fire_debuff {draw_sprite(spr_fire_debuff,0,x,y);draw_sprite(spr_fire_debuff_animation,sprite_force_scroll,x,y)}
     if barrier {draw_sprite(spr_barrier,sprite_force_scroll/5,x,y)}
-    if flower_divination {draw_sprite(spr_flower,0,x,y)}
+    if flower_divination {
+        draw_sprite(spr_flower,0,x,y)
+        draw_set_font(ft_gyeonggi_sz16_Bold)
+        draw_set_color(c_white)
+        draw_set_valign(fa_middle)
+        draw_set_halign(fa_center)
+        draw_text_outline(x,y+100,"누적된 데미지#"+string(flower_divination_damage),2,c_black,16)
+    }
     
     if is_dead
     {
@@ -570,9 +760,9 @@ if !mini_mode
     {
         if volatility_attack_power &lt; 0 
         {
-            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_att) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_att)}
+            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_att) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_att); ds_list_value_destroy(debuff_icon_list,spr_buff_icon_att)}
         }else{
-            if ds_list_find_index(debuff_icon_list,spr_buff_icon_att) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_att)}
+            if ds_list_find_index(debuff_icon_list,spr_buff_icon_att) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_att); ds_list_value_destroy(debuff_icon_list,spr_debuff_icon_att)}
         }
     }else
     {
@@ -583,9 +773,9 @@ if !mini_mode
     {
         if volatility_defence_power &lt; 0 
         {
-            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_def) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_def)}
+            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_def) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_def); ds_list_value_destroy(debuff_icon_list,spr_buff_icon_def)}
         }else{
-            if ds_list_find_index(debuff_icon_list,spr_buff_icon_def) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_def)}
+            if ds_list_find_index(debuff_icon_list,spr_buff_icon_def) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_def); ds_list_value_destroy(debuff_icon_list,spr_debuff_icon_def)}
         }
     }else
     {
@@ -596,9 +786,9 @@ if !mini_mode
     {
         if volatility_rapid_power &lt; 0 
         {
-            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_rap) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_rap)}
+            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_rap) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_rap); ds_list_value_destroy(debuff_icon_list,spr_buff_icon_rap)}
         }else{
-            if ds_list_find_index(debuff_icon_list,spr_buff_icon_rap) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_rap)}
+            if ds_list_find_index(debuff_icon_list,spr_buff_icon_rap) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_rap); ds_list_value_destroy(debuff_icon_list,spr_debuff_icon_rap)}
         }
     }else
     {
@@ -609,9 +799,9 @@ if !mini_mode
     {
         if volatility_taunt_power &lt; 0 
         {
-            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_tau) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_tau)}
+            if ds_list_find_index(debuff_icon_list,spr_debuff_icon_tau) = -1 {ds_list_add(debuff_icon_list,spr_debuff_icon_tau); ds_list_value_destroy(debuff_icon_list,spr_buff_icon_tau)}
         }else{
-            if ds_list_find_index(debuff_icon_list,spr_buff_icon_tau) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_tau)}
+            if ds_list_find_index(debuff_icon_list,spr_buff_icon_tau) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_tau); ds_list_value_destroy(debuff_icon_list,spr_debuff_icon_tau)}
         }
     }else
     {
@@ -635,6 +825,20 @@ if !mini_mode
     }else
     {
         if ds_list_find_index(debuff_icon_list,spr_debuff_icon_weakness) != -1 {ds_list_value_destroy(debuff_icon_list,spr_debuff_icon_weakness)}
+    }
+    if energy_charge != 0 
+    {
+        if ds_list_find_index(debuff_icon_list,spr_buff_icon_enegy_charge) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_enegy_charge)}
+    }else
+    {
+        if ds_list_find_index(debuff_icon_list,spr_buff_icon_enegy_charge) != -1 {ds_list_value_destroy(debuff_icon_list,spr_buff_icon_enegy_charge)}
+    }
+    if dodge_chance != 0 
+    {
+        if ds_list_find_index(debuff_icon_list,spr_buff_icon_dodge) = -1 {ds_list_add(debuff_icon_list,spr_buff_icon_dodge)}
+    }else
+    {
+        if ds_list_find_index(debuff_icon_list,spr_buff_icon_dodge) != -1 {ds_list_value_destroy(debuff_icon_list,spr_buff_icon_dodge)}
     }
     
     draw_set_halign(fa_left)
@@ -671,6 +875,8 @@ if !mini_mode
                 case spr_debuff_icon_tau :{num = volatility_taunt_power; break;}
                 case spr_buff_icon_tau :{num = volatility_taunt_power; break;}
                 case spr_debuff_icon_weakness : {num = weakness_def; break;}
+                case spr_buff_icon_enegy_charge : {num = energy_charge; break;}
+                case spr_buff_icon_dodge : {num = dodge_chance; break;}
             }
             
             var j, k = 0
@@ -706,6 +912,37 @@ if !mini_mode
         equipment_simply_button.x = x
         equipment_simply_button.y = y+sprite_height/2
     }
+    
+    if mouse_enter() and global.game_phase = phase.battle
+    {
+        var xx = x - sprite_get_width(spr_card_mini_spec)/2
+        var yy = y - sprite_get_height(spr_card_mini_spec)/2
+        draw_sprite(spr_card_mini_spec,0,xx,yy)
+        
+        draw_set_font(ft_gyeonggi_sz16_Bold)
+        draw_set_color(c_white)
+        draw_set_valign(fa_top)
+        draw_set_halign(fa_left)
+        var xx2 = xx +16
+        var yy2 = yy +16
+        draw_text_outline(xx2,yy2,"공격력: "+string(attack_power + additional_attack_power + volatility_attack_power),2,c_black,16)
+        draw_text_outline(xx2,yy2+32,"방어력: "+string(defence_power + additional_defence_power + volatility_defence_power + + weakness_def),2,c_black,16)
+        draw_text_outline(xx2,yy2+64,"신속: "+string(rapid_power + additional_rapid_power + volatility_rapid_power),2,c_black,16)
+        draw_text_outline(xx2,yy2+96,"도발: "+string(taunt_power + additional_taunt_power + volatility_taunt_power),2,c_black,16)
+        var final_skill_level = max(skill_level,additional_skill_level)
+        if volatility_skill_level != -1 {final_skill_level = volatility_skill_level}
+        var skill_level_str = "빈번히 실패함"
+        switch final_skill_level
+        {
+            case 0: {skill_level_str = "빈번히 실패함" break;}
+            case 1: {skill_level_str = "가끔 실패함" break;}
+            case 2: {skill_level_str = "무난함" break;}
+            case 3: {skill_level_str = "능숙함" break;}
+            case 4: {skill_level_str = "달인" break;}
+        }
+        draw_text_outline(xx2,yy2+150,"숙련도#     "+skill_level_str,2,c_black,16)
+    }
+
 }
 
 //카드가 배틀중이 아닐시

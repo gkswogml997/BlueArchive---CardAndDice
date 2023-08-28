@@ -34,8 +34,8 @@ story_open = ini_read_real( 'GameData', 'Clear', false );
 ini_close(); 
 
 
-instance_create_v(room_width*3/4-25,room_height/2-150,obj_story_list_bar,"4","뭐합니까 유즈",!story_open)
-instance_create_v(room_width*3/4-25,room_height/2-50,obj_story_list_bar,"3","맡겨놓은 대상",!story_open)
+instance_create_v(room_width*3/4-25,room_height/2-150,obj_story_list_bar,"4","뭐합니까 유즈",false)
+instance_create_v(room_width*3/4-25,room_height/2-50,obj_story_list_bar,"3","맡겨놓은 대상",false)
 instance_create_v(room_width*3/4-25,room_height/2+50,obj_story_list_bar,"2","좋은 생각",false)
 instance_create_v(room_width*3/4-25,room_height/2+150,obj_story_list_bar,"1","밀레니엄 게임잼",false)
 </string>

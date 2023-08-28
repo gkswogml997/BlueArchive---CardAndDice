@@ -49,6 +49,7 @@ depth = equipment_slot.depth + 1
 
 //가격
 equipment_price = choose(30,35,40)
+if global.chaos_mode {equipment_price *= 2}
 
 //버튼
 button = instance_create_v(x,y,obj_shop_slot_button,id)
@@ -140,6 +141,7 @@ if notice_box_return = "확인"
         instance_create_v(x,y,obj_shop_replace_manager,equipment_slot)
         equipment_slot = id
         instance_destroy(obj_shop_slot)
+        instance_destroy(obj_shop_reroll_button)
     }
     notice_box_return = ""
 }

@@ -3,7 +3,7 @@
   <spriteName>spr_mask_64x64</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1010</depth>
+  <depth>-999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,7 +29,6 @@
 
 life = 160
 
-x += string_width(str)
 </string>
           </argument>
         </arguments>
@@ -77,23 +76,20 @@ x += string_width(str)
             <kind>1</kind>
             <string>//폰트지정
 draw_set_font(ft_quick_log_font)
-draw_set_halign(fa_right)
+draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_set_colour(c_white)
+draw_set_alpha(image_alpha)
 
 //말풍선 그리기
 var str_w = string_width(str)
-draw_sprite_ext(spr_log_arona,0,x-str_w-12,y,0.5,0.5,0,c_white,1)
-draw_sprite(spr_log_balloon_L,0,x-str_w,y)
-for (var i = 0; i &lt;= str_w; i++)
+draw_sprite_ext(spr_log_arona,0,x-str_w/2-12,y,0.5,0.5,0,c_white,image_alpha)
+draw_sprite(spr_log_balloon_L,0,x-str_w/2,y)
+for (var i = -str_w/2; i &lt;= str_w/2; i++)
 {
     draw_sprite(spr_log_balloon_M,0,x-i,y)
 }
-draw_sprite(spr_log_balloon_R,0,x,y)
-
-
-//애니메이션
-if x &gt; room_width - 32 {x -= 16}
+draw_sprite(spr_log_balloon_R,0,x+round(str_w/2),y)
 
 //생명
 if global.game_phase != phase.battle {instance_destroy(id)}
@@ -104,6 +100,10 @@ if image_alpha &lt; 0 {instance_destroy()}
 //스트링
 draw_text_outline(x,y,str,2,c_black,16)
 
+draw_set_alpha(1)
+
+//애니메이션
+if y &gt; room_height - 300 {y -= 20}
 </string>
           </argument>
         </arguments>

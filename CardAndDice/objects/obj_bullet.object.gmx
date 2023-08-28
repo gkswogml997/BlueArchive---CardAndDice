@@ -34,6 +34,8 @@ is_shadow = ct_argument[4]
 
 collision_range = irandom_range(70,140)
 
+instance_create_v(x,y,obj_gun_fire_effect,image_angle)
+
 motion_set(image_angle,bullet_speed)
 
 </string>
@@ -87,6 +89,7 @@ motion_set(image_angle,bullet_speed)
     if point_distance(x,y,other.x,other.y) &lt; collision_range
     {
         instance_create(x,y,obj_bullet_hit_effect)
+        other.shake += 2
         instance_destroy()
     }
 }

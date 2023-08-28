@@ -75,7 +75,7 @@ else
     }
 }
 //변경중에는 비활성화
-if instance_exists(obj_craft_chamber_replace_manager) or instance_exists(obj_craft_chamber_replace_skill_manager)
+if instance_exists(obj_craft_chamber_replace_manager)
 {
     is_activate = false
 }else

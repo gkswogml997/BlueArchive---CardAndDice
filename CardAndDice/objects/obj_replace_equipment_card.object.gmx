@@ -140,17 +140,19 @@ equipment_skill_level = original_equipment_id.equipment_skill_level
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// 카드 움직임
+            <string>if !instance_exists(my_slot) {instance_destroy()}
+else {depth = my_slot.depth - 2}
+
+// 카드 움직임
 if move
 {
     x = mouse_x
     y = mouse_y
-    depth = -1021
+    depth = -1023
 }else
 {
     x = my_slot.x
     y = my_slot.y
-    depth = -1020
 }
 
 if mouse_enter() and !move and is_undefined(owner_id.pick_up_card)
@@ -183,7 +185,7 @@ if mouse_enter() and !move and is_undefined(owner_id.pick_up_card)
     draw_text_ext(x,y-262,equipment_description,20,320)
     draw_text(x,y-112,funcition_str)
     
-    depth = -1022
+    depth = my_slot.depth - 2
 }else
 {
     draw_sprite_ext(equipment_icon_spr,0,x,y,0.3,0.3,image_angle,c_white,image_alpha)

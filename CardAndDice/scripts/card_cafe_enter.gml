@@ -7,6 +7,8 @@ ins.flower_divination = false
 ins.fire_debuff = false
 ins.good_stamp = false
 ins.is_stun = false
+ins.energy_charge = 0
+ins.is_fear = false
 
 ins.cafe_wating_time = 0;
 global.amount_of_cafe_card += 1;

@@ -3,7 +3,7 @@
   <spriteName>spr_system_invisible_object_sprite</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>0</depth>
+  <depth>-1006</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -82,6 +82,7 @@ time = 0
     {
         x = obj_player_piece.x
         y = obj_player_piece.y-200
+        
     }
 }
 if global.game_phase != phase.board 

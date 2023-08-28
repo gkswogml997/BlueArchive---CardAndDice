@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="166" name="datafiles">
+  <datafiles number="203" name="datafiles">
     <datafile>
       <name>character_sheet.json</name>
       <exists>-1</exists>
@@ -56,6 +56,23 @@
       <filename>skill_sheet.json</filename>
     </datafile>
     <datafile>
+      <name>skill_extra_description_sheet.json</name>
+      <exists>-1</exists>
+      <size>2513</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>skill_extra_description_sheet.json</filename>
+    </datafile>
+    <datafile>
       <name>equipment_sheet.json</name>
       <exists>-1</exists>
       <size>373</size>
@@ -72,8 +89,25 @@
       </ConfigOptions>
       <filename>equipment_sheet.json</filename>
     </datafile>
-    <datafiles number="166" name="story">
-      <datafiles number="166" name="background">
+    <datafile>
+      <name>map_background_sheet.json</name>
+      <exists>-1</exists>
+      <size>10</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>map_background_sheet.json</filename>
+    </datafile>
+    <datafiles number="203" name="story">
+      <datafiles number="203" name="background">
         <datafile>
           <name>Game_Development.png</name>
           <exists>-1</exists>
@@ -109,7 +143,7 @@
           <filename>Seminar.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="166" name="character">
+      <datafiles number="203" name="character">
         <datafile>
           <name>Arisu.png</name>
           <exists>-1</exists>
@@ -230,7 +264,7 @@
           <filename>Yuzu.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="166" name="bgm">
+      <datafiles number="203" name="bgm">
         <datafile>
           <name>Lovely_Picnic.ogg</name>
           <exists>-1</exists>
@@ -403,8 +437,8 @@
         <filename>scenario_test.json</filename>
       </datafile>
     </datafiles>
-    <datafiles number="166" name="High_Capacity_Sprite">
-      <datafiles number="166" name="title">
+    <datafiles number="203" name="High_Capacity_Sprite">
+      <datafiles number="203" name="title">
         <datafile>
           <name>spr_loading1_strip22.png</name>
           <exists>-1</exists>
@@ -610,43 +644,9 @@
           <filename>game_lobby.jpg</filename>
         </datafile>
       </datafiles>
-      <datafiles number="166" name="map_background">
+      <datafiles number="203" name="map_background">
         <datafile>
-          <name>map_background_1.png</name>
-          <exists>-1</exists>
-          <size>1452188</size>
-          <exportAction>2</exportAction>
-          <exportDir></exportDir>
-          <overwrite>0</overwrite>
-          <freeData>-1</freeData>
-          <removeEnd>0</removeEnd>
-          <store>0</store>
-          <ConfigOptions>
-            <Config name="Default">
-              <CopyToMask>9223372036854775807</CopyToMask>
-            </Config>
-          </ConfigOptions>
-          <filename>map_background_1.png</filename>
-        </datafile>
-        <datafile>
-          <name>map_background_2.png</name>
-          <exists>-1</exists>
-          <size>1415815</size>
-          <exportAction>2</exportAction>
-          <exportDir></exportDir>
-          <overwrite>0</overwrite>
-          <freeData>-1</freeData>
-          <removeEnd>0</removeEnd>
-          <store>0</store>
-          <ConfigOptions>
-            <Config name="Default">
-              <CopyToMask>9223372036854775807</CopyToMask>
-            </Config>
-          </ConfigOptions>
-          <filename>map_background_2.png</filename>
-        </datafile>
-        <datafile>
-          <name>map_background_3.png</name>
+          <name>map_background_Street1.png</name>
           <exists>-1</exists>
           <size>1252965</size>
           <exportAction>2</exportAction>
@@ -660,10 +660,61 @@
               <CopyToMask>9223372036854775807</CopyToMask>
             </Config>
           </ConfigOptions>
-          <filename>map_background_3.png</filename>
+          <filename>map_background_Street1.png</filename>
         </datafile>
         <datafile>
-          <name>map_background_4.png</name>
+          <name>map_background_Street2.png</name>
+          <exists>-1</exists>
+          <size>1452188</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Street2.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Street3.png</name>
+          <exists>-1</exists>
+          <size>941087</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Street3.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Trinity.png</name>
+          <exists>-1</exists>
+          <size>1415815</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Trinity.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_HYAKKIYAKO.png</name>
           <exists>-1</exists>
           <size>1542370</size>
           <exportAction>2</exportAction>
@@ -677,10 +728,10 @@
               <CopyToMask>9223372036854775807</CopyToMask>
             </Config>
           </ConfigOptions>
-          <filename>map_background_4.png</filename>
+          <filename>map_background_HYAKKIYAKO.png</filename>
         </datafile>
         <datafile>
-          <name>map_background_5.png</name>
+          <name>map_background_Abydos.png</name>
           <exists>-1</exists>
           <size>1575059</size>
           <exportAction>2</exportAction>
@@ -694,101 +745,201 @@
               <CopyToMask>9223372036854775807</CopyToMask>
             </Config>
           </ConfigOptions>
-          <filename>map_background_5.png</filename>
+          <filename>map_background_Abydos.png</filename>
         </datafile>
-        <datafiles number="166" name="boss">
-          <datafile>
-            <name>map_background_binah.png</name>
-            <exists>-1</exists>
-            <size>2021756</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>map_background_binah.png</filename>
-          </datafile>
-          <datafile>
-            <name>map_background_chesed.png</name>
-            <exists>-1</exists>
-            <size>2434247</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>map_background_chesed.png</filename>
-          </datafile>
-          <datafile>
-            <name>map_background_sirokuro.png</name>
-            <exists>-1</exists>
-            <size>2278690</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>map_background_sirokuro.png</filename>
-          </datafile>
-        </datafiles>
+        <datafile>
+          <name>map_background_Binah.png</name>
+          <exists>-1</exists>
+          <size>2021756</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Binah.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Chesed.png</name>
+          <exists>-1</exists>
+          <size>2434247</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Chesed.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Sirokuro.png</name>
+          <exists>-1</exists>
+          <size>2278690</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Sirokuro.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Arius.png</name>
+          <exists>-1</exists>
+          <size>942249</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Arius.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Beach.png</name>
+          <exists>-1</exists>
+          <size>635999</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Beach.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Bunny.png</name>
+          <exists>-1</exists>
+          <size>1180628</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Bunny.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Gehena.png</name>
+          <exists>-1</exists>
+          <size>1064532</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Gehena.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Miritary_base.png</name>
+          <exists>-1</exists>
+          <size>924537</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Miritary_base.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Millennium.png</name>
+          <exists>-1</exists>
+          <size>1015135</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Millennium.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_Redwinter.png</name>
+          <exists>-1</exists>
+          <size>1351920</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_Redwinter.png</filename>
+        </datafile>
+        <datafile>
+          <name>map_background_SHANHAIJING.png</name>
+          <exists>-1</exists>
+          <size>1237717</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>map_background_SHANHAIJING.png</filename>
+        </datafile>
       </datafiles>
     </datafiles>
-    <datafiles number="166" name="bgm">
-      <datafiles number="166" name="map_bgm">
+    <datafiles number="203" name="bgm">
+      <datafiles number="203" name="map_bgm">
         <datafile>
-          <name>bgm_map_1.ogg</name>
-          <exists>-1</exists>
-          <size>1641284</size>
-          <exportAction>2</exportAction>
-          <exportDir></exportDir>
-          <overwrite>0</overwrite>
-          <freeData>-1</freeData>
-          <removeEnd>0</removeEnd>
-          <store>0</store>
-          <ConfigOptions>
-            <Config name="Default">
-              <CopyToMask>9223372036854775807</CopyToMask>
-            </Config>
-          </ConfigOptions>
-          <filename>bgm_map_1.ogg</filename>
-        </datafile>
-        <datafile>
-          <name>bgm_map_2.ogg</name>
-          <exists>-1</exists>
-          <size>2095986</size>
-          <exportAction>2</exportAction>
-          <exportDir></exportDir>
-          <overwrite>0</overwrite>
-          <freeData>-1</freeData>
-          <removeEnd>0</removeEnd>
-          <store>0</store>
-          <ConfigOptions>
-            <Config name="Default">
-              <CopyToMask>9223372036854775807</CopyToMask>
-            </Config>
-          </ConfigOptions>
-          <filename>bgm_map_2.ogg</filename>
-        </datafile>
-        <datafile>
-          <name>bgm_map_3.ogg</name>
+          <name>bgm_map_Street1.ogg</name>
           <exists>-1</exists>
           <size>1488009</size>
           <exportAction>2</exportAction>
@@ -802,10 +953,44 @@
               <CopyToMask>9223372036854775807</CopyToMask>
             </Config>
           </ConfigOptions>
-          <filename>bgm_map_3.ogg</filename>
+          <filename>bgm_map_Street1.ogg</filename>
         </datafile>
         <datafile>
-          <name>bgm_map_4.ogg</name>
+          <name>bgm_map_Street2.ogg</name>
+          <exists>-1</exists>
+          <size>1641284</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Street2.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Trinity.ogg</name>
+          <exists>-1</exists>
+          <size>2095986</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Trinity.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_HYAKKIYAKO.ogg</name>
           <exists>-1</exists>
           <size>1627429</size>
           <exportAction>2</exportAction>
@@ -819,10 +1004,10 @@
               <CopyToMask>9223372036854775807</CopyToMask>
             </Config>
           </ConfigOptions>
-          <filename>bgm_map_4.ogg</filename>
+          <filename>bgm_map_HYAKKIYAKO.ogg</filename>
         </datafile>
         <datafile>
-          <name>bgm_map_5.ogg</name>
+          <name>bgm_map_Abydos.ogg</name>
           <exists>-1</exists>
           <size>1589272</size>
           <exportAction>2</exportAction>
@@ -836,61 +1021,212 @@
               <CopyToMask>9223372036854775807</CopyToMask>
             </Config>
           </ConfigOptions>
-          <filename>bgm_map_5.ogg</filename>
+          <filename>bgm_map_Abydos.ogg</filename>
         </datafile>
-        <datafiles number="166" name="boss">
-          <datafile>
-            <name>bgm_sirokuro.ogg</name>
-            <exists>-1</exists>
-            <size>1165389</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>bgm_sirokuro.ogg</filename>
-          </datafile>
-          <datafile>
-            <name>bgm_binah.ogg</name>
-            <exists>-1</exists>
-            <size>1838768</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>bgm_binah.ogg</filename>
-          </datafile>
-          <datafile>
-            <name>bgm_chesed.ogg</name>
-            <exists>-1</exists>
-            <size>1353462</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>bgm_chesed.ogg</filename>
-          </datafile>
-        </datafiles>
+        <datafile>
+          <name>bgm_map_Sirokuro.ogg</name>
+          <exists>-1</exists>
+          <size>1165389</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Sirokuro.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Binah.ogg</name>
+          <exists>-1</exists>
+          <size>1838768</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Binah.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Chesed.ogg</name>
+          <exists>-1</exists>
+          <size>1353462</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Chesed.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Arius.ogg</name>
+          <exists>-1</exists>
+          <size>1638379</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Arius.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Beach.ogg</name>
+          <exists>-1</exists>
+          <size>1624739</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Beach.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Bunny.ogg</name>
+          <exists>-1</exists>
+          <size>1459593</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Bunny.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Gehena.ogg</name>
+          <exists>-1</exists>
+          <size>1513177</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Gehena.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Miritary_base.ogg</name>
+          <exists>-1</exists>
+          <size>1734719</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Miritary_base.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Millennium.ogg</name>
+          <exists>-1</exists>
+          <size>1865492</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Millennium.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Redwinter.ogg</name>
+          <exists>-1</exists>
+          <size>1796670</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Redwinter.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_SHANHAIJING.ogg</name>
+          <exists>-1</exists>
+          <size>1716105</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_SHANHAIJING.ogg</filename>
+        </datafile>
+        <datafile>
+          <name>bgm_map_Street3.ogg</name>
+          <exists>-1</exists>
+          <size>1598885</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bgm_map_Street3.ogg</filename>
+        </datafile>
       </datafiles>
       <datafile>
         <name>bgm_shop.ogg</name>
@@ -1080,22 +1416,330 @@
         <filename>bgm_story.ogg</filename>
       </datafile>
     </datafiles>
+    <datafiles number="203" name="tutorial">
+      <datafile>
+        <name>tutorial_sheet.json</name>
+        <exists>-1</exists>
+        <size>3092</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_sheet.json</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_attack.png</name>
+        <exists>-1</exists>
+        <size>248871</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_attack.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_cafe.png</name>
+        <exists>-1</exists>
+        <size>209699</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_cafe.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_craftchamber.png</name>
+        <exists>-1</exists>
+        <size>205794</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_craftchamber.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_dead.png</name>
+        <exists>-1</exists>
+        <size>440786</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_dead.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_defence.png</name>
+        <exists>-1</exists>
+        <size>569172</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_defence.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_formation.png</name>
+        <exists>-1</exists>
+        <size>373643</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_formation.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_move.png</name>
+        <exists>-1</exists>
+        <size>250188</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_move.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_progress.png</name>
+        <exists>-1</exists>
+        <size>117356</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_progress.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_rapid.png</name>
+        <exists>-1</exists>
+        <size>484354</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_rapid.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_recruit1.png</name>
+        <exists>-1</exists>
+        <size>268719</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_recruit1.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_recruit2.png</name>
+        <exists>-1</exists>
+        <size>138975</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_recruit2.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_shop.png</name>
+        <exists>-1</exists>
+        <size>285845</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_shop.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_taunt.png</name>
+        <exists>-1</exists>
+        <size>563330</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_taunt.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_skill_level.png</name>
+        <exists>-1</exists>
+        <size>454209</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_skill_level.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_weekness.png</name>
+        <exists>-1</exists>
+        <size>424851</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_weekness.png</filename>
+      </datafile>
+      <datafile>
+        <name>tutorial_image_turn.png</name>
+        <exists>-1</exists>
+        <size>275344</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>tutorial_image_turn.png</filename>
+      </datafile>
+    </datafiles>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sd_battle_enter</sound>
-    <sound>sound\sd_gacha</sound>
-    <sound>sound\sd_lock_open</sound>
-    <sound>sound\sd_battle_start</sound>
-    <sound>sound\sd_result_screen</sound>
-    <sound>sound\sd_victory_str</sound>
-    <sound>sound\sd_button</sound>
-    <sound>sound\sd_craft</sound>
-    <sound>sound\sd_basic_attack</sound>
-    <sound>sound\sd_buff</sound>
-    <sound>sound\sd_bomb_shot</sound>
-    <sound>sound\sd_continuous_attack</sound>
-    <sound>sound\sd_bomb_hit</sound>
+    <sound>sound\sd_undefined_sound</sound>
+    <sounds name="UI">
+      <sound>sound\sd_gacha</sound>
+      <sound>sound\sd_lock_open</sound>
+      <sound>sound\sd_button</sound>
+      <sound>sound\sd_cash_register</sound>
+    </sounds>
+    <sounds name="battle">
+      <sound>sound\sd_victory_str</sound>
+      <sound>sound\sd_result_screen</sound>
+      <sound>sound\sd_battle_enter</sound>
+      <sound>sound\sd_battle_start</sound>
+      <sound>sound\sd_craft</sound>
+    </sounds>
+    <sounds name="bullet">
+      <sound>sound\sd_basic_attack</sound>
+      <sound>sound\sd_buff</sound>
+      <sound>sound\sd_bomb_shot</sound>
+      <sound>sound\sd_continuous_attack</sound>
+      <sound>sound\sd_bomb_hit</sound>
+      <sound>sound\sd_weak_shot</sound>
+      <sound>sound\sd_flashbang</sound>
+      <sound>sound\sd_fire</sound>
+      <sound>sound\sd_shotgun_attack</sound>
+      <sound>sound\sd_critical_shot</sound>
+      <sound>sound\sd_grenade_luncher</sound>
+      <sound>sound\sd_supernova</sound>
+      <sound>sound\sd_summon</sound>
+      <sound>sound\sd_midori_skill_sound</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="EX">
@@ -1154,8 +1798,18 @@
         <sprite>sprites\spr_school_icon</sprite>
         <sprite>sprites\spr_mini_card</sprite>
         <sprite>sprites\spr_card_stat</sprite>
+        <sprite>sprites\spr_card_mini_spec</sprite>
+        <sprite>sprites\spr_damage_predictive_ui</sprite>
+        <sprite>sprites\spr_card_description</sprite>
+        <sprite>sprites\spr_card_description2</sprite>
         <sprite>sprites\spr_dead_mask</sprite>
         <sprite>sprites\spr_dead_painting</sprite>
+        <sprite>sprites\spr_white_card</sprite>
+        <sprite>sprites\spr_empty_card</sprite>
+        <sprite>sprites\spr_portrait_outline</sprite>
+        <sprite>sprites\spr_portrait_outline_summon</sprite>
+        <sprite>sprites\spr_portrait_outline_myturn</sprite>
+        <sprite>sprites\spr_portrait_outline_highest_taunt</sprite>
         <sprites name="Card_summon_portrait">
           <sprite>sprites\spr_portrait_puppet</sprite>
           <sprite>sprites\spr_portrait_Shiroko_drone</sprite>
@@ -1166,6 +1820,8 @@
           <sprite>sprites\spr_portrait_Momoyo_Hall_Take_out</sprite>
           <sprite>sprites\spr_portrait_Red_winter_Lifeguard</sprite>
           <sprite>sprites\spr_portrait_utiamte_pizza_machine</sprite>
+          <sprite>sprites\spr_portrait_Perorodzilla</sprite>
+          <sprite>sprites\spr_portrait_Fan_chan</sprite>
         </sprites>
         <sprites name="Card_playable_portrait">
           <sprite>sprites\spr_portrait_undefined</sprite>
@@ -1185,6 +1841,12 @@
             <sprite>sprites\spr_portrait_Hina</sprite>
             <sprite>sprites\spr_portrait_Aru</sprite>
             <sprite>sprites\spr_portrait_Ako</sprite>
+            <sprite>sprites\spr_portrait_Mutsuki</sprite>
+            <sprite>sprites\spr_portrait_Kayoko</sprite>
+            <sprite>sprites\spr_portrait_Haruka</sprite>
+            <sprite>sprites\spr_portrait_Iori</sprite>
+            <sprite>sprites\spr_portrait_Chinatsu</sprite>
+            <sprite>sprites\spr_portrait_Juri</sprite>
           </sprites>
           <sprites name="Millennium">
             <sprite>sprites\spr_portrait_Himari</sprite>
@@ -1194,6 +1856,12 @@
             <sprite>sprites\spr_portrait_Neru</sprite>
             <sprite>sprites\spr_portrait_Hibiki</sprite>
             <sprite>sprites\spr_portrait_Chihiro</sprite>
+            <sprite>sprites\spr_portrait_Asuna</sprite>
+            <sprite>sprites\spr_portrait_Karin</sprite>
+            <sprite>sprites\spr_portrait_Akane</sprite>
+            <sprite>sprites\spr_portrait_Arisu</sprite>
+            <sprite>sprites\spr_portrait_Momoi</sprite>
+            <sprite>sprites\spr_portrait_Midori</sprite>
           </sprites>
           <sprites name="Trinity">
             <sprite>sprites\spr_portrait_Suzumi</sprite>
@@ -1203,6 +1871,12 @@
             <sprite>sprites\spr_portrait_Azusa</sprite>
             <sprite>sprites\spr_portrait_Ui</sprite>
             <sprite>sprites\spr_portrait_Mika</sprite>
+            <sprite>sprites\spr_portrait_Hifumi</sprite>
+            <sprite>sprites\spr_portrait_Yoshimi</sprite>
+            <sprite>sprites\spr_portrait_Hasumi</sprite>
+            <sprite>sprites\spr_portrait_Mashiro</sprite>
+            <sprite>sprites\spr_portrait_Koharu</sprite>
+            <sprite>sprites\spr_portrait_Natsu</sprite>
           </sprites>
           <sprites name="HYAKKIYAKO">
             <sprite>sprites\spr_portrait_Tsubaki</sprite>
@@ -1210,6 +1884,13 @@
             <sprite>sprites\spr_portrait_Wakamo</sprite>
             <sprite>sprites\spr_portrait_Izuna</sprite>
             <sprite>sprites\spr_portrait_Chise</sprite>
+            <sprite>sprites\spr_portrait_Pina</sprite>
+            <sprite>sprites\spr_portrait_Mimori</sprite>
+            <sprite>sprites\spr_portrait_Kaede</sprite>
+            <sprite>sprites\spr_portrait_Miciru</sprite>
+            <sprite>sprites\spr_portrait_Tsukuyo</sprite>
+            <sprite>sprites\spr_portrait_Tsukuyo_tree</sprite>
+            <sprite>sprites\spr_portrait_Kaho</sprite>
           </sprites>
           <sprites name="SHANHAIJING">
             <sprite>sprites\spr_portrait_Kokona</sprite>
@@ -1241,17 +1922,10 @@
             <sprite>sprites\spr_portrait_Atsuko</sprite>
           </sprites>
           <sprites name="sad_cut">
-            <sprite>sprites\spr_portrait_Chinatsu</sprite>
             <sprite>sprites\spr_portrait_Airi</sprite>
-            <sprite>sprites\spr_portrait_Akane</sprite>
             <sprite>sprites\spr_portrait_Akari</sprite>
-            <sprite>sprites\spr_portrait_Arisu</sprite>
-            <sprite>sprites\spr_portrait_Asuna</sprite>
             <sprite>sprites\spr_portrait_Eimi</sprite>
           </sprites>
-          <sprite>sprites\spr_white_card</sprite>
-          <sprite>sprites\spr_empty_card</sprite>
-          <sprite>sprites\spr_portrait_outline</sprite>
         </sprites>
         <sprites name="Card_enemy_portrait">
           <sprite>sprites\spr_portrait_part_timer</sprite>
@@ -1275,6 +1949,16 @@
           <sprite>sprites\spr_portrait_Kaiser_PMC_Soldier</sprite>
           <sprite>sprites\spr_portrait_Kaiser_PMC_Specialist</sprite>
           <sprite>sprites\spr_portrait_Kaiser_PMC_General</sprite>
+          <sprite>sprites\spr_portrait_UDT</sprite>
+          <sprite>sprites\spr_portrait_Descartes</sprite>
+          <sprite>sprites\spr_portrait_Bunny_girl_guard</sprite>
+          <sprite>sprites\spr_portrait_Genbu_Express_employee</sprite>
+          <sprite>sprites\spr_portrait_Xuanlong_member</sprite>
+          <sprite>sprites\spr_portrait_Hot_Spring_Department</sprite>
+          <sprite>sprites\spr_portrait_Labor_Party</sprite>
+          <sprite>sprites\spr_portrait_Tea_Party_attendant_A</sprite>
+          <sprite>sprites\spr_portrait_Tea_Party_attendant_B</sprite>
+          <sprite>sprites\spr_portrait_Gehena_member</sprite>
           <sprites name="boss">
             <sprite>sprites\spr_portrait_siro</sprite>
             <sprite>sprites\spr_portrait_siroball</sprite>
@@ -1288,23 +1972,29 @@
       <sprites name="skill">
         <sprite>sprites\spr_card_pointer_head</sprite>
         <sprite>sprites\spr_card_pointer_body</sprite>
+        <sprite>sprites\spr_card_pointer_self_cast</sprite>
+        <sprite>sprites\spr_skill_card</sprite>
         <sprite>sprites\spr_large_skill_card</sprite>
         <sprite>sprites\spr_skill_extra_description</sprite>
-        <sprite>sprites\spr_skill_card</sprite>
+        <sprite>sprites\spr_skill_extra_description_slot</sprite>
         <sprite>sprites\spr_skill_speech_bubble</sprite>
         <sprite>sprites\spr_skill_speech_bubble_L</sprite>
         <sprite>sprites\spr_skill_speech_bubble_R</sprite>
+        <sprite>sprites\spr_skill_cancel_button</sprite>
         <sprites name="buff_icon">
           <sprite>sprites\spr_buff_icon_att</sprite>
           <sprite>sprites\spr_buff_icon_def</sprite>
           <sprite>sprites\spr_buff_icon_rap</sprite>
           <sprite>sprites\spr_buff_icon_tau</sprite>
           <sprite>sprites\spr_buff_icon_lev</sprite>
+          <sprite>sprites\spr_buff_icon_dodge</sprite>
           <sprite>sprites\spr_debuff_icon_att</sprite>
           <sprite>sprites\spr_debuff_icon_def</sprite>
           <sprite>sprites\spr_debuff_icon_rap</sprite>
           <sprite>sprites\spr_debuff_icon_tau</sprite>
           <sprite>sprites\spr_debuff_icon_lev</sprite>
+          <sprite>sprites\spr_buff_icon_enegy_charge</sprite>
+          <sprite>sprites\spr_buff_icon_weakness_recovery</sprite>
           <sprite>sprites\spr_debuff_icon_weakness</sprite>
         </sprites>
         <sprites name="icon">
@@ -1313,6 +2003,10 @@
           <sprite>sprites\spr_skill_icon_background_passive</sprite>
           <sprite>sprites\spr_skill_icon_background_non_targeting</sprite>
           <sprite>sprites\spr_icon_rest</sprite>
+          <sprites name="summon">
+            <sprite>sprites\spr_icon_skill_111</sprite>
+            <sprite>sprites\spr_icon_skill_112</sprite>
+          </sprites>
           <sprites name="1000">
             <sprite>sprites\spr_icon_skill_1001</sprite>
             <sprite>sprites\spr_icon_skill_1002</sprite>
@@ -1328,6 +2022,12 @@
             <sprite>sprites\spr_icon_skill_2005</sprite>
             <sprite>sprites\spr_icon_skill_2006</sprite>
             <sprite>sprites\spr_icon_skill_2007</sprite>
+            <sprite>sprites\spr_icon_skill_2008</sprite>
+            <sprite>sprites\spr_icon_skill_2009</sprite>
+            <sprite>sprites\spr_icon_skill_2010</sprite>
+            <sprite>sprites\spr_icon_skill_2011</sprite>
+            <sprite>sprites\spr_icon_skill_2012</sprite>
+            <sprite>sprites\spr_icon_skill_2013</sprite>
           </sprites>
           <sprites name="3000">
             <sprite>sprites\spr_icon_skill_3001</sprite>
@@ -1337,6 +2037,12 @@
             <sprite>sprites\spr_icon_skill_3005</sprite>
             <sprite>sprites\spr_icon_skill_3006</sprite>
             <sprite>sprites\spr_icon_skill_3007</sprite>
+            <sprite>sprites\spr_icon_skill_3008</sprite>
+            <sprite>sprites\spr_icon_skill_3009</sprite>
+            <sprite>sprites\spr_icon_skill_3010</sprite>
+            <sprite>sprites\spr_icon_skill_3011</sprite>
+            <sprite>sprites\spr_icon_skill_3012</sprite>
+            <sprite>sprites\spr_icon_skill_3013</sprite>
           </sprites>
           <sprites name="4000">
             <sprite>sprites\spr_icon_skill_4001</sprite>
@@ -1346,6 +2052,12 @@
             <sprite>sprites\spr_icon_skill_4005</sprite>
             <sprite>sprites\spr_icon_skill_4006</sprite>
             <sprite>sprites\spr_icon_skill_4007</sprite>
+            <sprite>sprites\spr_icon_skill_4008</sprite>
+            <sprite>sprites\spr_icon_skill_4009</sprite>
+            <sprite>sprites\spr_icon_skill_4010</sprite>
+            <sprite>sprites\spr_icon_skill_4011</sprite>
+            <sprite>sprites\spr_icon_skill_4012</sprite>
+            <sprite>sprites\spr_icon_skill_4013</sprite>
           </sprites>
           <sprites name="5000">
             <sprite>sprites\spr_icon_skill_5001</sprite>
@@ -1353,6 +2065,12 @@
             <sprite>sprites\spr_icon_skill_5003</sprite>
             <sprite>sprites\spr_icon_skill_5004</sprite>
             <sprite>sprites\spr_icon_skill_5005</sprite>
+            <sprite>sprites\spr_icon_skill_5006</sprite>
+            <sprite>sprites\spr_icon_skill_5007</sprite>
+            <sprite>sprites\spr_icon_skill_5008</sprite>
+            <sprite>sprites\spr_icon_skill_5009</sprite>
+            <sprite>sprites\spr_icon_skill_5010</sprite>
+            <sprite>sprites\spr_icon_skill_5011</sprite>
           </sprites>
           <sprites name="6000">
             <sprite>sprites\spr_icon_skill_6001</sprite>
@@ -1382,6 +2100,18 @@
             <sprite>sprites\spr_icon_skill_10002</sprite>
             <sprite>sprites\spr_icon_skill_10003</sprite>
             <sprite>sprites\spr_icon_skill_10004</sprite>
+          </sprites>
+          <sprites name="boss">
+            <sprite>sprites\spr_icon_skill_2501</sprite>
+            <sprite>sprites\spr_icon_skill_2504</sprite>
+            <sprite>sprites\spr_icon_skill_2506</sprite>
+            <sprite>sprites\spr_icon_skill_2507</sprite>
+            <sprite>sprites\spr_icon_skill_2508</sprite>
+            <sprite>sprites\spr_icon_skill_2509</sprite>
+            <sprite>sprites\spr_icon_skill_2510</sprite>
+            <sprite>sprites\spr_icon_skill_2511</sprite>
+            <sprite>sprites\spr_icon_skill_2512</sprite>
+            <sprite>sprites\spr_icon_skill_2513</sprite>
           </sprites>
         </sprites>
       </sprites>
@@ -1452,30 +2182,83 @@
       <sprites name="battle_effect">
         <sprite>sprites\spr_gun_fire_effect</sprite>
         <sprite>sprites\spr_gun_hit_effect</sprite>
-        <sprite>sprites\spr_bullet</sprite>
-        <sprite>sprites\spr_bullet_critical</sprite>
-        <sprite>sprites\spr_bullet_mystic</sprite>
         <sprite>sprites\spr_bullet_hit_effect_A</sprite>
         <sprite>sprites\spr_bullet_hit_effect_B</sprite>
         <sprite>sprites\spr_bullet_hit_effect_C</sprite>
         <sprite>sprites\spr_bullet_hit_effect_D</sprite>
-        <sprites name="buff/debuff">
+        <sprites name="bullet_sprite">
+          <sprite>sprites\spr_bullet</sprite>
+          <sprite>sprites\spr_bullet_critical</sprite>
+          <sprite>sprites\spr_bullet_mystic</sprite>
+          <sprite>sprites\spr_bullet_spread</sprite>
+          <sprite>sprites\spr_spread_parts</sprite>
+          <sprite>sprites\spr_green_ball_bullet</sprite>
+          <sprite>sprites\spr_sandstorm</sprite>
+          <sprite>sprites\spr_flamethrower</sprite>
+          <sprite>sprites\spr_fire_debuff_animation</sprite>
+          <sprite>sprites\spr_yumyum</sprite>
+          <sprite>sprites\spr_hardboiled_shot</sprite>
+          <sprite>sprites\spr_molotov_cocktail</sprite>
+          <sprite>sprites\spr_pizza</sprite>
+          <sprite>sprites\spr_justice_cross_bullet</sprite>
+          <sprite>sprites\spr_justice_cross_effect</sprite>
+          <sprite>sprites\spr_explosion_middle</sprite>
+          <sprite>sprites\spr_flash_drone</sprite>
+          <sprite>sprites\spr_fire_grenade</sprite>
+          <sprites name="sirokuro">
+            <sprite>sprites\spr_dust_effect</sprite>
+            <sprite>sprites\spr_carousel</sprite>
+            <sprite>sprites\spr_siro_ball</sprite>
+            <sprite>sprites\spr_dodgems</sprite>
+          </sprites>
+          <sprites name="holy_grenade">
+            <sprite>sprites\spr_holy_grenade</sprite>
+            <sprite>sprites\spr_holy_explosion</sprite>
+          </sprites>
+          <sprites name="missile">
+            <sprite>sprites\spr_missile</sprite>
+            <sprite>sprites\spr_missile_explosion_effect</sprite>
+            <sprite>sprites\spr_missile_smoke</sprite>
+          </sprites>
+          <sprites name="flash_bang">
+            <sprite>sprites\spr_flash_bang</sprite>
+            <sprite>sprites\spr_flash_bang_effect</sprite>
+          </sprites>
+          <sprites name="nyancat">
+            <sprite>sprites\spr_nyancat_body</sprite>
+            <sprite>sprites\spr_nyancat_tail</sprite>
+          </sprites>
+          <sprites name="super_nova">
+            <sprite>sprites\spr_super_nova_root</sprite>
+            <sprite>sprites\spr_super_nova_tailwind</sprite>
+            <sprite>sprites\spr_super_nova_starter</sprite>
+            <sprite>sprites\spr_super_nova_head</sprite>
+            <sprite>sprites\spr_super_nova_body</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="skill_effects">
+          <sprites name="flip_coin">
+            <sprite>sprites\spr_flip_coin_front</sprite>
+            <sprite>sprites\spr_flip_coin_back</sprite>
+            <sprite>sprites\spr_flip_coin</sprite>
+          </sprites>
+          <sprites name="summoning">
+            <sprite>sprites\spr_summonning_card</sprite>
+            <sprite>sprites\spr_summon_animation</sprite>
+          </sprites>
+          <sprite>sprites\spr_extra_turn_effect</sprite>
+          <sprite>sprites\spr_dodge_effect</sprite>
+          <sprite>sprites\spr_failed_skill_effect</sprite>
+          <sprite>sprites\spr_yoshimi_smile_icon</sprite>
           <sprite>sprites\spr_barrier</sprite>
+          <sprite>sprites\spr_week_hit_count_effect</sprite>
+          <sprite>sprites\spr_fear_effect</sprite>
           <sprite>sprites\spr_stun_effect</sprite>
           <sprite>sprites\spr_fire_debuff</sprite>
           <sprite>sprites\spr_flower</sprite>
           <sprite>sprites\spr_izuna_doll</sprite>
           <sprite>sprites\spr_good_stamp</sprite>
-          <sprite>sprites\spr_recovery_effect</sprite>
-          <sprite>sprites\spr_defence_power_effect</sprite>
-          <sprite>sprites\spr_attack_power_effect</sprite>
-          <sprite>sprites\spr_shield_break_before</sprite>
-          <sprite>sprites\spr_shield_break_after</sprite>
-          <sprite>sprites\spr_statdown_effect</sprite>
         </sprites>
-        <sprite>sprites\spr_missile_explosion_effect</sprite>
-        <sprite>sprites\spr_missile_smoke</sprite>
-        <sprite>sprites\spr_missile</sprite>
       </sprites>
       <sprites name="battle_end">
         <sprite>sprites\spr_victory_str</sprite>
@@ -1483,6 +2266,7 @@
         <sprite>sprites\spr_get_item_slot</sprite>
         <sprite>sprites\spr_result_screen</sprite>
         <sprite>sprites\spr_defeat_str</sprite>
+        <sprite>sprites\spr_game_end_arisu</sprite>
       </sprites>
       <sprites name="battle_enter_effect">
         <sprite>sprites\spr_effect_triangle1</sprite>
@@ -1498,6 +2282,7 @@
       <sprite>sprites\spr_board_bg</sprite>
       <sprite>sprites\spr_bluestone</sprite>
       <sprite>sprites\spr_craftstone</sprite>
+      <sprite>sprites\spr_chaos_mode_menu_bar</sprite>
       <sprites name="platform">
         <sprite>sprites\spr_platform_battle</sprite>
         <sprite>sprites\spr_platform_cafe</sprite>
@@ -1531,6 +2316,8 @@
       <sprite>sprites\spr_shop_bg</sprite>
       <sprite>sprites\spr_shop_slot_bg</sprite>
       <sprite>sprites\spr_shop_slot_button</sprite>
+      <sprite>sprites\spr_shop_reroll_button</sprite>
+      <sprite>sprites\spr_shop_craftstone_sell_button</sprite>
     </sprites>
     <sprites name="CAFE">
       <sprite>sprites\spr_cafe_bg</sprite>
@@ -1540,6 +2327,8 @@
     </sprites>
     <sprites name="formation">
       <sprite>sprites\spr_formation_bg</sprite>
+      <sprite>sprites\spr_formation_go_cafe_slot</sprite>
+      <sprite>sprites\spr_formation_no_cafe</sprite>
       <sprites name="replace">
         <sprite>sprites\spr_replace_character_slot</sprite>
         <sprite>sprites\spr_replace_skill_slot</sprite>
@@ -1572,17 +2361,33 @@
         <sprite>sprites\spr_developer_credit_button</sprite>
         <sprite>sprites\spr_story_button</sprite>
         <sprite>sprites\spr_tutorial_button</sprite>
+        <sprite>sprites\spr_start_chaos_mode_button</sprite>
+        <sprite>sprites\spr_start_chaos_mode_button_old</sprite>
+        <sprite>sprites\spr_lab_mode_button</sprite>
       </sprites>
       <sprites name="tutorial">
         <sprite>sprites\spr_tutorial_bg</sprite>
         <sprite>sprites\spr_tutorial_content</sprite>
         <sprite>sprites\spr_tutorial_content_button_R</sprite>
         <sprite>sprites\spr_tutorial_content_button_L</sprite>
+        <sprite>sprites\spr_tutorial_chaos_mode_enter_button</sprite>
         <sprite>sprites\spr_tutorial_esc</sprite>
       </sprites>
     </sprites>
-    <sprite>sprites\sprite123</sprite>
-    <sprite>sprites\sprite341</sprite>
+    <sprites name="lab">
+      <sprite>sprites\spr_lab_button_open</sprite>
+      <sprite>sprites\spr_lab_button_reset</sprite>
+      <sprite>sprites\spr_lab_button_start</sprite>
+      <sprite>sprites\spr_lab_button_next_turn</sprite>
+      <sprite>sprites\spr_lab_button_full_and_start</sprite>
+      <sprite>sprites\spr_lab_button_emptying_decks_ally</sprite>
+      <sprite>sprites\spr_lab_button_emptying_decks_enemy</sprite>
+      <sprite>sprites\spr_lab_button_insert_puppet</sprite>
+      <sprite>sprites\spr_lab_button_exit</sprite>
+      <sprite>sprites\spr_lab_button_conbination_phase</sprite>
+      <sprite>sprites\spr_lab_button_next_conbination</sprite>
+      <sprite>sprites\spr_lab_button_pre_conbination</sprite>
+    </sprites>
     <sprites name="story">
       <sprite>sprites\spr_dialogbox_line</sprite>
       <sprite>sprites\spr_dialogbox</sprite>
@@ -1590,42 +2395,61 @@
       <sprite>sprites\spr_story_panel_right</sprite>
       <sprite>sprites\spr_story_list_bar</sprite>
       <sprite>sprites\spr_story_list_button</sprite>
+      <sprite>sprites\spr_story_skip</sprite>
     </sprites>
-    <sprite>sprites\sprite352</sprite>
-    <sprite>sprites\spr_game_end_arisu</sprite>
+    <sprite>sprites\sprite361</sprite>
+    <sprite>sprites\sprite341</sprite>
+    <sprite>sprites\sprite123</sprite>
+    <sprite>sprites\sprite501</sprite>
+    <sprite>sprites\sprite502</sprite>
   </sprites>
   <backgrounds name="background"/>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\pa_missle_1</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="inclue_file_handler">
       <scripts name="json_handle">
         <script>scripts\make_gacha_table.gml</script>
         <script>scripts\skill_database.gml</script>
+        <script>scripts\skill_extra_description_sheet.gml</script>
         <script>scripts\equipment_database.gml</script>
         <script>scripts\character_sheet.gml</script>
+        <script>scripts\tutorial_sheet.gml</script>
+        <script>scripts\map_background_sheet.gml</script>
         <scripts name="search_map_data">
           <script>scripts\search_skill.gml</script>
+          <script>scripts\search_extra_description.gml</script>
           <script>scripts\search_equipment.gml</script>
           <script>scripts\search_character.gml</script>
         </scripts>
       </scripts>
     </scripts>
+    <scripts name="constructor">
+      <script>scripts\effect_instance_create.gml</script>
+    </scripts>
     <scripts name="skill_judgment">
       <script>scripts\use_skill.gml</script>
+      <script>scripts\multi_skill_target_load_on_stack.gml</script>
       <script>scripts\search_skill_extra_target.gml</script>
       <script>scripts\search_skill_location_target.gml</script>
+      <script>scripts\kill_rate_of_skill.gml</script>
       <script>scripts\continuous_shooting.gml</script>
       <script>scripts\attack_calculation.gml</script>
-      <script>scripts\mika_attack.gml</script>
       <script>scripts\make_bullet.gml</script>
       <scripts name="extra_skill_effect">
+        <script>scripts\coin_flip.gml</script>
+        <script>scripts\target_search.gml</script>
+        <script>scripts\shield_break.gml</script>
         <script>scripts\position_swap.gml</script>
         <script>scripts\card_stat_change.gml</script>
+        <script>scripts\give_debuff_cure.gml</script>
         <script>scripts\summon_card.gml</script>
         <script>scripts\give_barrier.gml</script>
         <script>scripts\give_fire_debuff.gml</script>
         <script>scripts\give_extra_turn.gml</script>
         <script>scripts\stun_hit.gml</script>
+        <script>scripts\fear_hit.gml</script>
       </scripts>
     </scripts>
     <scripts name="equipment_data">
@@ -1645,6 +2469,7 @@
     <scripts name="funtion">
       <script>scripts\instance_create_v.gml</script>
       <script>scripts\draw_text_outline.gml</script>
+      <script>scripts\draw_text_outline_ext.gml</script>
       <script>scripts\mouse_enter.gml</script>
       <script>scripts\ds_list_value_destroy.gml</script>
       <script>scripts\instance_nth_nearest.gml</script>
@@ -1674,6 +2499,8 @@
       <script>scripts\EaseInQuart.gml</script>
       <script>scripts\EaseOutQuart.gml</script>
       <script>scripts\EaseInOutQuint.gml</script>
+      <script>scripts\bezier_curve_x.gml</script>
+      <script>scripts\bezier_curve_y.gml</script>
     </scripts>
     <scripts name="story">
       <script>scripts\add_character_sprite.gml</script>
@@ -1698,6 +2525,7 @@
     <font>fonts\ft_Ingame_font</font>
     <font>fonts\ft_name_font</font>
     <font>fonts\ft_eng_name_font</font>
+    <font>fonts\ft_gyeonggi_sz14_Bold</font>
     <font>fonts\ft_gyeonggi_sz15_Italic_Light</font>
     <font>fonts\ft_gyeonggi_sz32_Bold</font>
     <font>fonts\ft_gyeonggi_sz17_Bold_NO</font>
@@ -1710,6 +2538,7 @@
     <object>objects\obj_GAME_END_MANAGER</object>
     <object>objects\obj_BOARD_MANAGER</object>
     <object>objects\obj_BATTLE_MANAGER</object>
+    <object>objects\obj_LAB_MANAGER</object>
     <object>objects\obj_SHOP_MANAGER</object>
     <object>objects\obj_FORMATION_MANAGER</object>
     <object>objects\obj_CRAFT_CHAMBER_MANAGER</object>
@@ -1738,12 +2567,14 @@
     </objects>
     <objects name="battle">
       <object>objects\obj_skill_handler</object>
+      <object>objects\obj_nontarget_skill_handler</object>
       <object>objects\obj_battle_background</object>
       <object>objects\obj_skill_speech_bubble</object>
       <object>objects\obj_enemy_skill_controler</object>
       <object>objects\obj_battle_turn_manager</object>
       <object>objects\obj_continuous_shooting_manager</object>
       <object>objects\obj_damage_write</object>
+      <object>objects\obj_skill_cancel_button</object>
       <objects name="battle_UI_animation">
         <object>objects\obj_battle_enter_effect_manager</object>
         <object>objects\obj_effect_triangle</object>
@@ -1756,24 +2587,101 @@
         <object>objects\obj_quick_log</object>
       </objects>
       <objects name="battle_effect">
+        <object>objects\obj_summoning_animation</object>
+        <object>objects\obj_reverse_summoning_animation</object>
+        <object>objects\obj_basic_attack_effect</object>
+        <object>objects\obj_basic_attack_bust_animation</object>
+        <object>objects\obj_shotgun_effect</object>
         <object>objects\obj_battle_bullet_effect_animation</object>
+        <object>objects\obj_explosion_effect_middle</object>
+        <objects name="character_skill_animation">
+          <object>objects\obj_haruka_skill_animation</object>
+          <object>objects\obj_hoshino_skill_animation</object>
+          <object>objects\obj_iori_skill_animation</object>
+          <object>objects\obj_wakamo_skill_animation</object>
+          <object>objects\obj_midori_skill_animation</object>
+          <object>objects\obj_moe_skill_animation</object>
+        </objects>
         <objects name="bullet">
           <object>objects\obj_bullet</object>
           <object>objects\obj_bullet_shadow</object>
-          <object>objects\obj_missile_smoke</object>
           <object>objects\obj_bullet_hit_effect</object>
-          <object>objects\obj_missile_explosion_effect</object>
-          <object>objects\obj_missile</object>
+          <object>objects\obj_bezier_bullet</object>
+          <object>objects\obj_critical_bullet</object>
+          <object>objects\obj_hardboiled_shot</object>
+          <object>objects\obj_fire_grenade</object>
+          <object>objects\obj_bag_bomb</object>
+          <objects name="boss">
+            <objects name="sirokuro">
+              <object>objects\obj_dust_effect</object>
+              <object>objects\obj_dodgems</object>
+              <object>objects\obj_carousel</object>
+              <object>objects\obj_siro_ball</object>
+            </objects>
+            <objects name="binah">
+              <object>objects\obj_sandstorm_animation</object>
+              <object>objects\obj_sandstorm</object>
+            </objects>
+          </objects>
+          <objects name="justice_cross_bullet">
+            <object>objects\obj_justice_cross_bullet</object>
+            <object>objects\obj_justice_cross_effect</object>
+          </objects>
+          <objects name="holy_grenade">
+            <object>objects\obj_holy_grenade</object>
+            <object>objects\obj_holy_explosion_animation</object>
+            <object>objects\obj_holy_explosion</object>
+          </objects>
+          <objects name="filp_coin">
+            <object>objects\obj_flip_coin</object>
+            <object>objects\obj_coin_flip_result</object>
+          </objects>
+          <objects name="super_nova">
+            <object>objects\obj_super_nova_laser</object>
+          </objects>
+          <objects name="nyan_cat">
+            <object>objects\obj_nyancat</object>
+            <object>objects\obj_nyancat_tail</object>
+          </objects>
+          <objects name="spread_bullet">
+            <object>objects\obj_spread_parts</object>
+            <object>objects\obj_spread_bullet</object>
+            <object>objects\obj_debuff_bullet</object>
+          </objects>
+          <objects name="pizza">
+            <object>objects\obj_pizza</object>
+            <object>objects\obj_yumyum</object>
+          </objects>
+          <objects name="flash_bang">
+            <object>objects\obj_flash_bang</object>
+            <object>objects\obj_flash_drone</object>
+            <object>objects\obj_screen_flash</object>
+            <object>objects\obj_flash_bang_effect</object>
+          </objects>
+          <objects name="fire">
+            <object>objects\obj_flamethower</object>
+            <object>objects\obj_fire_field_animation</object>
+            <object>objects\obj_molotov_cocktail</object>
+            <object>objects\obj_flame</object>
+          </objects>
+          <objects name="missile">
+            <object>objects\obj_missile</object>
+            <object>objects\obj_missile_smoke</object>
+            <object>objects\obj_missile_bombing_manager</object>
+            <object>objects\obj_bomb_missile</object>
+            <object>objects\obj_missile_explosion_effect</object>
+          </objects>
         </objects>
-        <object>objects\obj_izuna_doll</object>
-        <object>objects\obj_gun_fire_effect</object>
-        <object>objects\obj_gun_hit_effect</object>
-        <object>objects\obj_attack_power_effect</object>
-        <object>objects\obj_defence_power_effect</object>
-        <object>objects\obj_statdown_effect</object>
-        <object>objects\obj_recovery_effect</object>
-        <object>objects\obj_shield_break_effect</object>
-        <object>objects\obj_stun_effect</object>
+        <objects name="skill_effect">
+          <object>objects\obj_izuna_doll</object>
+          <object>objects\obj_dodge_effect</object>
+          <object>objects\obj_buff_effect</object>
+          <object>objects\obj_failed_skill_effect</object>
+          <object>objects\obj_extra_turn_effect</object>
+          <object>objects\obj_yoshimi_smile_effect</object>
+          <object>objects\obj_gun_fire_effect</object>
+          <object>objects\obj_gun_hit_effect</object>
+        </objects>
       </objects>
       <objects name="battle_end">
         <object>objects\obj_battle_win_manager</object>
@@ -1784,6 +2692,8 @@
         <object>objects\obj_result_screen</object>
       </objects>
       <objects name="card_pointer">
+        <object>objects\obj_portrait_outline_myturn</object>
+        <object>objects\obj_portrait_outline_highest_taunt</object>
         <object>objects\obj_card_pointer_head</object>
         <object>objects\obj_enemy_card_pointer_head</object>
         <object>objects\obj_card_pointer_body</object>
@@ -1795,18 +2705,30 @@
       <object>objects\obj_player_piece</object>
       <object>objects\obj_board_move_arrow</object>
       <object>objects\obj_board_bg</object>
+      <objects name="chaos mode">
+        <object>objects\obj_chaos_mode_cafe_button</object>
+        <object>objects\obj_chaos_mode_formation_button</object>
+        <object>objects\obj_chaos_mode_craft_chamber_button</object>
+        <object>objects\obj_chaos_mode_shop_button</object>
+        <object>objects\obj_chaos_mode_recurit_button</object>
+        <object>objects\obj_chaos_mode_menu_bar</object>
+      </objects>
     </objects>
     <objects name="shop">
       <object>objects\obj_shop_bg</object>
       <object>objects\obj_shop_slot</object>
       <object>objects\obj_shop_slot_button</object>
-      <object>objects\obj_shop_replace_card</object>
+      <object>objects\obj_shop_reroll_button</object>
+      <object>objects\obj_shop_craftstone_sell_button</object>
       <object>objects\obj_shop_replace_manager</object>
+      <object>objects\obj_shop_empty_character_slot</object>
+      <object>objects\obj_shop_replace_character_card</object>
       <object>objects\obj_shop_replace_equipment_card</object>
-      <object>objects\obj_shop_replace_equipment_manager</object>
     </objects>
     <objects name="formation">
       <object>objects\obj_formation_change_manager</object>
+      <object>objects\obj_formation_go_cafe_slot</object>
+      <object>objects\obj_formation_no_cafe</object>
       <object>objects\obj_replace_card_slot</object>
       <object>objects\obj_replace_skill_slot</object>
       <object>objects\obj_replace_equipment_slot</object>
@@ -1820,10 +2742,10 @@
       <object>objects\obj_craft_chamber_gacha_animation</object>
       <object>objects\obj_craft_chamber_slot</object>
       <object>objects\obj_craft_chamber_craft_title</object>
-      <object>objects\obj_craft_chamber_replace_card</object>
       <object>objects\obj_craft_chamber_replace_manager</object>
+      <object>objects\obj_craft_chamber_empty_character_slot</object>
+      <object>objects\obj_craft_chamber_replace_character_card</object>
       <object>objects\obj_craft_chamber_replace_skill_card</object>
-      <object>objects\obj_craft_chamber_replace_skill_manager</object>
     </objects>
     <objects name="cafe">
       <object>objects\obj_cafe_bg</object>
@@ -1854,11 +2776,14 @@
       <object>objects\obj_lobby_manager</object>
       <object>objects\obj_room_change_aniation</object>
       <object>objects\obj_start_mission_button</object>
+      <object>objects\obj_start_chaos_mode_button</object>
+      <object>objects\obj_pvp_mode_button</object>
       <object>objects\obj_story_button</object>
       <object>objects\obj_developer_credit_button</object>
       <objects name="tutorial">
         <object>objects\obj_tutorial_button</object>
         <object>objects\obj_tutorial</object>
+        <object>objects\obj_chaos_mode_tutorial</object>
         <object>objects\obj_tutorial_content_button</object>
       </objects>
     </objects>
@@ -1868,12 +2793,19 @@
       <object>objects\obj_story_enter</object>
       <object>objects\obj_story_list_bar</object>
       <object>objects\obj_story_list_button</object>
+      <object>objects\obj_story_skip_button</object>
       <object>objects\obj_scenario</object>
-      <object>objects\obj_scenario_test</object>
       <object>objects\obj_dialogbox</object>
+    </objects>
+    <objects name="lab">
+      <object>objects\obj_lab_button_drawer</object>
+      <object>objects\obj_lab_button</object>
     </objects>
     <objects name="recyclebin">
       <objects name="Old">
+        <object>objects\obj_shop_replace_card_old</object>
+        <object>objects\obj_shop_replace_equipment_card_old</object>
+        <object>objects\obj_shop_replace_equipment_manager_old</object>
         <object>objects\obj_formation_character_replace_manager</object>
         <object>objects\obj_formation_skill_replace_manager</object>
         <object>objects\obj_formation_equipment_replace_manager</object>
@@ -1881,15 +2813,30 @@
         <object>objects\obj_formation_skill_replace_card</object>
         <object>objects\obj_formation_equipment_replace_card</object>
         <object>objects\obj_start_mission_fadeout</object>
+        <object>objects\obj_craft_chamber_replace_card_old</object>
+        <object>objects\obj_craft_chamber_replace_skill_card_old</object>
+        <object>objects\obj_craft_chamber_replace_skill_manager_old</object>
+      </objects>
+      <objects name="old effect">
+        <object>objects\obj_attack_power_effect</object>
+        <object>objects\obj_defence_power_effect</object>
+        <object>objects\obj_statdown_effect</object>
+        <object>objects\obj_recovery_effect</object>
+        <object>objects\obj_shield_break_effect</object>
+        <object>objects\obj_stun_effect</object>
       </objects>
       <object>objects\obj_formation_toolbar</object>
       <object>objects\obj_craft_chamber_toolbar</object>
       <object>objects\obj_cafe_toolbar</object>
       <object>objects\obj_recruit_toolbar</object>
       <object>objects\obj_nearest_test</object>
+      <object>objects\obj_skill_de_tester</object>
+      <object>objects\obj_instant_skill</object>
       <object>objects\obj_find_faceless</object>
-      <object>objects\obj_critical_bullet</object>
       <object>objects\obj_bullet_test_man</object>
+      <object>objects\obj_scenario_test</object>
+      <object>objects\obj_effect_tester</object>
+      <object>objects\obj_portrait_tester</object>
       <object>objects\obj_include_tester</object>
     </objects>
   </objects>

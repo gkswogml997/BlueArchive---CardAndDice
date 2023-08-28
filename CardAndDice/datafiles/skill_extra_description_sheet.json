@@ -1,0 +1,83 @@
+{
+	"must_hit" : {
+		"keyword_name" : "필중",
+		"keyword_description" : "숙련도에 관계없이 무조건 명중합니다."
+	},
+	"passive" : {
+		"keyword_name" : "패시브",
+		"keyword_description" : "페이즈가 시작 될 때마다 시전됩니다. 직접 사용 할 수 없습니다."
+	},
+	"critical" : {
+		"keyword_name" : "치명타",
+		"keyword_description" : "최종 데미지가 2배로 계산되어 들어갑니다."
+	},
+	"extra_turn" : {
+		"keyword_name" : "엑스트라 턴",
+		"keyword_description" : "신속과 관계없이 마지막에 추가 턴을 받습니다."
+	},
+	"stun" : {
+		"keyword_name" : "기절",
+		"keyword_description" : "대상의 이번 페이즈의 턴을 스킵합니다."
+	},
+	"summon" : {
+		"keyword_name" : "소환",
+		"keyword_description" : "빈 슬롯에 소환물 카드를 놓습니다. 빈 자리가 없으면 소환되지 않습니다."
+	},
+	"stamp" : {
+		"keyword_name" : "칭찬도장",
+		"keyword_description" : "칭찬도장이 이미 찍혀있으면 스킬 효과가 두배가 됩니다."
+	},
+	"opening" : {
+		"keyword_name" : "오프닝",
+		"keyword_description" : "전투가 시작할때 1회 발동합니다."
+	},
+	"barrier" : {
+		"keyword_name" : "보호막",
+		"keyword_description" : "취약 히트카운트가 3에서 5로 증가합니다. 취약을 얻으면 제거됩니다."
+	},
+	"flower_divination" : {
+		"keyword_name" : "꽃점",
+		"keyword_description" : "대상의 턴이 시작될때 지속중에 준 피해를 합하여 입힙니다."
+	},
+	"fire" : {
+		"keyword_name" : "화상",
+		"keyword_description" : "화상에 걸린 대상은 턴을 시작할때 D20의 데미지를 받습니다."
+	},
+	"shield_break" : {
+		"keyword_name" : "방패 부수기",
+		"keyword_description" : "최종데미지가 X(대상의취약) 만큼 증폭됩니다."
+	},
+	"strong_man_first" : {
+		"keyword_name" : "강자우선",
+		"keyword_description" : "가장 공격력이 높은 적을 대상으로 합니다. 대상의 공격력이 0일경우 시전에 실패합니다."
+	},
+	"equivalence" : {
+		"keyword_name" : "동치",
+		"keyword_description" : "나와 같은 자리의 적을 대상으로 합니다."
+	},
+	"coin_flip" : {
+		"keyword_name" : "동전 던지기",
+		"keyword_description" : "시전시에 동전을 던져 뒷면이 나올경우 시전에 실패합니다."
+	},
+	"enegy_charge" : {
+		"keyword_name" : "에너지 충전",
+		"keyword_description" : "충전 횟수에 비례하여 고정데미지 6이 추가됩니다."
+	},
+	"fear" : {
+		"keyword_name" : "공포",
+		"keyword_description" : "대상의 이번 페이즈의 턴을 스킵합니다. D6를 던져 1이 나오면 공포가 해제되지 않습니다."
+	},
+	"dodge" : {
+		"keyword_name" : "회피",
+		"keyword_description" : "공격 피해를 1회 무시합니다."
+	},
+	"neru" : {
+		"keyword_name" : "C&C의 부장",
+		"keyword_description" : "네루야 사랑해"
+	},
+	"test" : {
+		"keyword_name" : "테스트",
+		"keyword_description" : "테스트용 스킬입니다."
+	},
+        
+}

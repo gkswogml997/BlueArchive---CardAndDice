@@ -52,15 +52,15 @@ instance_deactivate_object(id)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//주인과 미니모드 상태를 공유
-if owner_id.mini_mode {instance_deactivate_object(id)}
-depth = owner_id.depth-1
-
-//주인과 활성화 비활성화 상태를 공유
-if !instance_exists(owner_id) 
+            <string>//주인과 활성화 비활성화 상태를 공유
+if !instance_exists(owner_id)
 {
     instance_deactivate_object(id)
 }
+//주인과 미니모드 상태를 공유
+if owner_id.mini_mode {instance_deactivate_object(id)}
+depth = owner_id.depth-2
+
 </string>
           </argument>
         </arguments>
@@ -88,7 +88,7 @@ if !instance_exists(owner_id)
     draw_sprite_ext(spr_1pixel,0,view_xview,view_yview,view_wview,view_hview,0,c_black,0.5)
     draw_self() 
     draw_sprite(spr_equipment_simply_stat_ui,0,x,y-64)
-    depth = -1006
+    depth = -1008
     
     draw_set_font(ft_gyeonggi_sz15_Italic_Light)
     draw_set_halign(fa_center)
@@ -114,6 +114,7 @@ if !instance_exists(owner_id)
     draw_text(x,y-144,funcition_str)    
 }else
 {
+    depth = -1004
     draw_self()
 }
 </string>

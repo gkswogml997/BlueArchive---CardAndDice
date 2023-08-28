@@ -30,6 +30,9 @@
 owner_id = ct_argument[0]
 original_card_id = ct_argument[1]
 
+//알람박스 관련
+notice_box_return = ""
+
 //슬롯 관련
 my_slot = instance_nearest(x,y,obj_replace_card_slot)
 my_slot.slot_owner = id
@@ -77,6 +80,46 @@ for(var i = 0; i &lt; original_card_id.equipment_slot_max; i++)
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for(var i = 0; i &lt; ds_list_size(skill_slot); i++)
+{
+    if !is_undefined(skill_slot[| i]) 
+    {
+        instance_destroy(skill_slot[|i].slot_owner)
+        instance_destroy(skill_slot[|i])
+    }
+}
+for(var i = 0; i &lt; ds_list_size(equipment_slot); i++)
+{
+    if !is_undefined(equipment_slot[| i]) 
+    {
+        instance_destroy(equipment_slot[|i].slot_owner)
+        instance_destroy(equipment_slot[|i])
+    }
+}
+ds_list_destroy(skill_slot)
+ds_list_destroy(equipment_slot)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
@@ -99,18 +142,28 @@ for(var i = 0; i &lt; original_card_id.equipment_slot_max; i++)
     move = false
     owner_id.pick_up_card = undefined
     nearest_slot = instance_nearest(x,y,obj_replace_card_slot)
-    if is_undefined(nearest_slot.slot_owner)
+    
+    if nearest_slot.object_index = obj_formation_go_cafe_slot
     {
-        my_slot.slot_owner = undefined
-        nearest_slot.slot_owner = id
-        my_slot = nearest_slot
-        
+        if notice_box_return = ""
+        {
+            make_notice_box(name+"을 카페로 보내는 것이 맞습니까?",id)
+        }
     }else
     {
-        nearest_slot.slot_owner.my_slot = my_slot
-        my_slot.slot_owner = nearest_slot.slot_owner
-        nearest_slot.slot_owner = id
-        my_slot = nearest_slot 
+        if is_undefined(nearest_slot.slot_owner)
+        {
+            my_slot.slot_owner = undefined
+            nearest_slot.slot_owner = id
+            my_slot = nearest_slot
+            
+        }else
+        {
+            nearest_slot.slot_owner.my_slot = my_slot
+            my_slot.slot_owner = nearest_slot.slot_owner
+            nearest_slot.slot_owner = id
+            my_slot = nearest_slot 
+        }
     }
 }
 </string>
@@ -163,6 +216,7 @@ for(var i = 0; i &lt; original_card_id.equipment_slot_max; i++)
           <argument>
             <kind>1</kind>
             <string>//카드 움직임
+depth = -1000
 if move
 {
     x = mouse_x
@@ -178,6 +232,40 @@ if move
     for(var i = 0; i &lt; ds_list_size(skill_slot); i++) {skill_slot[|i].depth = -1001}
     for(var i = 0; i &lt; ds_list_size(equipment_slot); i++) {equipment_slot[|i].depth = -1001}
 }
+draw_sprite(spr_mini_card,0,x,y)
+draw_sprite(card_portrait,0,x,y)
+draw_sprite(spr_portrait_outline,0,x,y)
+draw_sprite(spr_replace_equipment_bar,0,x,y+160)
+
+//카드 능력치 요약
+if mouse_enter() and !move and is_undefined(owner_id.pick_up_card)
+{
+    var xx = x - sprite_get_width(spr_card_mini_spec)/2
+    var yy = y - sprite_get_height(spr_card_mini_spec)/2
+    draw_sprite(spr_card_mini_spec,0,xx,yy)
+    
+    draw_set_font(ft_Ingame_font)
+    draw_set_color(c_white)
+    draw_set_valign(fa_top)
+    draw_set_halign(fa_left)
+    var xx2 = xx +16
+    var yy2 = yy +16
+    draw_text(xx2,yy2,"공격력: "+string(attack_power))
+    draw_text(xx2,yy2+32,"방어력: "+string(defence_power))
+    draw_text(xx2,yy2+64,"신속: "+string(rapid_power))
+    draw_text(xx2,yy2+96,"도발: "+string(taunt_power))
+    var skill_level_str = "빈번히 실패함"
+    switch skill_level
+    {
+        case 0: {skill_level_str = "빈번히 실패함" break;}
+        case 1: {skill_level_str = "가끔 실패함" break;}
+        case 2: {skill_level_str = "무난함" break;}
+        case 3: {skill_level_str = "능숙함" break;}
+        case 4: {skill_level_str = "달인" break;}
+    }
+    draw_text(xx2,yy2+150,"숙련도#     "+skill_level_str)
+}
+
 //부속품도 같이 움직임
 for(var i = 0; i &lt; ds_list_size(skill_slot); i++)
 {
@@ -189,12 +277,22 @@ for(var i = 0; i &lt; ds_list_size(equipment_slot); i++)
 {
     equipment_slot[|i].x = x - 75 + 75 * i
     equipment_slot[|i].y = y + 160
+    equipment_slot[|i].depth = depth - 2
 }
 
-draw_sprite(spr_mini_card,0,x,y)
-draw_sprite(card_portrait,0,x,y)
-draw_sprite(spr_portrait_outline,0,x,y)
-draw_sprite(spr_replace_equipment_bar,0,x,y+160)
+if notice_box_return = "확인"
+{
+    notice_box_return = ""
+    original_card_id.reason_for_entering_the_cafe = "편성창에서 카페로 보내짐"
+    my_slot.slot_owner = undefined
+    card_cafe_enter(original_card_id)
+    instance_destroy()
+}
+
+if notice_box_return = "취소"
+{
+    notice_box_return = ""
+}
 
 </string>
           </argument>

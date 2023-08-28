@@ -142,7 +142,9 @@ if is_passive_skill {skill_icon_background = spr_skill_icon_background_passive}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// 카드 움직임
+            <string>if !instance_exists(my_slot) {instance_destroy()}
+else {depth = my_slot.depth - 1}
+// 카드 움직임
 if move
 {
     x = mouse_x
@@ -152,7 +154,6 @@ if move
 {
     x = my_slot.x
     y = my_slot.y
-    depth = -1020
 }
 
 var xx = x - sprite_width/2 + sprite_get_width(spr_skill_icon_background)/2 + 12
@@ -164,6 +165,22 @@ draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_set_color(c_black)
 draw_text(x,y,skill_name)
+
+if mouse_enter() and !move and is_undefined(owner_id.pick_up_card)
+{
+    depth = -1021
+    var xx = mouse_x
+    var yy = mouse_y
+    draw_sprite(spr_large_skill_card,0,xx,yy)
+    draw_sprite(skill_icon_background,0,xx+16,yy+16)
+    draw_sprite_ext(skill_icon_spr,0,xx+16,yy+16,0.26,0.26,0,c_white,image_alpha)
+    draw_set_font(ft_gyeonggi_sz15_Italic_Light)
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_middle)
+    draw_set_color(c_black)
+    draw_text(xx+16+92,yy+16,skill_name)
+    draw_text_ext(xx+100,yy+80,skill_description,24,200)
+}
 </string>
           </argument>
         </arguments>

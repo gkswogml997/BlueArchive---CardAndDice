@@ -27,10 +27,13 @@
             <kind>1</kind>
             <string>log_view = false
 
+quick_log_buffer_time = 0
+
 up_log = 0
 
 x = view_xview+view_wview
 y = view_yview
+
 </string>
           </argument>
         </arguments>
@@ -127,6 +130,16 @@ y = view_yview
 
 draw_self()
 
+quick_log_buffer_time++
+
+if ds_queue_size(global.quick_log_buffer) &gt;= 1
+{
+    if quick_log_buffer_time &gt; 60
+    {
+        instance_create_v(view_xview+view_wview/2,view_yview+view_hview+32,obj_quick_log,ds_queue_dequeue(global.quick_log_buffer))
+        quick_log_buffer_time = 0
+    }
+}
 
 if log_view
 {
@@ -145,7 +158,9 @@ if log_view
     draw_text_outline(ux+30,uy+30,"전체: "+string(list_size)+"   중   구간:"+string(up_log)+"  ~  "+string(min(15+up_log,list_size)),2,c_black,16)
     for (var i = up_log; i &lt; min(15+up_log,list_size); i++)
     {
-        draw_text_outline(ux+30,uy+530-(i-up_log)*30,global.game_log_list[| list_size-1-i],2,c_black,16)
+        var str = global.game_log_list[| list_size-1-i]
+        if string_char_at(str,1) = "Q" {draw_text_outline(ux+30,uy+530-(i-up_log)*30,str,2,c_red,16)}
+        else {draw_text_outline(ux+30,uy+530-(i-up_log)*30,str,2,c_black,16)}
     }
 }
 </string>

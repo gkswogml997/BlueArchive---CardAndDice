@@ -31,12 +31,21 @@
 target_skill = ct_argument[0]
 
 //플레이어 카드 리스트 보여주기
-target_list = obj_GAME_SYSTEM_MANAGER.player_list
-for(var i = 0; i &lt; ds_list_size(target_list); i++)
+var size_of_character = ds_list_size(obj_GAME_SYSTEM_MANAGER.player_list)
+var card_width = sprite_get_width(spr_mini_card)
+var card_height = sprite_get_height(spr_mini_card)
+var card_list_width = card_width*size_of_character
+var xx = room_width/2+card_list_width/2-card_width/2
+var yy = room_height*4/5
+var target_list = obj_GAME_SYSTEM_MANAGER.player_list
+for(var i = 0; i &lt; size_of_character; i++)
 {
-    if !is_undefined(ds_list_find_value(target_list,i))
+    if !is_undefined(target_list[|i])
     {
-        instance_create_v(0,0,obj_craft_chamber_replace_card,target_list[|i])
+        instance_create_v(xx-card_width*i,yy,obj_craft_chamber_replace_character_card,target_list[|i])
+    }else
+    {
+        instance_create(xx-card_width*i,yy,obj_craft_chamber_empty_character_slot)
     }
 }
 
@@ -72,7 +81,9 @@ notice_box_return = ""
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy(obj_craft_chamber_replace_card)
+            <string>if instance_exists(obj_craft_chamber_empty_character_slot) {instance_destroy(obj_craft_chamber_empty_character_slot)}
+instance_destroy(obj_craft_chamber_replace_character_card)
+instance_destroy(obj_craft_chamber_replace_skill_card)
 </string>
           </argument>
         </arguments>
@@ -100,19 +111,26 @@ notice_box_return = ""
     //선택
     if notice_box_return = ""
     {
-        make_notice_box((string(select_slot.card_position)+"번자리의 "+select_slot.hangul_name+"에게 스킬 카드를 건네줄까요?"),id)
+        make_notice_box(select_slot.original_card_id.hangul_name+"의 "
+                        +select_slot.skill_name+"과 "
+                        +target_skill.skill_name+"를 바꿀까요?",id)
     }
     
     if notice_box_return = "확인"
     {
-        instance_create_v(0,0,obj_craft_chamber_replace_skill_manager,target_skill,select_slot)
+        target_skill.owner_id.skill_slot = undefined
+        target_skill.owner_id.is_used = true
+        target_skill.owner_id = select_slot.original_card_id
+        var target_index = select_slot.original_skill_slot_place
+        ds_list_replace(select_slot.original_card_id.skill_list,target_index,target_skill)
+        instance_deactivate_object(target_skill)
+        instance_destroy(select_slot)
         instance_destroy()
     }
     if notice_box_return = "취소"
     {
         select_slot = undefined
         notice_box_return = ""
-        instance_destroy()
     }
 
 }
@@ -148,7 +166,7 @@ draw_set_color(c_white)
 
 var xx = view_xview+view_wview/2
 var yy = view_yview+view_hview/2
-draw_text(xx,yy,"어느 학생에게 스킬 카드를 건네줄까요?")
+draw_text(xx,yy,"")
 </string>
           </argument>
         </arguments>

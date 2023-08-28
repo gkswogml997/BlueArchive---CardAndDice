@@ -78,9 +78,18 @@ select_slot = undefined
         ds_list_value_destroy(obj_GAME_SYSTEM_MANAGER.cafe_card_list,change_target)
         ds_list_replace(obj_GAME_SYSTEM_MANAGER.player_list,select_slot.card_position,change_target)
         change_target.card_position = select_slot.card_position
+        enter_cafe_card_id.reason_for_entering_the_cafe = "카페에 있던 다른 학생과 교환됨"
         card_cafe_enter(enter_cafe_card_id)
     }
-    instance_create(0,0,obj_phase_change_animation)
+    if instance_exists(obj_empty_card) {instance_destroy(obj_empty_card)}
+    if instance_exists(obj_cafe_replace_card) {instance_destroy(obj_cafe_replace_card)}
+    instance_destroy()
+    
+    for(var i = 0; i &lt; ds_list_size(obj_GAME_SYSTEM_MANAGER.cafe_card_list); i++)
+    {
+        instance_create_v(0,0,obj_cafe_character_card,obj_GAME_SYSTEM_MANAGER.cafe_card_list[|i])
+    }
+
 }
 </string>
           </argument>

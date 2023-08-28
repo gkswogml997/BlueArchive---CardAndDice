@@ -25,21 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>map_number = irandom(ds_list_size(global.battle_background)-1)
-sprite_index = global.battle_background[|map_number]
-image_xscale = 1.5
-image_yscale = 1.5
-audio_play_sound(global.battle_bgm[|map_number],1000,true)
+            <string>map_name = ct_argument[0]
 
-if !is_undefined(ct_argument[0])
-{
-    map_number = ct_argument[0]
-    sprite_index = global.boss_background[|map_number]
-    audio_stop_all()
-    audio_play_sound(global.boss_bgm[|map_number],1000,true)
-    image_xscale = 1
-    image_yscale = 1
-}
+audio_stop_all()
+
+background = spr_board_bg
+bgm = sd_undefined_sound
+if !is_undefined(ds_map_find_value(global.battle_background,map_name))
+{background = ds_map_find_value(global.battle_background,map_name)}
+if !is_undefined(ds_map_find_value(global.battle_bgm,map_name))
+{bgm = ds_map_find_value(global.battle_bgm,map_name)}
+
+sprite_index = background
+image_xscale = room_width/sprite_get_width(background)
+image_yscale = room_height/sprite_get_height(background)
+audio_play_sound(bgm,1000,true)
 </string>
           </argument>
         </arguments>

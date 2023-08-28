@@ -65,7 +65,18 @@ vertex_make = true
             <string>x = on_vertex.x
 y = on_vertex.y
 
-if vertex_make {create_next_vertex(); vertex_make = false}
+if vertex_make 
+{
+    //앞으로 진행할 노드가 없을때만 새 버택스 생성
+    var can_going_node_exists = false;
+    for (var i = 0; i &lt; ds_list_size(on_vertex.g_vertex); i++)
+    {
+        if on_vertex.g_vertex[| i].type != platform_type.Nothing {can_going_node_exists = true}
+    }
+    
+    if !can_going_node_exists {create_next_vertex();}
+    vertex_make = false;
+}
 </string>
           </argument>
         </arguments>
@@ -100,73 +111,6 @@ if !instance_exists(obj_board_move_arrow)
             instance_create(on_vertex.g_vertex[| i].x,on_vertex.g_vertex[| i].y - 64,obj_board_move_arrow)
         }
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>var str = get_string("개발자콘솔","");
-
-if str = "학생"
-{
-    var str2 = get_integer("몇번 학생을 모집합니까?",0);
-    add_player_card(str2)
-}
-if str = "청휘석"
-{
-    var str2 = get_integer("얼마나 얻습니까?",120);
-    global.blue_stone += str2
-}
-if str = "기동석"
-{
-    var str2 = get_integer("얼마나 얻습니까?",1);
-    global.craft_stone += str2
-}
-if str = "전투"
-{
-    on_vertex.type = platform_type.Battle
-}
-if str = "카페"
-{
-    on_vertex.type = platform_type.Cafe
-}
-if str = "제조"
-{
-    on_vertex.type = platform_type.Craft_chamber
-}
-if str = "상점"
-{
-    on_vertex.type = platform_type.Shop
-}
-if str = "편성"
-{
-    on_vertex.type = platform_type.Formation
-}
-if str = "모집"
-{
-    on_vertex.type = platform_type.Recruit
-}
-if str = "버택스"
-{
-    create_next_vertex()
 }
 </string>
           </argument>

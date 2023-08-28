@@ -50,8 +50,8 @@ life = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &gt; 200+640-80+190 { x -= 100} 
-else {x = 200+640-80+190}
+            <string>if x &gt; 200+640-100 { x -= 100} 
+else {x = 200+640-100}
 </string>
           </argument>
         </arguments>

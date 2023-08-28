@@ -202,15 +202,13 @@ if type = "circle"
 
 if type = "point"
 {
-    if is_undefined(target) {instance_destroy()} 
-    else if target.is_dead {instance_destroy()}
+    if is_undefined(target) {instance_destroy()}
     if fire {alarm[2] = 3; fire = false}
 }
 
 if type = "mystic"
 {
-    if is_undefined(target) {instance_destroy()} 
-    else if target.is_dead {instance_destroy()}
+    if is_undefined(target) {instance_destroy()}
     if fire {alarm[3] = 3; fire = false}
 }
 

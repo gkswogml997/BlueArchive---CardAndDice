@@ -3,7 +3,7 @@
   <spriteName>spr_mask_32x32</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1006</depth>
+  <depth>-1008</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,57 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>str = ct_argument[0]
-alarm[0] = 120
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_skill_speech_bubble">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if id &gt; other.id
-{
-    if y &lt; room_height {y += 48}
-    if y &gt;= room_height {y -= 48}
-}
+width = 0
+height = 0
+life = 90
+showing_start = false
+disappear = false
 </string>
           </argument>
         </arguments>
@@ -105,13 +59,66 @@ draw_set_valign(fa_middle)
 draw_set_color(c_black)
 
 var sw = string_width(str)
-draw_sprite(spr_skill_speech_bubble_L,0,x-sw/2,y)
-draw_sprite(spr_skill_speech_bubble_R,0,x+sw/2,y)
-for(var i = 0; i &lt; sw; i++)
+var box_spd = 15
+var spd = 8
+var max_height = 128
+
+
+if !showing_start and !disappear
 {
-    draw_sprite(spr_skill_speech_bubble,0,x-sw/2+i,y)
+    if height &lt; max_height
+    {
+        if ystart &gt; room_height/2 {y-=spd; height+=spd}
+        else {y+=spd; height+=spd}
+    }
+    if width &lt; sw 
+    {
+        width+=box_spd
+        
+    } else {showing_start = true}
 }
-draw_text(x,y,str)
+if disappear
+{
+    if height &gt; 0
+    {
+        if ystart &gt; room_height/2 {y+=spd; height-=spd}
+        else {y-=spd; height-=spd}
+    }
+        
+    if width &gt; 0 
+    {
+        width-=box_spd
+        
+    }
+    else {instance_destroy()}
+}
+
+
+draw_sprite(spr_skill_speech_bubble_L,0,x-width/2+1,y)
+draw_sprite(spr_skill_speech_bubble_R,0,x+width/2,y)
+draw_sprite(spr_skill_speech_bubble,0,x,y)
+for(var i = 1; i &lt; width/2; i++)
+{
+    draw_sprite(spr_skill_speech_bubble,0,x-i,y)
+    draw_sprite(spr_skill_speech_bubble,0,x+i,y)
+}
+if showing_start 
+{
+    draw_text(x,y,str)
+    life--
+    if life &lt; 0 {disappear = true; showing_start = false}
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </string>
           </argument>
         </arguments>
